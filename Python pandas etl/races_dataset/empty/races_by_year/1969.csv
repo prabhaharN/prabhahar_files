@@ -1,0 +1,12 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+655,656,1969,1,30,South African Grand Prix,1969-03-01,\N,http://en.wikipedia.org/wiki/1969_South_African_Grand_Prix,testing,2024-07-19 09:54:18.999993
+656,657,1969,2,49,Spanish Grand Prix,1969-05-04,\N,http://en.wikipedia.org/wiki/1969_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+657,658,1969,3,6,Monaco Grand Prix,1969-05-18,\N,http://en.wikipedia.org/wiki/1969_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+658,659,1969,4,39,Dutch Grand Prix,1969-06-21,\N,http://en.wikipedia.org/wiki/1969_Dutch_Grand_Prix,testing,2024-07-19 09:54:18.999993
+659,660,1969,5,51,French Grand Prix,1969-07-06,\N,http://en.wikipedia.org/wiki/1969_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+660,661,1969,6,9,British Grand Prix,1969-07-19,\N,http://en.wikipedia.org/wiki/1969_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+661,662,1969,7,20,German Grand Prix,1969-08-03,\N,http://en.wikipedia.org/wiki/1969_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+662,663,1969,8,14,Italian Grand Prix,1969-09-07,\N,http://en.wikipedia.org/wiki/1969_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+663,664,1969,9,48,Canadian Grand Prix,1969-09-20,\N,http://en.wikipedia.org/wiki/1969_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+664,665,1969,10,46,United States Grand Prix,1969-10-05,\N,http://en.wikipedia.org/wiki/1969_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+665,666,1969,11,32,Mexican Grand Prix,1969-10-19,\N,http://en.wikipedia.org/wiki/1969_Mexican_Grand_Prix,testing,2024-07-19 09:54:18.999993

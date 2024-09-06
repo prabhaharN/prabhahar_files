@@ -1,0 +1,125 @@
+Q 1. find 5th highest salary in different way? (2 ways)
+
+query : 
+1st way 
+	select emp_sal
+	from employee e1
+	where 4 = (select count(DISTINCT(EMP_SAL))
+			from employee e2
+			where e1.emp_sal < e2.emp_sal);
+
+ 
+2nd way 
+
+	SELECT emp_Sal
+	FROM (SELECT emp_sal, ROW_NUMBER() OVER (ORDER BY salary DESC) as row_num
+              FROM employee) ranked
+	WHERE row_num = 5;
+	
+
+ Q 2. Why View performance is slow? What we should do to increase the performance of the view.
+
+	View performance is slower because view is a logical table and it does not has storage so that in execution time it goes to view table first then it goes to actual table(that is many 	tables) so it take longer that's why performance is slow in view.
+
+To increase performance of view : 
+	
+
+Q 3. List the Query execution order.
+	from 
+	where
+	group by
+	having
+	select
+	order by
+
+Q 4. What 4 steps every query goes through before it shows the results to us?
+
+	parsing, syntax, optimization execution
+
+
+Q 5. how to find if a column has an index or not ?
+
+	select *
+	from user_ind_columns
+	where table_name = 'emp';
+
+	
+Q 6. Write a query where you use case statement
+
+my answer : select 
+	count(case (when gender='F' then 1 end) as female_count, 
+	count(case when gender = 'M' then 1 end) as male_count      
+	from employee;
+
+correction : 
+	select dept_id,
+	count(case when gender = 'F' then 1 end) as female_cnt,
+	count(case when gender = 'M' then 1 end) as male_cnt
+	from employee1
+	group by dept_id;
+
+Q 7. 	webvisit
+		 visit_id site
+	100      www.google.com
+	101      www.facebook.com
+	100      www.google.com
+	Delete the duplicate records in webvisit table
+
+my answer : 
+	delete * 
+	from emp                      
+	where rowed in (select min(rowid) 
+			from emp);
+correction: 
+	delete 
+	from webvisit 
+	where rowId not in (select max(rowid) 
+				from webvisit 
+				group by visit_id,site);
+
+Q 8. What is the difference between synonyms and views?
+
+my answer: synonyms is an alter name for table while view is logical table which is extracted from one or more table
+
+correction : synonyms can be created on all db objects
+		while views can be created only on tables.
+
+
+Q 9. Why union query runs slower (usually) compared to union all queries?
+
+my answer : 
+
+correction :	because it takes all records unique and duplicates and it remove duplicate records and it gives unique records only.
+
+Q 10. What does implicit cursor mean in the database world?
+
+correction : in implicit cursor if we have any error in a select statement the server will take acre about that error.
+
+Q 11. What is the difference between synonyms and views?
+
+my answer: synonyms is an alter name for table while view is logical table which is extracted from one or more table
+
+correction : synonyms can be created on all db objects
+		where as views can be created only on tables.
+
+Q 12. Select substr(‘dhivakar’,-1,-1) from dual -- What is the output
+
+	 Error
+
+
+Q 13. I have 2 emp tables with 5 records each. Name like emp1 and emp2. Now i delete the emp1 records and truncate the emp2 records after that I rollback this transaction. How many rows you will have in emp1 and emp2
+
+
+Q 14. 1.       I have an emp table with 5 records. I write a following query what will be the output.
+	Select ename from emp where rownum = 3?
+
+	Null/ no record 
+
+
+Q 15. I have an dept table .In that dept table I have columns like deptno with primary key and dname with unique key. After that I insert vaue like this (insert into dept values(10,’’); insert into dept values(20,’’);), Does it allows null values second time ?
+
+	yes
+
+
+Q 16. what are the types of statements in TCL you know
+	rollback , commit, savepoint

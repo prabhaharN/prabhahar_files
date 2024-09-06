@@ -1,0 +1,18 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+206,207,1997,1,1,Australian Grand Prix,1997-03-09,\N,http://en.wikipedia.org/wiki/1997_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+207,208,1997,2,18,Brazilian Grand Prix,1997-03-30,\N,http://en.wikipedia.org/wiki/1997_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+208,209,1997,3,25,Argentine Grand Prix,1997-04-13,\N,http://en.wikipedia.org/wiki/1997_Argentine_Grand_Prix,testing,2024-07-19 09:54:18.999993
+209,210,1997,4,21,San Marino Grand Prix,1997-04-27,\N,http://en.wikipedia.org/wiki/1997_San_Marino_Grand_Prix,testing,2024-07-19 09:54:18.999993
+210,211,1997,5,6,Monaco Grand Prix,1997-05-11,\N,http://en.wikipedia.org/wiki/1997_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+211,212,1997,6,4,Spanish Grand Prix,1997-05-25,\N,http://en.wikipedia.org/wiki/1997_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+212,213,1997,7,7,Canadian Grand Prix,1997-06-15,\N,http://en.wikipedia.org/wiki/1997_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+213,214,1997,8,8,French Grand Prix,1997-06-29,\N,http://en.wikipedia.org/wiki/1997_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+214,215,1997,9,9,British Grand Prix,1997-07-13,\N,http://en.wikipedia.org/wiki/1997_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+215,216,1997,10,10,German Grand Prix,1997-07-27,\N,http://en.wikipedia.org/wiki/1997_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+216,217,1997,11,11,Hungarian Grand Prix,1997-08-10,\N,http://en.wikipedia.org/wiki/1997_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+217,218,1997,12,13,Belgian Grand Prix,1997-08-24,\N,http://en.wikipedia.org/wiki/1997_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+218,219,1997,13,14,Italian Grand Prix,1997-09-07,\N,http://en.wikipedia.org/wiki/1997_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+219,220,1997,14,23,Austrian Grand Prix,1997-09-21,\N,http://en.wikipedia.org/wiki/1997_Austrian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+220,221,1997,15,20,Luxembourg Grand Prix,1997-09-28,\N,http://en.wikipedia.org/wiki/1997_Luxembourg_Grand_Prix,testing,2024-07-19 09:54:18.999993
+221,222,1997,16,22,Japanese Grand Prix,1997-10-12,\N,http://en.wikipedia.org/wiki/1997_Japanese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+222,223,1997,17,26,European Grand Prix,1997-10-26,\N,http://en.wikipedia.org/wiki/1997_European_Grand_Prix,testing,2024-07-19 09:54:18.999993

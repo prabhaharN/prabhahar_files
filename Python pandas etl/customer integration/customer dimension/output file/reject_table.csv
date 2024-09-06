@@ -1,0 +1,15 @@
+cust_id,source,reject_reason
+200,instore,store_name is absent
+201,instore,store_name is absent
+202,instore,store_name is absent
+203,call_center,rep_name is absent
+204,call_center,rep_name and phone_number are absent
+205,call_center,phone_number is absent
+206,call_center,phone_number is absent
+207,web,email mismatch
+208,web,email mismatch
+209,web,email mismatch
+210,web,duplicates
+211,web,duplicates
+212,web,duplicates
+213,web,duplicates

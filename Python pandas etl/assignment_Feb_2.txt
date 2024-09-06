@@ -1,0 +1,165 @@
+Feb 2nd assignment
+=====================
+1) data1 = { 67,34,19,50,5,124,77,89,190,29,45}
+   data2 = { 21,7,43,91,51,160,15,24,67,89,75,180,29,45,2,8}
+   find the summed value after the union
+   what is the avg of the unioned value?
+   of the common elements between data1 and data2 ...find the
+   highest and lowest
+-------------------code------------------------
+data1 = { 67,34,19,50,5,124,77,89,190,29,45}   
+data2 = { 21,7,43,91,51,160,15,24,67,89,75,180,29,45,2,8}
+data3=data1.union(data2)
+print(data3)
+l=len(data3)
+total=0
+for i in data3:
+    total=total+i
+print('total : ',total)  
+print('average : ',total/l)
+data4=data1.intersection(data2)
+print(data4)
+maxi=0
+mini=total
+for i in data4:
+    if i>maxi:
+        maxi=i
+    if i<mini:
+        mini=i
+print('highest : ',maxi)  
+print('lowest : ',mini)
+------------------output-----------------------
+{2, 67, 5, 7, 8, 75, 77, 15, 19, 21, 24, 89, 91, 29, 160, 34, 43, 45, 50, 51, 180, 124, 190}
+total :  1406
+average :  61.130434782608695
+{89, 29, 67, 45}
+highest :  89
+lowest :  29
+================================================
+2) use the qs 1) data1 and data2
+   create data3 - add all the elements of data1 , data2 
+   sort the data3 in DESC order - how many ele are there..
+   delete/remove all the found elements of data1 in data2
+-------------------code------------------------
+data1 = { 67,34,19,50,5,124,77,89,190,29,45}   
+data2 = { 21,7,43,91,51,160,15,24,67,89,75,180,29,45,2,8}
+
+data3=[]
+for i in data1,data2:
+    for j in i:
+        data3.append(j)
+        
+print(data3)
+
+data=sorted(data3)[::-1]
+
+print('arranged in descending order : ',data)
+print('length : ',len(data))
+for i in list(data2):
+    if i in data1:
+        data2.remove(i)
+        
+print(data2) 
+------------------output-----------------------
+[34, 67, 5, 45, 77, 50, 19, 89, 124, 29, 190, 2, 67, 7, 8, 75, 15, 21, 24, 89, 91, 29, 160, 43, 45, 51, 180]
+arranged in descending order :  [190, 180, 160, 124, 91, 89, 89, 77, 75, 67, 67, 51, 50, 45, 45, 43, 34, 29, 29, 24, 21, 19, 15, 8, 7, 5, 2]
+length :  27
+{2, 7, 8, 75, 15, 21, 24, 91, 160, 43, 51, 180}
+================================================
+
+3) set1 = { 23,4,(50,12,9),18,(5,2,-6,-19,27),-18,-50,(-3,15,-10),25 }
+   sum all the positive numbers
+   find the avg
+
+   find the sum of all the numbers in the tuple only (as above)
+   which is the highest,lowest value
+-------------------code------------------------
+set1 = { 23,4,(50,12,9),18,(5,2,-6,-19,27),-18,-50,(-3,15,-10),25 }  
+total=0
+count=0
+for i in set1:
+    if type(i)==tuple:
+        for j in i:
+            if j>0:
+                total=total+j
+                count=count+1
+    else:
+        if i>0:
+                total=total+i
+                count=count+1
+print('total : ',total) 
+print('avg of positive number : ',total/count)  
+total_tuple=0
+maxi=0
+mini=total
+for i in set1:
+    if type(i)==tuple:
+        for j in i:
+            total_tuple=total_tuple+j
+            if j>maxi:
+                 maxi=j
+            if j<mini:
+                mini=j
+print('total in tuple  : ',total_tuple)                
+print('highest : ',maxi)  
+print('lowest : ',mini)
+------------------output-----------------------
+total :  190
+avg of positive number :  17.272727272727273
+total in tuple  :  82
+highest :  50
+lowest :  -19
+================================================
+
+4) this is little challenging...
+   we wish to delete the negitive numbers in the set1
+   how it can be done ?
+   final o/p will be (all -ive removed)
+   set1 = { 23,4,(50,12,9),18,(5,2,27),(15),25 }
+ -------------------code------------------------
+------------------output-----------------------
+================================================
+  
+5) Given... (if you wish you could add more items to item dict
+   like how i have done...)
+
+             Id      name   price qty
+              |       |       |   |
+   item = { 100 : ['Laptop',56500, 5], 201: ['Mobile',23500,10],
+            400 : ['charger',2500, 4], 221: ['Earpods',4500,8] }
+   process the dict in such a way we display the o/p as 
+   100  Laptop 56500
+   200  Mobile 23500
+   ..   ...    ...
+-------------------code------------------------
+item = { 100 : ['Laptop',56500, 5], 201: ['Mobile',23500,10],
+            400 : ['charger',2500, 4], 221: ['Earpods',4500,8] }
+for k,v in item.items() :
+    print(k,v[0],v[1])
+------------------output-----------------------
+100 Laptop 56500
+201 Mobile 23500
+400 charger 2500
+221 Earpods 4500
+================================================
+6) process the above item dict and display it as following
+   name    item cost (stock value) ::: price x qty
+   Laptop  282500
+   Mobile  235000
+   ..      ...
+   ..      ...
+-------------------code------------------------
+------------------output-----------------------
+================================================
+7) create another dict called item_1
+   move all the item details into item_1 whose qty is less than 6
+   (move meaning delete it in item, add it in item_1)
+   display the item_1 contents
+   display the item contents
+-------------------code------------------------
+------------------output-----------------------
+================================================
+*****************
+
+ 
+

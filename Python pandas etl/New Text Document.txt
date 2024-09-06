@@ -1,0 +1,135 @@
+1)Follow the PEP 8 Style Guide: Adhering to the Python Enhancement Proposal (PEP) 8 guidelines ensures consistent and readable code1. It covers aspects like indentation, naming conventions, and code layout.
+
+2)Use Python 3: Python 2 is no longer maintained, so it’s essential to use Python 3 for new projects. It offers better features, performance, and security.
+
+3) Use the PyPI Instead of Doing It Yourself
+The Python Package Index (PyPI) is a software repository for all Python programming languages. This coding language library, which holds over 198,190 coding projects, helps developers find and install any software accessible to a global community. The PyPI lets developers pull from existing code and embed it in their projects instead of writing code themselves.
+
+ 4)Document and Comment Your Code Properly
+A critical part of Python best practices is documenting and commenting on all code properly. This point is significant if multiple parties are working on the same piece of code at any time. Without clear documentation and concise
+
+5)Write Readable Code
+It’s vital that when it comes to Python coding, every line should be easily readable. Ultimately, each piece of code is highly focused, giving a clear function, class, or module to that line of code. Readable code results in teams being able to contribute their code without unnecessary delays and a beautifully designed final project. 
+
+
+6)Use a Proper Naming Convention
+When writing Python code, using a proper naming method can save time. With different variables, functions, classes, packages, and more, picking a logical naming convention will help streamline a project timeline and make it easier for team members to add their code. 
+
+7)Maximum Line Length:
+PEP 8 recommends that no line should be longer than 79 characters.
+Break long lines using parentheses or backslashes.
+
+
+8)Blank Lines:
+Surround top-level function and class definitions with two blank lines.
+Enhances code organization and readability.
+
+9)Indentation Tyranny:
+Indentation refers to the spaces at the beginning of a code line.
+
+10)Use Linters and Autoformatters:
+Tools like flake8, black, and pylint help maintain code quality.
+Detect issues and automatically format code.
+
+
+11)Debugging Python code is essential for identifying and fixing errors. Here are some effective techniques:
+
+Print Statements
+
+Logging:
+Use the built-in logging module to create log messages at different levels (e.g., DEBUG, INFO, ERROR).
+Configure logging to write messages to a file or console.
+
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+def divide(a, b):
+    try:
+        result = a / b
+        logging.info(f"Division result: {result}")
+        return result
+    except ZeroDivisionError:
+        logging.error("Cannot divide by zero")
+        return None
+
+divide(10, 2)
+
+
+logging.NOTSET
+0
+
+When set on a logger, indicates that ancestor loggers are to be consulted to determine the effective level. If that still resolves to NOTSET, then all events are logged. When set on a handler, all events are handled.
+
+logging.DEBUG
+10
+
+Detailed information, typically only of interest to a developer trying to diagnose a problem.
+
+logging.INFO
+20
+
+Confirmation that things are working as expected.
+
+logging.WARNING
+30
+
+An indication that something unexpected happened, or that a problem might occur in the near future (e.g. ‘disk space low’). The software is still working as expected.
+
+logging.ERROR
+40
+
+Due to a more serious problem, the software has not been able to perform some function.
+
+logging.CRITICAL
+50
+
+A serious error, indicating that the program itself may be unable to continue running.
+
+
+
+How to Write Logs to a File in Python
+  HowTo  Python How-To's  How to Write Logs to a File in Python
+Muhammad Maisam Abbas Feb 02, 2024
+ Python Python Logging   
+
+Write Logs to a File With the logging Module in Python
+Write Logs to a File With the logging.FileHandler() Function in Python
+How to Write Logs to a File in Python
+
+This tutorial will introduce the methods to write logs to a file in Python.
+
+Write Logs to a File With the logging Module in Python
+The logs are used for debugging a program and finding out what went wrong. The logging module is used for logging data to a file in Python. We can use the logging.basicConfig() function to configure the logs to be written to a specific file. By default, we can log 5 types of lines with the logging module. These message types include debug, info, warning, error, and critical. Still, we can increase that number to whatever we need through coding. The following code example shows us how to write logs to a file with the logging.basicConfig() function.
+
+import logging
+
+# Creating and Configuring Logger
+
+Log_Format = "%(levelname)s %(asctime)s - %(message)s"
+
+logging.basicConfig(
+    filename="logfile.log", filemode="w", format=Log_Format, level=logging.ERROR
+)
+
+logger = logging.getLogger()
+
+# Testing our Logger
+
+logger.error("Our First Log Message")
+
+
+
+Exception Handling:
+Use try, except, else, and finally blocks to handle exceptions gracefully.
+
+Assertions:
+Use assert statements to check assumptions about your code.
+If an assertion fails, it raises an AssertionError.
+
+
+def calculate_square_root(x):
+    assert x >= 0, "Input must be non-negative"
+    return x ** 0.5
+
+print(calculate_square_root(25))

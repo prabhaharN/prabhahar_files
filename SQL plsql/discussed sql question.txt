@@ -1,0 +1,98 @@
+Write a select statement to get the current value of sequence called customer_sequence
+select sustomer_sequence.currval fromdual
+
+write a query to find second greatest employee based on salary
+
+select emp_name from (select emp_name, dense_rank () over( order by sal desc) rn from emp ) where rn =2
+
+
+I have table named employee. I want to create a table called employee_Copy with all the data in employee table. What do you do? Write the Statement to accomplish this task
+
+insert into employee_copy values ( select * from employee);
+
+correct :CREATE TABLE employee_Copy AS
+SELECT * FROM employee;
+
+delete the duplicate records from the guest
+
+delete from guest where rowid not in (select max(rowid) from guest group by guest_id, guest_nm-guest_city)
+select guest_id, guest_nm,guest_city from guest
+
+
+How many duplicate records we have? Write a query to give this count.
+select guest_id, guest_nm,guest_city,count(*) from guest group by guest_id, guest_nm,guest_city;
+
+select count(*) from (select guest_id, guest_nm,guest_city,count(*) from guest group by guest_id, guest_nm,guest_city having count(*)>1) ;
+
+
+write the query to display from today (100 days)
+I didn't answer for the question 
+
+answer : select (sysdate+(level-1))as dates  
+         from dual 
+         connect by level <= (sysdate -(sysdate-100));
+
+
+Find a owner who owns more than one team? Write a query
+
+select own_name ,count(team_id)from team_owners groupby own_name 
+select own_name ,count(team_id)from team_owners groupby own_name having count(team_id)>1;
+
+Team name, owner name (who owns highest percentage only)
+
+select team_name,own_name from (select team_name,own_name,rank()over(partition by team_name order by percentage desc) as rn
+from match m inner join team t on m.hometeam_id = t.team_id)
+where rn=1;
+
+
+
+What is the relation ship between team and matches table
+team__id and visting team_id and home teamid
+
+Match_date, Game, Stadium Name, home team name and visiting name for all the matches
+
+select match_date,Game, Stadium Name, home team name 
+from match m
+inner join team t on m.hometeam_id = t.team_id
+inner join stadium s on m.sta_id = s.sta_id;
+
+select match_date,game,stadium_name,
+(select team_name from team where teamid = m.hometeam_id) as home_team_name,
+(select team_name from team where teamid = m.visitingteam_id) as visiting_team_name
+from match m
+inner join team t on m.hometeam_id = t.team_id
+inner join stadium s on m.sta_id = s.sta_id;
+
+
+
+What is ROWID is used for in Oracle RDMBS?
+rowid is unique value for all recors in database we can used to delete duplicate records
+
+
+What are the three types of indexes we can create in Oracle RDBMS
+unique,cluster and non cluster index
+
+
+When I create a column as the PK, what happens behind the scenes. How oracle make sures there is no duplicate value in that column?
+it will check the pk_id is present or not if it is present it will throws error and not present it insert the new record
+
+
+Give me 3 meta data tables which you know in Oracle RDBMS
+user_tables , user_sequences, user_name
+
+user_tables
+user_views
+user_tab_columns
+user_procedures
+
+What is the relation between user and a schema? Explain it in your own way.
+
+schema have table , views, procedures  and all objects
+but user is accessing these
+
+
+Rate yourself on what I asked today and share your thoughts. What help you need from us.
+7.5/10  and  i struggle in thinking the query on present
+
+
+

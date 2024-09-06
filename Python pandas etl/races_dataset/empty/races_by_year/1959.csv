@@ -1,0 +1,10 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+755,756,1959,1,6,Monaco Grand Prix,1959-05-10,\N,http://en.wikipedia.org/wiki/1959_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+756,757,1959,2,19,Indianapolis 500,1959-05-30,\N,http://en.wikipedia.org/wiki/1959_Indianapolis_500,testing,2024-07-19 09:54:18.999993
+757,758,1959,3,39,Dutch Grand Prix,1959-05-31,\N,http://en.wikipedia.org/wiki/1959_Dutch_Grand_Prix,testing,2024-07-19 09:54:18.999993
+758,759,1959,4,55,French Grand Prix,1959-07-05,\N,http://en.wikipedia.org/wiki/1959_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+759,760,1959,5,58,British Grand Prix,1959-07-18,\N,http://en.wikipedia.org/wiki/1959_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+760,761,1959,6,61,German Grand Prix,1959-08-02,\N,http://en.wikipedia.org/wiki/1959_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+761,762,1959,7,62,Portuguese Grand Prix,1959-08-23,\N,http://en.wikipedia.org/wiki/1959_Portuguese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+762,763,1959,8,14,Italian Grand Prix,1959-09-13,\N,http://en.wikipedia.org/wiki/1959_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+763,764,1959,9,63,United States Grand Prix,1959-12-12,\N,http://en.wikipedia.org/wiki/1959_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993

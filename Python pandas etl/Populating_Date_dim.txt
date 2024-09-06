@@ -1,0 +1,28 @@
+Write a Python program to populate the date dimension table by passing the 'YYYY' as the input.
+All the records of that year should be populated. (if i pass 2022, then you should populate the records from 1-JAN-2022 to 31-DEC-2022). Before inserting the record for that calender date, check whether the records of that year is already populated
+or not.Assign the holiday_flag as 'N' for the all the dates.
+
+Name                Null Type         
+------------------- ---- ------------ 
+DATE_KEY                 NUMBER(10) 	-- PK (sequence)
+calendar_DATE            DATE         -- date (sysdate, cal_date variable)
+DAY_NUMBER_OF_WEEK       NUMBER(10)   -- to_char(
+DAY_NUMBER_OF_MONTH      NUMBER(10)   -- to_Char(date_var,'mm')
+DAY_NUMBER_OF_YEAR       NUMBER(10)   
+WEEK_NO_OF_MONTH         NUMBER(10)   
+WEEK_NO_YEAR             NUMBER(10)   
+MONTH_NO                 NUMBER(10)   
+MONTH_SHORT_NAME         VARCHAR2(40) 
+MONTH_FULL_NAME          VARCHAR2(40) 
+QTR_NO                   NUMBER(10)   
+CALENDER_YEAR            NUMBER(10)   
+FISCAL_MONTH             NUMBER(10) (Apr - Mar) == 1, May - 2, June - 3,   
+FISCAL_WEEK              NUMBER(10)   
+FISCAL_QTR               NUMBER(10)   
+FISCAL_YEAR              VARCHAR2(20) 
+WEEK_DAY_FLAG	       	  VARCHAR2(20) 
+HOLIDAY_FLAG		 	  CHAR(1)
+
+APR-1-2022 = first day 2022-23 fiscal year
+
+

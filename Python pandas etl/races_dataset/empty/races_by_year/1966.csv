@@ -1,0 +1,10 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+689,690,1966,1,6,Monaco Grand Prix,1966-05-22,\N,http://en.wikipedia.org/wiki/1966_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+690,691,1966,2,13,Belgian Grand Prix,1966-06-12,\N,http://en.wikipedia.org/wiki/1966_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+691,692,1966,3,55,French Grand Prix,1966-07-03,\N,http://en.wikipedia.org/wiki/1966_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+692,693,1966,4,38,British Grand Prix,1966-07-16,\N,http://en.wikipedia.org/wiki/1966_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+693,694,1966,5,39,Dutch Grand Prix,1966-07-24,\N,http://en.wikipedia.org/wiki/1966_Dutch_Grand_Prix,testing,2024-07-19 09:54:18.999993
+694,695,1966,6,20,German Grand Prix,1966-08-07,\N,http://en.wikipedia.org/wiki/1966_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+695,696,1966,7,14,Italian Grand Prix,1966-09-04,\N,http://en.wikipedia.org/wiki/1966_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+696,697,1966,8,46,United States Grand Prix,1966-10-02,\N,http://en.wikipedia.org/wiki/1966_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+697,698,1966,9,32,Mexican Grand Prix,1966-10-23,\N,http://en.wikipedia.org/wiki/1966_Mexican_Grand_Prix,testing,2024-07-19 09:54:18.999993

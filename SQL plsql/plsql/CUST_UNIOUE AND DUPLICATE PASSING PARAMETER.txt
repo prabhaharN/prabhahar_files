@@ -1,0 +1,46 @@
+create or replace PROCEDURE cust_tgt_uniq_and_dup(
+    name VARCHAR2,
+    phone NUMBER,
+    city VARCHAR2,
+    since DATE
+) IS
+    rec cust_unique%ROWTYPE;
+    
+BEGIN
+    INSERT INTO CUSTOMER_SRC(CUST_NAME,CUST_PHONE,CUST_CITY,CUST_SINCE) VALUES(NAME,PHONE,CITY,SINCE);
+     
+    SELECT cust_name, cust_phone, cust_city, cust_since
+    INTO rec
+    FROM cust_unique
+    WHERE cust_name = name
+        AND cust_city = city
+        AND cust_phone = phone
+        AND cust_since = since;
+    IF sql%found THEN
+        declare 
+               cnt number;
+        begin
+              select count(*) into cnt from cust_duplicate
+              where cust_name = rec.cust_name and cust_phone=rec.cust_phone and cust_city = rec.cust_city and cust_since = rec.cust_since;
+              if cnt>=1 then 
+                  update cust_duplicate set No_of_instances = No_of_instances +1
+                  where cust_name = rec.cust_name and cust_phone=rec.cust_phone and cust_city=rec.cust_city and cust_since=rec.cust_since;
+             elsif cnt=0 then
+                  INSERT INTO cust_duplicate VALUES (rec.cust_name, rec.cust_phone, rec.cust_city, rec.cust_since, 2);
+              end if;
+         end;     
+
+    END IF;
+exception 
+    when no_data_found then
+        INSERT INTO cust_unique VALUES (name, phone, city, since);
+
+    
+END;
+
+
+
+
+
+
+exec CUST_TGT_UNIQ_AND_DUP ('arun', 892393, 'de', '23-08-18');

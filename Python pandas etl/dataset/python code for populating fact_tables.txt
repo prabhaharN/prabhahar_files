@@ -1,0 +1,299 @@
+import pandas as pd
+
+input_df=pd.read_excel('Dataset.xlsx',sheet_name='Input')
+input_copy_df=input_df.copy()
+input_copy_df.head(2)
+
+Patient_visit_fact = input_copy_df[['Encounter_Date','Facility_Name','Category','Visit','Modifier_1','CPT_Code','Financial_Class','Appointment_Provider_Name',
+       'Modifier_2', 'Modifier_3', 'Visit_type', 'ICD_Code_1', 'ICD_Code_2',
+       'ICD_Code_3', 'ICD_Code_4', 'ICD_Code_5', 'ICD_Code_6', 'ICD_Code_7',
+       'ICD_Code_8', 'ICD_Code_9', 'Arrived_Time', 'Departure_Time','Total_Time',
+       'Patient_Account_Number','Patient_Primary_Insurance_Name','Patient_Secondary_Insurance_Name',
+       'New_Patient']]
+
+visit_fact_id = []
+for i in range(1,len(Patient_visit_fact)+1):
+    i=str(i)
+    if len(i)==1:
+        id=f'VF__00{i}'
+        visit_fact_id.append(id)
+    elif len(i)==2:
+        id=f'VF_0{i}'
+        visit_fact_id.append(id)
+    else:
+        id=f'VF_{i}'
+        visit_fact_id.append(id)
+        
+Patient_visit_fact.insert(0, 'visit_fact_id', value=visit_fact_id)
+
+Patient_visit_fact.loc[Patient_visit_fact['New_Patient'] == 1, 'New_Patient_flag'] = 'Y'
+Patient_visit_fact.loc[Patient_visit_fact['New_Patient'] == 0, 'New_Patient_flag'] = 'N'
+
+Patient_dim=pd.read_excel('Dimensions.xlsx',sheet_name='Patient_dim')
+Service_provider_dim=pd.read_excel('Dimensions.xlsx',sheet_name='Service_provider_dim')
+
+Service_provider_dim=pd.read_excel('Dimensions.xlsx',sheet_name='Service_provider_dim')
+Service_provider_dim['service_provider_name']= Service_provider_dim['service_provider_last_name'] + ' ' + Service_provider_dim['service_provider_job_role'] + ', ' + Service_provider_dim['service_provider_first_name']
+
+visit_type_dim=pd.read_excel('Dimensions.xlsx',sheet_name='visit_type_dim')
+
+contract_type_dim=pd.read_excel('Dimensions.xlsx',sheet_name='contract_type_dim')
+
+financial_class_dim=pd.read_excel('Dimensions.xlsx',sheet_name='financial_class_dim')
+
+calendar_dim=pd.read_excel('Dimensions.xlsx',sheet_name='calendar_dim')
+
+insurance_firms_dim=pd.read_excel('Dimensions.xlsx',sheet_name='insurance_firms_dim')
+
+visit_category_dim=pd.read_excel('Dimensions.xlsx',sheet_name='visit_category_dim')
+
+cpt_code_dim=pd.read_excel('Dimensions.xlsx',sheet_name='cpt_code_dim')
+
+clinic_dim=pd.read_excel('Dimensions.xlsx',sheet_name='clinic_dim')
+
+
+Patient_visit_fact=pd.merge(Patient_visit_fact,visit_type_dim, 
+how='left',left_on='Visit_type',right_on='visit_type_dim_code')
+Patient_visit_fact.drop(['visit_type_dim_code','visit_type_dim_desc','created_date','Visit_type'],axis=1,inplace=True)
+
+Patient_visit_fact=pd.merge(Patient_visit_fact,contract_type_dim, how='left',left_on='Financial_Class',right_on='contract_type_desc')
+Patient_visit_fact.drop(['contract_type_code',	'contract_type_desc',	'created_date'],axis=1,inplace=True)
+
+Patient_visit_fact=pd.merge(Patient_visit_fact,financial_class_dim, how='left',left_on='Financial_Class',right_on='financial_class_dim_desc')
+Patient_visit_fact.drop('created_date',axis=1,inplace=True)
+
+Patient_visit_fact=pd.merge(Patient_visit_fact,calendar_dim, how='left',left_on='Encounter_Date',right_on='cal_date')
+Patient_visit_fact.drop('created_date',axis=1,inplace=True)
+
+Patient_visit_fact=pd.merge(Patient_visit_fact,insurance_firms_dim, how='left',left_on='Patient_Primary_Insurance_Name',right_on='ins_firm_name')
+Patient_visit_fact.drop('created_date',axis=1,inplace=True)
+
+
+Patient_visit_fact=pd.merge(Patient_visit_fact,visit_category_dim, how='left',left_on='Category',right_on='visit_category_desc')
+Patient_visit_fact.drop('created_date',axis=1,inplace=True)
+
+
+Patient_visit_fact=pd.merge(Patient_visit_fact,cpt_code_dim, how='left',left_on='CPT_Code',right_on='cpt_code')
+Patient_visit_fact.drop('created_date',axis=1,inplace=True)
+
+Patient_visit_fact=pd.merge(Patient_visit_fact,clinic_dim, how='left',left_on='Facility_Name',right_on='clinic_name')
+Patient_visit_fact.drop('created_date',axis=1,inplace=True)
+
+Patient_visit_fact=pd.merge(Patient_visit_fact,Service_provider_dim, how='left',left_on='Appointment_Provider_Name',right_on='service_provider_name')
+Patient_visit_fact.drop('created_date',axis=1,inplace=True)
+
+Patient_visit_fact=pd.merge(Patient_visit_fact,Patient_dim, how='left',left_on='Patient_Account_Number',right_on='pat_source_key')
+Patient_visit_fact.drop('created_date',axis=1,inplace=True)
+
+Patient_visit_fact['visit_source_id']=Patient_visit_fact['Encounter_Date'].dt.strftime('%Y%m%d')+'-'+Patient_visit_fact['Arrived_Time'].astype('str')+'-'+Patient_visit_fact['Patient_Account_Number'].astype('str')
+
+
+Patient_visit_fact=Patient_visit_fact[['visit_fact_id','visit_source_id','pat_dim_id','cal_date_id','clinic_dim_id','visit_type_dim_id',
+                                       'visit_category_dim_id','service_provider_Id','ins_firm_id','cpt_dim_id','financial_class_dim_id',
+                                       'contract_type_id','Modifier_1' ,'Modifier_2', 'Modifier_3', 'ICD_Code_1','ICD_Code_2', 'ICD_Code_3',
+                                       'ICD_Code_4', 'ICD_Code_5', 'ICD_Code_6','New_Patient_flag','Arrived_Time','Departure_Time']]
+
+total_time_mins=[]
+time=input_copy_df['Total_Time'].astype(str)
+time=time.apply(lambda x: x.split('-')[-1])
+time=time.apply(lambda x: x.split(':'))
+for i in time:
+    hrs=int(i[0])*60
+    mins=int(i[1])
+    total_time=hrs+mins
+    total_time_mins.append(total_time)
+
+Patient_visit_fact.insert(24,'total_time_mins',total_time_mins)
+
+today_date = pd.to_datetime("today")
+today_date = today_date.date()
+
+Patient_visit_fact['Created_date']=today_date
+
+
+--------------------
+
+rejection_df=pd.read_excel('Dataset.xlsx',sheet_name='Rejection')
+clear_house_rejection_fact=rejection_df.copy()
+
+Patient_dim=pd.read_excel('Dimensions.xlsx',sheet_name='Patient_dim')
+
+Service_provider_dim=pd.read_excel('Dimensions.xlsx',sheet_name='Service_provider_dim')
+
+insurance_firms_dim=pd.read_excel('Dimensions.xlsx',sheet_name='insurance_firms_dim')
+
+full_name=[]
+for i in Patient_dim['pat_generated_name']:
+    name=i.split(',')
+    first_name=name[1].strip()
+    last_name=name[0]
+    full_name.append(last_name+' '+first_name)
+   
+Patient_dim['pat_full_name']=full_name 
+
+calendar_dim=pd.DataFrame(columns=['cal_date_id',
+'cal_date',
+'cal_year',
+'cal_month',
+'cal_quarter',
+'cal_week_of_year',
+'cal_day_date',
+'day_name',                                
+'created_date'])
+
+start_date='2023-01-01'
+end_date='2026-12-31'
+
+
+calendar_dim['cal_date']=pd.date_range(start_date,end_date,freq='D')
+calendar_dim['cal_date_id']=calendar_dim['cal_date'].dt.strftime('%Y%m%d')
+calendar_dim['cal_year']=calendar_dim['cal_date'].dt.year
+calendar_dim['cal_month']=calendar_dim['cal_date'].dt.month
+calendar_dim['cal_quarter']=calendar_dim['cal_date'].dt.quarter
+week=calendar_dim['cal_date'].dt.isocalendar().week
+calendar_dim['cal_week_of_year']=week
+calendar_dim['cal_day_date']=calendar_dim['cal_date'].dt.day
+calendar_dim['day_name']=calendar_dim['cal_date'].dt.day_name()
+
+clear_house_rejection_fact['pat_full_name']=clear_house_rejection_fact['Patient_LastName']+' '+clear_house_rejection_fact['Patient_FirstName']
+
+clear_house_rejection_fact=pd.merge(clear_house_rejection_fact,Patient_dim, how='left',left_on='pat_full_name',right_on='pat_full_name')
+clear_house_rejection_fact.drop('created_date',axis=1,inplace=True)
+
+clear_house_rejection_fact=pd.merge(clear_house_rejection_fact,Service_provider_dim, how='left',left_on='Provider_LastName',right_on='service_provider_last_name')
+clear_house_rejection_fact.drop('created_date',axis=1,inplace=True)
+
+clear_house_rejection_fact=pd.merge(clear_house_rejection_fact,insurance_firms_dim, how='left',left_on='Insurance_Name',right_on='ins_firm_name')
+clear_house_rejection_fact.drop('created_date',axis=1,inplace=True)
+
+clear_house_rejection_fact=pd.merge(clear_house_rejection_fact,calendar_dim, how='left',left_on='Service_Date',right_on='cal_date')
+clear_house_rejection_fact.drop(columns=['created_date','cal_date','cal_year','cal_month','cal_quarter','cal_week_of_year','cal_day_date','day_name'],axis=1,inplace=True)
+clear_house_rejection_fact.rename(columns={'cal_date_id':'service_date_id'},inplace=True)
+
+clear_house_rejection_fact=pd.merge(clear_house_rejection_fact,calendar_dim, how='left',left_on='Reject_Date',right_on='cal_date')
+clear_house_rejection_fact.drop(columns=['created_date','cal_date','cal_year','cal_month','cal_quarter','cal_week_of_year','cal_day_date','day_name'],axis=1,inplace=True)
+clear_house_rejection_fact.rename(columns={'cal_date_id':'reject_date_id'},inplace=True)
+
+
+reject_fact_id = []
+for i in range(1,len(clear_house_rejection_fact)+1):
+    i=str(i)
+    if len(i)==1:
+        id=f'RF_00{i}'
+        reject_fact_id.append(id)
+    elif len(i)==2:
+        id=f'RF_0{i}'
+        reject_fact_id.append(id)
+    else:
+        id=f'RF_{i}'
+        reject_fact_id.append(id)
+        
+clear_house_rejection_fact.insert(0, 'clear_house_rejection_fact_id', value=reject_fact_id)
+
+today_date = pd.to_datetime("today")
+today_date = today_date.date()
+
+clear_house_rejection_fact['Created_date']=today_date
+
+clear_house_rejection_fact=clear_house_rejection_fact[['clear_house_rejection_fact_id','Insurance_Claim_ID','Invoice_Number','Claim_Amount',
+                                                       'ins_firm_id','service_provider_Id','reject_date_id','pat_dim_id','service_date_id',
+                                                      'Reason', 'Reject_By','Reject_Message', 'Rejected_Code',  'Status', 'Created_date']]
+
+
+clear_house_rejection_fact.head(2)
+
+---------------------------
+
+finance_df=pd.read_excel('Dataset.xlsx',sheet_name='Finance')
+finance_fact=finance_df.copy()
+
+Patient_dim=pd.read_excel('Dimensions.xlsx',sheet_name='Patient_dim')
+
+Service_provider_dim=pd.read_excel('Dimensions.xlsx',sheet_name='Service_provider_dim')
+
+insurance_firms_dim=pd.read_excel('Dimensions.xlsx',sheet_name='insurance_firms_dim')
+
+contract_type_dim=pd.read_excel('Dimensions.xlsx',sheet_name='contract_type_dim')
+
+financial_class_dim=pd.read_excel('Dimensions.xlsx',sheet_name='financial_class_dim')
+
+clinic_dim=pd.read_excel('Dimensions.xlsx',sheet_name='clinic_dim')
+
+
+calendar_dim=pd.DataFrame(columns=['cal_date_id',
+'cal_date',
+'cal_year',
+'cal_month',
+'cal_quarter',
+'cal_week_of_year',
+'cal_day_date',
+'day_name',                                
+'created_date'])
+
+start_date='2023-01-01'
+end_date='2026-12-31'
+
+
+calendar_dim['cal_date']=pd.date_range(start_date,end_date,freq='D')
+calendar_dim['cal_date_id']=calendar_dim['cal_date'].dt.strftime('%Y%m%d')
+calendar_dim['cal_year']=calendar_dim['cal_date'].dt.year
+calendar_dim['cal_month']=calendar_dim['cal_date'].dt.month
+calendar_dim['cal_quarter']=calendar_dim['cal_date'].dt.quarter
+week=calendar_dim['cal_date'].dt.isocalendar().week
+calendar_dim['cal_week_of_year']=week
+calendar_dim['cal_day_date']=calendar_dim['cal_date'].dt.day
+calendar_dim['day_name']=calendar_dim['cal_date'].dt.day_name()
+
+finance_fact=pd.merge(finance_fact,Patient_dim, how='left',left_on='Patient_Number',right_on='pat_source_key')
+finance_fact.drop('created_date',axis=1,inplace=True)
+
+finance_fact=pd.merge(finance_fact,clinic_dim, how='left',left_on='Clinic',right_on='clinic_name')
+finance_fact.drop('created_date',axis=1,inplace=True)
+
+finance_fact=pd.merge(finance_fact,insurance_firms_dim, how='left',left_on='Payer_Name',right_on='ins_firm_name')
+finance_fact.drop('created_date',axis=1,inplace=True)
+
+finance_fact=pd.merge(finance_fact,calendar_dim, how='left',left_on='Service_Date',right_on='cal_date')
+finance_fact.drop(columns=['created_date','cal_date','cal_year','cal_month','cal_quarter','cal_week_of_year','cal_day_date','day_name'],axis=1,inplace=True)
+finance_fact.rename(columns={'cal_date_id':'service_date_id'},inplace=True)
+
+finance_fact=pd.merge(finance_fact,financial_class_dim, how='left',left_on='Financial_Class',right_on='financial_class_dim_desc')
+finance_fact.drop('created_date',axis=1,inplace=True)
+
+finance_fact=pd.merge(finance_fact,contract_type_dim, how='left',left_on='Financial_Class',right_on='contract_type_desc')
+finance_fact.drop('created_date',axis=1,inplace=True)
+
+
+
+finance_fact_id = []
+for i in range(1,len(clear_house_rejection_fact)+1):
+    i=str(i)
+    if len(i)==1:
+        id=f'FF_00{i}'
+        finance_fact_id.append(id)
+    elif len(i)==2:
+        id=f'FF_0{i}'
+        finance_fact_id.append(id)
+    else:
+        id=f'FF_{i}'
+        finance_fact_id.append(id)
+        
+finance_fact.insert(0, 'finance_fact_id', value=finance_fact_id)
+
+today_date = pd.to_datetime("today")
+today_date = today_date.date()
+
+finance_fact['Created_date']=today_date
+
+finance_fact=finance_fact[['finance_fact_id','pat_dim_id','ins_firm_id','clinic_dim_id','service_date_id',
+                             'contract_type_id','Discharging_Provider','CopayUpfront_Payments','Charged_Amount',
+                           'Adjustments','Remaining_Balance', 'Additional_Payments', 'Fee_Schedule',
+                          'financial_class_dim_id' ,'Logbook_Status','RTE_Resonse' , 'Created_date']]
+
+finance_fact.head(2)
+
+
+with pd.ExcelWriter("Fact_tables.xlsx") as writer:
+    Patient_visit_fact.to_excel(writer, sheet_name="Patient_visit_fact", index=False)
+    clear_house_rejection_fact.to_excel(writer, sheet_name="clear_house_rejection_fact", index=False)
+    finance_fact.to_excel(writer, sheet_name="finance_fact", index=False)

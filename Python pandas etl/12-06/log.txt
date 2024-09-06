@@ -1,0 +1,12 @@
+ERROR 2024-06-12 16:02:55,135 - An error occurred:
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Temp\ipykernel_13472\1098032412.py", line 12, in add
+    num3 = num1 + num2
+           ~~~~~^~~~~~
+TypeError: can only concatenate str (not "int") to str
+ERROR 2024-06-12 16:04:24,173 - An error occurred:
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Temp\ipykernel_13472\684324898.py", line 12, in add
+    num3 = num1 + num2
+           ~~~~~^~~~~~
+TypeError: can only concatenate str (not "int") to str

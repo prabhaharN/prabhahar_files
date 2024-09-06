@@ -1,0 +1,202 @@
+select * from employee_prac1;
+select * from dept_prac;
+
+--1	Display the employees whose salary is greater than John’s salary.
+
+select * from employee_prac1 where sal>( select sal from employee_prac1 where ename='JOHN');
+
+--2	Display the oldest employee based on experience in each department.	
+
+select * from employee_prac1 where (deptno,hiredate) in ( select deptno,min(hiredate) from employee_prac1 group by deptno);
+select * from employee_prac1 e where hiredate = ( select min(hiredate) from employee_prac1 where deptno = e.deptno);
+
+--3	Display the latest 3 employees who joined the company very recently.	
+
+select * from employee_prac1 where empno  in 
+( select empno from ( select empno , hiredate,dense_rank()over(order by hiredate desc) as rn from employee_prac1) 
+where rn<=3);
+
+--4	Display the dname which has highest no. of employees
+
+select dept_name from dept_prac where deptno=
+(select deptno from (select deptno, dense_rank()over(order by count(empno)desc) as rn from employee_prac1 group by deptno)
+where rn=1);
+
+--5	Display the dname whose having atleast 5 employees.	
+
+select dept_name from dept_prac where deptno in
+(select deptno from employee_prac1 group by deptno having count( empno)>=5);
+
+
+--6	Display the top 3 employees based on their salary.	
+
+select empno,ename from ( select empno,ename,
+dense_rank()over(order by sal desc) as rn from employee_prac1)where rn<=3;
+
+--7	Display the youngest employee in each department.		
+
+select * from employee_prac1 where dob =(select max(dob) from employee_prac1 where deptno=e.deptno);
+
+--8	Display the department whose number of employees is more than the number of employees in a department ‘HR’.	
+
+select dept_name from dept_prac where deptno in ( select deptno from employee_prac1 group by deptno having count(empno) > 
+( select count(empno) from employee_prac1 where deptno=(select deptno from dept_prac where dept_name='HR')));
+
+--9	Display job wise employee count	
+
+select job,count(empno) from employee_prac1 group by job;
+
+--10	Which job we have highest number of employees	
+
+select job from employee_prac1 group by job having count(empno)=(select max(count(empno)) from employee_prac1 group by job);
+
+--11	department total sal greater  than 50000	
+
+select deptno,sum(sal) from employee_prac1 group by deptno having sum(sal)>50000;
+
+--12	Number employee present in WARD			
+
+
+
+--13	Which location we have highest number of employee	
+
+select location from dept_prac where deptno in (select deptno from employee_prac1 group by deptno having count(empno)=(select max(count(empno)) from employee_prac1 group by deptno)) 
+;
+--14	Display count of employee hired in previous year
+
+select count(*) from employee_prac1 where extract(year from hiredate)=extract(year from sysdate)-1;
+
+--15	Display employee who hired in current week	
+
+select count(*) from employee_prac1 where 
+extract(year from hiredate)=extract(year from sysdate) and to_char(hiredate,'IW')=to_char(sysdate,'IW');
+
+--16	Diplay which employee salary is higher than the manager salary	
+
+select ename from employee_prac1 e where sal>(select sal from employee_prac1 where empno=e.mgr);
+
+--17	Display the department where don’t have any employee using corelated sub query 	
+
+select dept_name,deptno from dept_prac d where not exists( select 1 from employee_prac1 where deptno=d.deptno);
+
+--18	Diplay emp name and salary including comm value		
+
+select ename,sal+ nvl(comm,0) from employee_prac1;
+
+
+--------------------------------------------
+
+--1	Display the customer name who are Male and who belongs to KA or MH		
+
+select cust_name from customer_prac where gender='M' and cust_state in ('KA','MH');
+
+
+--2	Display the customers who are from same customer as Pallavi	
+
+select * from customer_prac where cust_name='pallavi';
+
+--3	Dispay the number of customers who are in TN state		
+
+select count(cust_id) from customer_prac where cust_state='TN';
+
+--4	Display customer made the enquiry which belongs to Voice type and enquiry belings to New Connection					
+
+select cust_name from customer_prac where cust_id in 
+( select cust_id from enquiry_prac where enquiry_type ='Voice' and enquiry='New Connection');
+
+
+--5	Display the enquiry which does not associate to any registered customer								
+
+select distinct enquiry from enquiry_prac where cust_id is null;
+
+
+--6	Display the customers who don't have any enquiry	
+
+select * from customer_prac where cust_id not in ( select distinct cust_id from enquiry_prac where cust_id is not null);
+
+--7	Display the customers whose name starts with P and belongs to KA or MH and who are Female customers					
+
+select * from customer_prac where cust_name like 'P%' and cust_state in ('KA','MH') and gender='F';
+select * from customer_prac where upper(cust_name) like 'P%' and cust_state in ('KA','MH') and gender='F';
+
+--8	Display the enquiry date, enquiry type and enquiry from customers in the year 2021
+
+select enquiry_date,enquiry_type, enquiry from enquiry_prac where extract(year from enquiry_date) = 2021;
+
+--9	Display the number of inquiries which came because of Voice enquiry type
+
+select count(enquiry_id) from enquiry_prac where enquiry_type='Voice';
+
+--10	Display Count customer belong to Chennai
+
+select count(cust_id) from customer_prac where cust_city='Chennai';
+select count(cust_id) from customer_prac where initcap(cust_city)='Chennai';
+
+--11	Display who is the male customer inquired for 'Internet'
+
+select * from customer_prac where cust_id in ( select cust_id from enquiry_prac where enquiry_type='Internet')and gender='M';
+select * from customer_prac where cust_id in ( select cust_id from enquiry_prac where initcap(enquiry_type)='Internet')and gender='M';
+
+--12	How many enquiry we have for Line Down Message		
+
+select count(enquiry_id) from enquiry_prac where enquiry='Line Down Message';
+
+--13	Which enquiry we don't have any customer
+
+select distinct enquiry from enquiry_prac where cust_id is null;
+
+--14	Display Oldest Customer Name from Customer Table
+
+select cust_name from customer_prac where cust_dob = ( select min(cust_dob) from customer_prac);
+
+--15	Display who made a latest enquiry
+
+select * from customer_prac where cust_id =( select cust_id from enquiry_prac where enquiry_id = ( select max(enquiry_id) from enquiry_prac));
+
+--16	How many customer we have in TN	
+
+select count(cust_id) from customer_prac where cust_state='TN';
+
+--17	which customer dob is not updated	
+
+select * from customer_prac where cust_dob is null;
+
+--18	How many enquiry we have between '14/08/21' to '20/08/21'	
+
+select count(*) from enquiry_prac where enquiry_date between '14/08/21' and '20/08/21';
+
+--19	How many Female customer we have
+
+select count(*) from customer_prac where gender='F';
+
+
+--1	enquiry type wise number of customer
+
+select enquiry, count(cust_id) from enquiry_prac group by enquiry;
+
+--2	customer wise number of enquiry made	
+
+select c.cust_id,count(enquiry_id) from customer_prac c left join 
+enquiry_prac e on c.cust_id = e.cust_id
+group by c.cust_id;
+
+--3	which customer made more than 2 enquiry	
+
+select cust_id from enquiry_prac group by cust_id having count(enquiry_id)>2;
+
+--4	Display gender wise count of customer			
+
+select gender, count(cust_id) from customer_prac group by gender;
+
+--5	Customer state wise enquiry made			
+
+select cust_state, count(enquiry_id) from customer_prac c left join enquiry_prac e
+on c.cust_id = e.cust_id
+group by cust_state;
+
+--6	Display the first latest enquiry	
+
+select * from enquiry_prac where enquiry_id=(select min(enquiry_id) from enquiry_prac)
+union
+select * from enquiry_prac where enquiry_id=(select max(enquiry_id)from enquiry_prac);
+

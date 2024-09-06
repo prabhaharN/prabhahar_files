@@ -1,0 +1,20 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+336,337,2010,1,3,Bahrain Grand Prix,2010-03-14,12:00:00,http://en.wikipedia.org/wiki/2010_Bahrain_Grand_Prix,testing,2024-07-19 09:54:18.999993
+337,338,2010,2,1,Australian Grand Prix,2010-03-28,06:00:00,http://en.wikipedia.org/wiki/2010_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+338,339,2010,3,2,Malaysian Grand Prix,2010-04-04,08:00:00,http://en.wikipedia.org/wiki/2010_Malaysian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+339,340,2010,4,17,Chinese Grand Prix,2010-04-18,06:00:00,http://en.wikipedia.org/wiki/2010_Chinese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+340,341,2010,5,4,Spanish Grand Prix,2010-05-09,12:00:00,http://en.wikipedia.org/wiki/2010_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+341,342,2010,6,6,Monaco Grand Prix,2010-05-16,12:00:00,http://en.wikipedia.org/wiki/2010_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+342,343,2010,7,5,Turkish Grand Prix,2010-05-30,11:00:00,http://en.wikipedia.org/wiki/2010_Turkish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+343,344,2010,8,7,Canadian Grand Prix,2010-06-13,16:00:00,http://en.wikipedia.org/wiki/2010_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+344,345,2010,9,12,European Grand Prix,2010-06-27,12:00:00,http://en.wikipedia.org/wiki/2010_European_Grand_Prix,testing,2024-07-19 09:54:18.999993
+345,346,2010,10,9,British Grand Prix,2010-07-11,12:00:00,http://en.wikipedia.org/wiki/2010_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+346,347,2010,11,10,German Grand Prix,2010-07-25,12:00:00,http://en.wikipedia.org/wiki/2010_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+347,348,2010,12,11,Hungarian Grand Prix,2010-08-01,12:00:00,http://en.wikipedia.org/wiki/2010_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+348,349,2010,13,13,Belgian Grand Prix,2010-08-29,12:00:00,http://en.wikipedia.org/wiki/2010_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+349,350,2010,14,14,Italian Grand Prix,2010-09-12,12:00:00,http://en.wikipedia.org/wiki/2010_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+350,351,2010,15,15,Singapore Grand Prix,2010-09-26,12:00:00,http://en.wikipedia.org/wiki/2010_Singapore_Grand_Prix,testing,2024-07-19 09:54:18.999993
+351,352,2010,16,22,Japanese Grand Prix,2010-10-10,06:00:00,http://en.wikipedia.org/wiki/2010_Japanese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+352,353,2010,17,35,Korean Grand Prix,2010-10-24,05:00:00,http://en.wikipedia.org/wiki/2010_Korean_Grand_Prix,testing,2024-07-19 09:54:18.999993
+353,354,2010,18,18,Brazilian Grand Prix,2010-11-07,16:00:00,http://en.wikipedia.org/wiki/2010_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+354,355,2010,19,24,Abu Dhabi Grand Prix,2010-11-14,13:00:00,http://en.wikipedia.org/wiki/2010_Abu_Dhabi_Grand_Prix,testing,2024-07-19 09:54:18.999993

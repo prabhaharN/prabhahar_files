@@ -1,0 +1,56 @@
+Create table customer_src
+(cust_name varchar2(20),
+Cust_phone number(10),
+Cust_city varchar2(20),
+Cust_since date
+);
+
+insert into customer_src values('raj',12345,'blr','21-jan-19');
+insert into customer_src values('kiran',989734,'hyd','19-mar-18');
+insert into customer_src values('kimm',878384,'chn','29-apr-19');
+insert into customer_src values('rajesh',783738,'blr','31-jan-18');
+insert into customer_src values('arun',892393,'del','23-aug-18');
+insert into customer_src values('rajesh',783738,'blr','31-jan-18');
+insert into customer_src values('arun',892393,'del','23-aug-18');
+
+
+Create table cust_unique
+(cust_name varchar2(20),
+Cust_phone number(10),
+Cust_city varchar2(20),
+Cust_since date); 
+
+
+Create table cust_duplicate
+(cust_name varchar2(20),
+Cust_phone number(10),
+Cust_city varchar2(20),
+Cust_since date,
+No_of_instances number(4)
+);
+
+select * from customer_src;
+
+set SERVEROUTPUT on
+
+declare
+    cursor cus_rec is 
+    select cust_name, cust_phone, cust_city, cust_since, count(*) as cnt from customer_src
+    group by cust_name,cust_phone,cust_city,cust_since;
+    rec cus_rec%rowtype;
+begin 
+    open cus_rec;
+    loop
+    fetch cus_rec into rec;
+    exit when cus_rec%notfound;
+    
+        if rec.cnt >0 then 
+            insert into cust_unique values (rec.cust_name,rec.cust_phone,rec.cust_city,rec.cust_since);
+        end if;    
+        if rec.cnt > 1 then
+            insert into cust_duplicate values (rec.cust_name,rec.cust_phone,rec.cust_city,rec.cust_since,rec.cnt);
+        end if;
+--        dbms_output.put_line(rec.cnt);
+    end loop;
+    
+end;    

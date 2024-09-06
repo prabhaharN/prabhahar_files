@@ -1,0 +1,96 @@
+import pandas as pd
+import calendar
+import numpy as np
+from datetime import date, timedelta
+
+df_cpt = pd.DataFrame({'cpt_id':[100,101,102,103],
+                       'freq_of_pmt':['Monthly','Quaterly','Half_yearly','Yearly']})
+df_cpt
+
+data = {
+    'CONTRACT_ID': [12345, 12879, 12987, 12346, 12348],
+    'CONTRACT_TYPE': ['government', 'individual', 'individual', 'government', 'government'],
+    'CONT_S_DATE': ['10-Jan-10', '03-FEB-11', '15-Feb-11', '13-MAR-09', '6-Apr-12'],
+    'CONT_E_DATE': ['10-JAN-12', '15-Feb-12', '15-SEPT-11', '14-MAR-11', '22-May-13'],
+    'CPT_ID': [100, 101, 100, 102, 103, ],
+    'CONT_AMT': [700000, 489938, 289456, 200000, 200000],
+    'INS_DATE': ['10-Jan-10', '3-Feb-11', '3-Feb-11', '13-Mar-09', '6-Apr-12'],
+    'UPD_DATE': [np.nan, np.nan, '10-Apr-09', np.nan,np.nan ]
+}
+
+
+df_contract = pd.DataFrame(data)
+df_contract['CONT_S_DATE'] = pd.to_datetime(df_contract['CONT_S_DATE'])
+df_contract['CONT_E_DATE'] = pd.to_datetime(df_contract['CONT_E_DATE'])
+df_contract['INS_DATE'] = pd.to_datetime(df_contract['INS_DATE'])
+df_contract['UPD_DATE'] = pd.to_datetime(df_contract['UPD_DATE'])
+df_contract
+
+
+result=pd.DataFrame()
+
+for index,rows in df_contract.iterrows():
+    s_date=rows['CONT_S_DATE']
+    e_date=rows['CONT_E_DATE']
+    due=rows['CPT_ID']
+    amt=rows['CONT_AMT']
+    id=rows['CONTRACT_ID']
+    day=rows.INS_DATE.day
+    mon=rows.INS_DATE.month
+    df=pd.DataFrame()
+    re=pd.DataFrame()
+    date_range = pd.date_range(s_date, e_date - timedelta(days = 1), freq='d')
+    
+    if due==100:
+        df['date']=date_range
+        date=df.loc[df['date'].dt.day == day].reset_index(drop=True) 
+        re['date']=date
+        installment=len(date)
+        inst_amt=round(amt/installment)
+        re['amt']=inst_amt
+        re['cont_id']=id
+        result=pd.concat([result,re])
+    
+    elif due==101:
+        df['date']=date_range
+        date=df.loc[df['date'].dt.day == day].reset_index(drop=True)
+        d=date.loc[(date['date'].dt.month== mon)|(date['date'].dt.month== mon+3)|(date['date'].dt.month== mon+6)|(date['date'].dt.month== mon+9)].reset_index(drop=True)
+        re['date']=d
+        installment=len(d)
+        inst_amt=amt/installment
+        re['amt']=inst_amt
+        re['cont_id']=id
+        result=pd.concat([result,re])
+    
+    elif due==102:
+        df['date']=date_range
+        date=df.loc[df['date'].dt.day == day].reset_index(drop=True)
+        d=date.loc[(date['date'].dt.month== mon)|(date['date'].dt.month== mon+3)].reset_index(drop=True)
+        installment=len(d)
+        inst_amt=amt/installment
+        re['date']=d
+        re['amt']=inst_amt
+        re['cont_id']=id
+        result=pd.concat([result,re])
+     
+    elif due==103:
+        df['date']=date_range
+        res=df.loc[df['date'].dt.day == day].reset_index(drop=True)
+        res=res.loc[res['date'].dt.month == mon].reset_index(drop=True)
+        installment=len(res)
+        inst_amt=amt/installment
+        re['date']=res
+        re['amt']=inst_amt
+        re['cont_id']=id
+        result=pd.concat([result,re])
+    
+    else:
+        continue
+
+
+
+
+result['exp_rec_id']=range(11,11+len(result['date']))
+result=result.reset_index(drop=True)
+result = result.iloc[:, [3,0, 2, 1]] 
+result.to_excel('contract_installment.xlsx',index=False)

@@ -1,0 +1,18 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+0,1,2009,1,1,Australian Grand Prix,2009-03-29,06:00:00,http://en.wikipedia.org/wiki/2009_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+1,2,2009,2,2,Malaysian Grand Prix,2009-04-05,09:00:00,http://en.wikipedia.org/wiki/2009_Malaysian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+2,3,2009,3,17,Chinese Grand Prix,2009-04-19,07:00:00,http://en.wikipedia.org/wiki/2009_Chinese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+3,4,2009,4,3,Bahrain Grand Prix,2009-04-26,12:00:00,http://en.wikipedia.org/wiki/2009_Bahrain_Grand_Prix,testing,2024-07-19 09:54:18.999993
+4,5,2009,5,4,Spanish Grand Prix,2009-05-10,12:00:00,http://en.wikipedia.org/wiki/2009_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+5,6,2009,6,6,Monaco Grand Prix,2009-05-24,12:00:00,http://en.wikipedia.org/wiki/2009_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+6,7,2009,7,5,Turkish Grand Prix,2009-06-07,12:00:00,http://en.wikipedia.org/wiki/2009_Turkish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+7,8,2009,8,9,British Grand Prix,2009-06-21,12:00:00,http://en.wikipedia.org/wiki/2009_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+8,9,2009,9,20,German Grand Prix,2009-07-12,12:00:00,http://en.wikipedia.org/wiki/2009_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+9,10,2009,10,11,Hungarian Grand Prix,2009-07-26,12:00:00,http://en.wikipedia.org/wiki/2009_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+10,11,2009,11,12,European Grand Prix,2009-08-23,12:00:00,http://en.wikipedia.org/wiki/2009_European_Grand_Prix,testing,2024-07-19 09:54:18.999993
+11,12,2009,12,13,Belgian Grand Prix,2009-08-30,12:00:00,http://en.wikipedia.org/wiki/2009_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+12,13,2009,13,14,Italian Grand Prix,2009-09-13,12:00:00,http://en.wikipedia.org/wiki/2009_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+13,14,2009,14,15,Singapore Grand Prix,2009-09-27,12:00:00,http://en.wikipedia.org/wiki/2009_Singapore_Grand_Prix,testing,2024-07-19 09:54:18.999993
+14,15,2009,15,22,Japanese Grand Prix,2009-10-04,05:00:00,http://en.wikipedia.org/wiki/2009_Japanese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+15,16,2009,16,18,Brazilian Grand Prix,2009-10-18,16:00:00,http://en.wikipedia.org/wiki/2009_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+16,17,2009,17,24,Abu Dhabi Grand Prix,2009-11-01,11:00:00,http://en.wikipedia.org/wiki/2009_Abu_Dhabi_Grand_Prix,testing,2024-07-19 09:54:18.999993

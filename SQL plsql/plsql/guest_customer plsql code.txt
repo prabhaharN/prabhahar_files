@@ -1,0 +1,89 @@
+CREATE TABLE guest (
+    Name VARCHAR2(50),
+    Phone VARCHAR2(20),
+    City VARCHAR2(50),
+    Pro_Flg VARCHAR2(1)
+);
+
+INSERT INTO guest (Name, Phone, City, Pro_Flg) VALUES ('Rajesh', '783738', 'Blr', NULL);
+INSERT INTO guest (Name, Phone, City, Pro_Flg) VALUES ('Bala', '8939', 'Chn', NULL);
+INSERT INTO guest (Name, Phone, City, Pro_Flg) VALUES ('Arun', '892393', 'Del', NULL);
+
+select * from guest;
+
+CREATE TABLE cust (
+    c_id NUMBER,
+    c_nm VARCHAR2(50),
+    c_phone VARCHAR2(20),
+    c_city VARCHAR2(50)
+);
+INSERT INTO cust (c_id, c_nm, c_phone, c_city) VALUES (1, 'raj', '12345', 'blr');
+INSERT INTO cust (c_id, c_nm, c_phone, c_city) VALUES (2, 'uma', '89389', 'del');
+INSERT INTO cust (c_id, c_nm, c_phone, c_city) VALUES (3, 'tim', '39389', 'panjim');
+INSERT INTO cust (c_id, c_nm, c_phone, c_city) VALUES (4, 'Arun', '892393', 'Del');
+
+CREATE TABLE Call_plan (
+    Call_plan_id NUMBER,
+    Guest_name VARCHAR2(50),
+    Guest_city VARCHAR2(50),
+    Guest_phone VARCHAR2(20)
+);
+
+
+CREATE SEQUENCE call_plan_seq
+start with 100
+increment by 1;
+
+--------plsql code-------------------------
+declare 
+    cursor rec is select name,city,phone from guest;
+    v_name guest.name%type;
+    v_city guest.city%type;
+    v_phone guest.phone%type;
+BEGIN
+    open rec ;
+    LOOP
+        fetch rec into v_name,v_city,v_phone;
+        exit when rec%NOTFOUND;
+        DECLARE V_CUST_COUNT NUMBER;
+        BEGIN   
+            SELECT COUNT(*) INTO V_CUST_COUNT
+            FROM CUST
+            WHERE C_NM = v_name
+            AND C_CITY = v_city;
+            
+            if V_CUST_COUNT = 0 then 
+            insert into Call_plan values (call_plan_seq.nextval,v_name,v_city,v_phone);
+            update guest set pro_flg ='Y' where name = v_name and city = v_city;
+            end if;
+            
+            if V_CUST_COUNT >0 then 
+            delete from guest where name = v_name and city = v_city;
+            end if;
+        end;  
+     end loop;
+     close rec;
+end;    
+
+
+---------------for loop--------------------
+BEGIN
+  FOR guest_rec  in (SELECT * FROM GUEST) LOOP
+        DECLARE V_CUST_COUNT NUMBER;
+        BEGIN   
+            SELECT COUNT(*) INTO V_CUST_COUNT
+            FROM CUST
+            WHERE C_NM = guest_rec.name
+            AND C_CITY = guest_rec.city;
+
+	    if V_CUST_COUNT = 0 then 
+               insert into Call_plan values (call_plan_seq.nextval,guest_rec.name, guest_rec.city, guest_rec.phone);
+               update guest set pro_flg ='Y' where name = guest_rec.name and city = guest_rec.city;
+            end if;
+            
+            if V_CUST_COUNT >0 then 
+               delete from guest where name = guest_rec.name and city = guest_rec.city;
+            end if;
+        end;  
+   end loop;
+end;

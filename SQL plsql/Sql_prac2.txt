@@ -1,0 +1,98 @@
+--Create a Emp table with FirstName, lastname, salary,address,gender
+--insert 20 records with duplicate 
+
+CREATE TABLE Empss (
+    FirstName VARCHAR2(50),
+    LastName VARCHAR2(50),
+    Salary NUMBER(10, 2),
+    Address VARCHAR2(100),
+    Gender CHAR(1)
+);
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('John', 'Doe', 50000, '123 Maple Street', 'M');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Jane', 'Smith', 55000, '456 Oak Avenue', 'F');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('John', 'Doe', 50000, '123 Maple Street', 'M'); -- Duplicate
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Alice', 'Johnson', 60000, '789 Pine Road', 'F');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Bob', 'Brown', 62000, '101 Birch Blvd', 'M');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Jane', 'Smith', 55000, '456 Oak Avenue', 'F'); -- Duplicate
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Charles', 'Davis', 48000, '102 Cedar Lane', 'M');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Diana', 'Clark', 53000, '103 Spruce Street', 'F');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Eve', 'Lewis', 51000, '104 Willow Way', 'F');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Frank', 'Miller', 47000, '105 Elm Street', 'M');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Alice', 'Johnson', 60000, '789 Pine Road', 'F'); -- Duplicate
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('George', 'Wilson', 58000, '106 Ash Avenue', 'M');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Helen', 'Moore', 56000, '107 Poplar Street', 'F');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Bob', 'Brown', 62000, '101 Birch Blvd', 'M'); -- Duplicate
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Irene', 'Taylor', 54000, '108 Fir Court', 'F');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Jack', 'Anderson', 57000, '109 Beech Drive', 'M');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Karen', 'Thomas', 59000, '110 Cypress Circle', 'F');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Leo', 'White', 65000, '111 Redwood Road', 'M');
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('Frank', 'Miller', 47000, '105 Elm Street', 'M'); -- Duplicate
+INSERT INTO Empss (FirstName, LastName, Salary, Address, Gender) VALUES ('George', 'Wilson', 58000, '106 Ash Avenue', 'M'); -- Duplicate
+
+
+commit;
+
+
+select * from empss;
+
+
+--Query to Find the Average Salary from an Employee Table:
+select avg(salary) from empss;
+
+
+
+--Query to Find the Second Highest Salary from an Employee Table:
+ select max(salary) from empss where salary<( select max(salary) from empss);
+
+--Query to Fetch the List of Employees with Same Salary from an Employee Table
+select firstname , salary from empss
+order  by salary;
+
+--Query to Fetch Top 5 and Bottom 5 Records from an Employee Table
+(select * from empss 
+fetch first 5 rows only)
+union all
+(select * from empss 
+order by rowid desc
+fetch first 5 row only);
+
+--Query to Show One Row Twice in Results of a Table
+(select * from empss
+union all
+select * from empss);
+
+--Query to Fetch Random 20 Records From Table
+
+select * from empss
+order by dbms_random.value
+fetch first 20 rows only
+
+--Query to Fetch First 50% Records From Employee Table
+select * from empss
+where rownum <=(select (.5*count(*)) from empss);
+
+--Query to Fetch Intersecting Records From Table1 and Table2
+select * from empss
+intersect
+select * from empss
+
+--Query to Fetch only Odd Rows And Only Even Rows From Employee Table
+select * from (select e.*,row_number() over(order by rowid)rn from empss e)
+where mod(rn,2)=1;
+
+select * from (select e.*,row_number() over(order by rowid)rn from empss e)
+where mod(rn,2)=0;
+
+--Query to Find Duplicate Rows in a Table and delete the duplicate
+select e.* , count(*) from empss e
+group by FirstName, LastName, Salary, Address, Gender
+having count(*) >1;
+
+delete from empss where rowid not in ( select max(rowid) from empss group by FirstName, LastName, Salary, Address, Gender);
+
+--Query to Use Subqueries to Filter Data
+select * from empss where gender in ( select gender from empss where firstname='Bob');
+
+--Query to Find the Employee with the Highest Salary in Each Department From Employee Table
+select deptid ,max(salary) from empss
+group by deptid;

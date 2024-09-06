@@ -1,0 +1,33 @@
+how to find the second maximum salary 
+
+select salary from (select salary , dense_rank() over(order by salary desc) rk
+from emp )
+where rk=2
+
+select emp_id , emp_name,salary from table t inner join salary s
+on t.emp_id = s.emp_id
+where sal_date = ( select max(date ) from salary
+where emp_id = t.empid)
+
+find many ' a' there in 'AROHA"
+
+select length(translate('Aroha','BCDECFGHIJKLMOPQRSTUVWXYZ','')) from dual
+
+select regexp_count('AROHA','A') 
+from dual;
+
+print 7 days fro this date
+select sysdate+level
+from dual
+connect by level<=7
+
+DISPLAY TOP 3 STUDENTS BASED ON MARKS IN EACH SUBJECTS
+
+select * from (select subject, student_name ,dense_rank() over(partition by subject order by mark desc) 
+from table ) where rk<4
+
+
+Display the emps whose name starts and ends in a vowel.
+
+select emp_name from emp where substr(lower(emp_name) ,1,1) in ('a','e','i','o','u')
+

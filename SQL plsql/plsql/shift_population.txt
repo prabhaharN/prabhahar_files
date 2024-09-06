@@ -1,0 +1,76 @@
+Create table holiday
+(holi_id number(10),
+Dt_date date,
+Reason varchar2(20));
+
+Create table shift_type
+(shift_desc varchar2(20),
+Start_time varchar2(20),
+End_time varchar2(20));
+
+Create table shifts
+(shift_id number(10),
+Dt_date date,
+Start_time varchar2(20),
+End_time varchar2(20));
+
+insert into holiday values('101','01-jan-15','New Year');
+insert into holiday values('102','16-jan-15','Shankaranthi');
+insert into holiday values('103','26-jan-15','republic day');
+insert into holiday values('104','18-feb-15','Id day');
+insert into holiday values('105','01-may-15','May day');
+insert into holiday values('106','15-aug-15','independence day');
+insert into holiday values('107','01-nov-15','Karnataka day');
+
+insert into shift_type values('erly_mrng_shift','6:00AM','2:00PM');
+insert into shift_type values('afternoon_shift','2:00AM','10:00PM');
+
+
+
+------------------plsql code--------------------------
+DECLARE
+    mon NUMBER;
+    yr NUMBER;
+    start_date DATE;
+    end_date DATE;
+    v_num NUMBER := 100;
+BEGIN
+    DELETE FROM shifts;
+
+    mon := &enter_month;
+    yr := &enter_year;
+    start_date := TO_DATE('01-' || mon || '-' || yr, 'DD-MM-YYYY');
+    end_date := ADD_MONTHS(start_date, 1) - 1;
+
+    WHILE start_date <= end_date LOOP
+        IF TO_CHAR(start_date, 'DY') NOT IN ('SAT', 'SUN') THEN
+            INSERT INTO shifts (shift_id, dt_date, start_time, end_time)
+            VALUES (v_num, start_date, '6.00AM', '2.00PM');
+            v_num := v_num + 1;
+            INSERT INTO shifts (shift_id, dt_date, start_time, end_time)
+            VALUES (v_num, start_date, '2.00AM', '10.00PM');
+        ELSIF TO_CHAR(start_date, 'DY') = 'SAT' THEN
+            INSERT INTO shifts (shift_id, dt_date, start_time, end_time)
+            VALUES (v_num, start_date, '6.00AM', '2.00PM');
+            v_num:=v_num-1;
+        END IF;
+
+        FOR d IN (SELECT TO_CHAR(dt_date, 'DD') AS dates FROM holiday WHERE TO_CHAR(dt_date, 'MM') = '0' || mon) LOOP
+            IF TO_CHAR(start_date, 'DD') = d.dates THEN
+                DELETE FROM shifts WHERE TO_CHAR(dt_date, 'DD') = d.dates;
+                IF TO_CHAR(start_date, 'DY') NOT IN ('SAT', 'SUN') THEN
+                    v_num := v_num - 2;
+                ELSIF TO_CHAR(start_date, 'DY') = 'SAT' THEN
+                    v_num := v_num - 1;
+                END IF;
+            END IF;
+        END LOOP;
+
+        v_num := v_num + 1;
+        start_date := start_date + 1;
+    END LOOP;
+END;
+
+
+
+select * from shifts;

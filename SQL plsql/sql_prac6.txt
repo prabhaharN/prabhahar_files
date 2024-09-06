@@ -1,0 +1,199 @@
+1)Show first name, last name, and gender of patients whose gender is 'M'
+
+select first_name,last_name,gender from patients where gender='M';
+
+2)Show first name and last name of patients who does not have allergies. (null)
+
+select first_name,last_name from patients where allergies is null;
+
+3)Show first name of patients that start with the letter 'C'
+
+select first_name from patients where first_name like 'C%';
+
+4)Show first name and last name of patients that weight within the range of 100 to 120 (inclusive)
+
+select first_name ,last_name from patients where weight between 100 and 120;
+
+5)Update the patients table for the allergies column. If the patient's allergies is null then replace it with 'NKA'
+
+update patients set allergies = 'NKA' where allergies is null;
+
+6)Show first name and last name concatinated into one column to show their full name.
+
+select first_name||' '||last_name as fullname from patients;
+
+7)Show first name, last name, and the full province name of each patient.
+
+Example: 'Ontario' instead of 'ON'
+
+select first_name,last_name,province_name from patients p inner join province_names pn
+on p.province_id=pn.province_id;
+
+8)Show how many patients have a birth_date with 2010 as the birth year.
+
+select count(patient_id) 
+from patients 
+where birth_date like '2010%';
+
+9)Show the first_name, last_name, and height of the patient with the greatest height.
+
+select first_name,last_name ,height from patients 
+where height = ( select max(height) from patients);
+
+10)Show all columns for patients who have one of the following patient_ids:
+1,45,534,879,1000
+
+select * from patients where patient_id in (1,45,534,879,1000);
+
+11)Show the total number of admissions
+
+select count(*) from admissions;
+
+12)Show all the columns from admissions where the patient was admitted and discharged on the same day.
+
+select * from admissions
+where admission_date=discharge_date;
+
+13)Show the patient id and the total number of admissions for patient_id 579.
+
+select patient_id,count(patient_id) from admissions
+group by patient_id
+having patient_id =579;
+
+14)Based on the cities that our patients live in, show unique cities that are in province_id 'NS'?
+
+select distinct city from patients
+where province_id='NS';
+
+15)Write a query to find the first_name, last name and birth date of patients who has height greater than 160 and weight greater than 70
+
+select first_name,last_name,birth_date from patients
+where height>160 and weight>70;
+
+16)Write a query to find list of patients first_name, last_name, and allergies where allergies are not null and are from the city of 'Hamilton'
+
+select first_name,last_name,allergies from patients
+where allergies is not null and city='Hamilton';
+
+17)Show unique birth years from patients and order them by ascending.
+
+select distinct year( birth_date) from patients order by year( birth_date) ;
+
+18)Show unique first names from the patients table which only occurs once in the list.
+
+For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.
+
+select first_name from patients 
+group by first_name
+having count(first_name)=1;
+
+19)Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'.
+
+Primary diagnosis is stored in the admissions table.
+
+select p.patient_id,first_name,last_name from patients p
+inner join admissions a on p.patient_id=a.patient_id
+where diagnosis='Dementia';
+
+20)Display every patient's first_name.
+Order the list by the length of each name and then by alphabetically.
+
+select first_name from patients 
+order by len(first_name) , first_name;
+
+21)Show the total amount of male patients and the total amount of female patients in the patients table.
+Display the two results in the same row.
+
+select sum(case when gender ='M' then 1 end)as M_C,sum(case when gender ='F' then 1 end)F_C from patients
+
+22)Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'. Show results ordered ascending by allergies then by first_name then by last_name.
+
+SELECT first_name,last_name,allergies from patients 
+where allergies in ('Penicillin','Morphine') 
+order by allergies,first_name,last_name;
+
+23)Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
+
+SELECT patient_id ,diagnosis from admissions 
+group by patient_id,diagnosis 
+having count(*)>1;
+
+24)Show the city and the total number of patients in the city.
+Order from most to least patients and then by city name ascending.
+
+SELECT city,count(patient_id ) from patients
+group by city
+order by count(patient_id)desc,city
+
+25)Show first name, last name and role of every person that is either patient or doctor.
+The roles are either "Patient" or "Doctor"
+
+SELECT first_name,last_name,'Patient' as role from patients
+union all
+select first_name,last_name,'Doctor' as role from doctors
+
+26)Show all allergies ordered by popularity. Remove NULL values from query.
+
+select allergies,count(allergies) from patients where allergies is not null
+group by allergies
+order by count(allergies) desc
+
+27)Show all patient's first_name, last_name, and birth_date who were born in the 1970s decade. Sort the list starting from the earliest birth_date.
+
+select first_name,last_name ,birth_date from patients
+where year(birth_date) between 1970 and 1979 
+order by birth_date
+
+28)We want to display each patient's full name in a single column. Their last_name in all upper letters must appear first, then first_name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in decending order
+EX: SMITH,jane
+
+select concat(upper(last_name),',',lower(first_name)) as fullname from patients
+order by first_name desc
+
+29)Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.
+
+select province_id, sum(height) from patients 
+group by province_id 
+having sum(height) >=7000;
+
+30)
+Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'
+
+select max(weight)-min(weight) as difference from patients 
+where last_name='Maroni';
+
+31)Show all of the days of the month (1-31) and how many admission_dates occurred on that day. Sort by the day with most admissions to least admissions.
+
+select day(admission_date), count(admission_date) from admissions
+group by DAY(admission_date)
+order by COUNT(admission_date) DESC
+
+32)Show all columns for patient_id 542's most recent admission_date.
+
+select * from admissions where 
+patient_id =542 and admission_date =( select max(admission_date) 
+                                     from admissions 
+                                     where patient_id = 542)
+
+33)Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:
+1. patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
+2. attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
+
+select patient_id,attending_doctor_id,diagnosis from admissions
+where (mod(patient_id,2)=1 and attending_doctor_id IN (1,5,19)) or
+(attending_doctor_id like '%2%' and len(patient_id)=3);
+
+34)Show first_name, last_name, and the total number of admissions attended for each doctor.
+
+Every admission has been attended by a doctor.
+
+select first_name,last_name,count( attending_doctor_id) from doctors d
+left join admissions a on d.doctor_id = a.attending_doctor_id
+group by first_name,last_name 
+
+35)For each doctor, display their id, full name, and the first and last admission date they attended.
+
+select doctor_id, first_name||' '||last_name as fullname,min(admission_date),max(admission_date) from doctors d
+left join admissions a on d.doctor_id = a.attending_doctor_id
+group by first_name||' '||last_name 
+

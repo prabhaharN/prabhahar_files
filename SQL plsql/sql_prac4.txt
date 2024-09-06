@@ -1,0 +1,85 @@
+Find a owner who owns more than one team? Write a query
+
+
+select own_name ,team_name from team_owners to
+inner join team t on to.team_id = t.team_id 
+where percentage > 
+
+Match_date, Game, Stadium Name, home team name 
+and visiting name for all the matches
+
+select match_date,Game, Stadium Name, select(team_name from team where teamid =home_team_id) home team name 
+,visiting name from match m inner join team t on m.hometeam_id = t.team_id
+inner join satdium s on m.sta_id = s.sta_id
+
+SELECT
+    match_date,
+    Game,
+    "Stadium Name",
+    (SELECT team_name FROM team WHERE teamid = m.hometeam_id) AS home_team_name,
+    (SELECT team_name FROM team WHERE teamid = m.visitingteam_id) AS visiting_team_name
+FROM match m
+INNER JOIN team t ON m.hometeam_id = t.team_id
+INNER JOIN stadium s ON m.sta_id = s.sta_id;
+
+
+Write a select statement to get the current value of sequence called customer_sequence
+
+select sustomer_sequence.currval fromdual
+
+
+write a query to find second greatest employee based on salary
+select (select emp_name, dense_rank () over( order by sal desc) rn from emp ) where rn =2
+
+select emp_name from (select emp_name, dense_rank () over( order by sal desc) rn from emp ) where rn =2
+
+
+I have table named employee. I want to create a table called employee_Copy with all the data in employee table. What do you do? Write the Statement to accomplish this task
+
+
+insert into employee_copy values ( select * from employee);
+
+Ibridge 360
+to
+Everyone
+05:31 PM
+
+delete the duplicate records from the guest
+
+How many duplicate records we have? Write a query to give this count.
+
+Ibridge 360
+to
+Everyone
+05:55 PM
+
+Give me 3 meta data tables which you know in Oracle RDBMS
+
+What is the relation between user and a schema? Explain it in your own way.
+
+You
+to
+Ibridge 360
+(Direct Message)
+05:55 PM
+PN
+user_tables , user_sequences, user_name
+
+schema have table , views, procedures  and all objects
+
+but user is accessing these
+
+Ibridge 360
+to
+Everyone
+05:58 PM
+
+Rate yourself on what I asked today and share your thoughts. What help you need from us.
+
+You
+to
+Ibridge 360
+(Direct Message)
+06:04 PM
+PN
+7.5/10  and  i struggle in thinking the query on present

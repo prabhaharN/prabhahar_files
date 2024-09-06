@@ -1,0 +1,123 @@
+apply the learning of if else, and , or ...
+==============================================
+1) given age = 10
+   print one of the messages
+   age is above 65 - Senior citizen
+   age is above 26 - age to work
+   age is above 8  - age to study
+   less than 8     - play and enjoy
+
+-------code -----
+age = 10
+  
+if age >=  65 :
+    print('Senior citizen')
+elif age >= 26:
+    print("age to work")
+elif age >= 8:
+    print("age to study")
+else:
+    print("play and enjoy")
+
+------output----------
+age to study
+
+
+2)  calc the income tax based on the gross salary (per annum)
+    gross salary more than 1200000 then 22% of gross is tax
+    gross salary more than 1000000 then 20% of gross is tax
+    gross salary more than  800000 then 17% of gross is tax
+    gross salary more than  600000 then 14% of gross is tax
+    gross salary more than  500000 then 11% of gross is tax
+    less than 500000 but more than 300000 it is 8%
+    if it is less than 300000 then no tax
+
+--------code-----------
+gross_salary = 800000
+if gross_salary >= 1200000 :
+    print("you have 22%  tax and tax amount is ",gross_salary*0.22)
+elif gross_salary >= 1000000 :
+    print("you have 20% tax and tax amount is ",gross_salary*0.20)
+elif gross_salary >= 800000 :
+    print("you have 17% tax and tax amount is ",gross_salary*0.17)
+elif gross_salary >=  600000:
+    print("you have 14% tax and tax amount is ",gross_salary*0.14)
+elif gross_salary >=  500000:
+    print("you have 11% tax and tax amount is ",gross_salary*0.11)
+elif gross_salary < 500000 and gross_salary >= 300000:
+    print("you have 8% tax and tax amount is ",gross_salary*0.08)
+else :
+    print("you have no tax")
+---------------output-----------
+you have 17% tax and tax amount is  136000.0
+
+
+3)  print the state capital
+    given state = 'Karnataka'
+          then print 'Bangalore'
+    if state is 'AP' then 'Hyderabad'
+    if state is 'Maharashtra' then 'Mumbai
+    if state is 'Rajasthan' then 'Japiur'
+    if state is 'TN' then Chennai
+    if any other state then say - data is not availabe for this state
+
+-----------code--------------
+state= "TN"
+
+if state == 'Karnataka':
+     print("capital of ",state," is Bangalore")
+if state == 'AP' :
+    print("capital of ",state," is Hyderabad ")
+elif state == 'Maharashtra':
+     print("capital of ",state," is Mumbai ")
+elif state == 'Rajasthan':
+     print("capital of ",state," is Japiur ")
+elif state == 'TN' :
+     print("capital of ",state," is Chennai ")
+else:
+    print(" data is not availabe for this ",state)
+----------------------output-------------------
+capital of  TN  is Chennai 
+
+
+4)  the admission in the college is 
+    that chem must be above 67, phy must be above 72 , maths above 78 
+    and say YOP is 2023 or 2024 then - shortlisted for admission process
+    otherwise - 'Not eligible'
+
+-------------code-------------
+chem=89
+phy=80
+maths=79
+yop=2024
+
+if chem>67 and phy>72 and maths>78 and (yop ==2023 or yop==2024):
+    print('shortlisted for admission process')
+    
+else:
+    print('Not eligible')
+-------------output--------------
+shortlisted for admission process
+
+
+5)  once 4) is working add one more criteria that
+    if the student is from economically poorer section then
+    (hint use a boolean variable like 
+        economically_poorer = True ...)
+    that chem must be above 57, phy must be above 62 , maths above 70 
+    then - shortlisted for admission process
+    otherwise - 'Not eligible'
+--------------code--------------
+chem=89
+phy=80
+maths=79
+economically_poorer = True
+if chem>57 and phy>62 and maths>70 and economically_poorer:
+    print('shortlisted for admission process')
+    
+else:
+    print('Not eligible')
+----------------output-----------------
+shortlisted for admission process
+
+***********

@@ -1,0 +1,19 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+89,90,2004,1,1,Australian Grand Prix,2004-03-07,\N,http://en.wikipedia.org/wiki/2004_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+90,91,2004,2,2,Malaysian Grand Prix,2004-03-21,\N,http://en.wikipedia.org/wiki/2004_Malaysian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+91,92,2004,3,3,Bahrain Grand Prix,2004-04-04,\N,http://en.wikipedia.org/wiki/2004_Bahrain_Grand_Prix,testing,2024-07-19 09:54:18.999993
+92,93,2004,4,21,San Marino Grand Prix,2004-04-25,\N,http://en.wikipedia.org/wiki/2004_San_Marino_Grand_Prix,testing,2024-07-19 09:54:18.999993
+93,94,2004,5,4,Spanish Grand Prix,2004-05-09,\N,http://en.wikipedia.org/wiki/2004_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+94,95,2004,6,6,Monaco Grand Prix,2004-05-23,\N,http://en.wikipedia.org/wiki/2004_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+95,96,2004,7,20,European Grand Prix,2004-05-30,\N,http://en.wikipedia.org/wiki/2004_European_Grand_Prix,testing,2024-07-19 09:54:18.999993
+96,97,2004,8,7,Canadian Grand Prix,2004-06-13,\N,http://en.wikipedia.org/wiki/2004_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+97,98,2004,9,19,United States Grand Prix,2004-06-20,\N,http://en.wikipedia.org/wiki/2004_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+98,99,2004,10,8,French Grand Prix,2004-07-04,\N,http://en.wikipedia.org/wiki/2004_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+99,100,2004,11,9,British Grand Prix,2004-07-11,\N,http://en.wikipedia.org/wiki/2004_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+100,101,2004,12,10,German Grand Prix,2004-07-25,\N,http://en.wikipedia.org/wiki/2004_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+101,102,2004,13,11,Hungarian Grand Prix,2004-08-15,\N,http://en.wikipedia.org/wiki/2004_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+102,103,2004,14,13,Belgian Grand Prix,2004-08-29,\N,http://en.wikipedia.org/wiki/2004_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+103,104,2004,15,14,Italian Grand Prix,2004-09-12,\N,http://en.wikipedia.org/wiki/2004_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+104,105,2004,16,17,Chinese Grand Prix,2004-09-26,\N,http://en.wikipedia.org/wiki/2004_Chinese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+105,106,2004,17,22,Japanese Grand Prix,2004-10-10,\N,http://en.wikipedia.org/wiki/2004_Japanese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+106,107,2004,18,18,Brazilian Grand Prix,2004-10-24,\N,http://en.wikipedia.org/wiki/2004_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993

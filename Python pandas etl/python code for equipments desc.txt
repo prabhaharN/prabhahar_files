@@ -1,0 +1,39 @@
+import pandas as pd
+pf=pd.read_excel('market equipment data of HealthCare.xlsx')
+c=pf['supplieslist']
+d=[]
+equip_desc=[]
+for i in c:
+    if type(i)!=float:
+         p=i.split('|')
+         d.append(p)   
+for i in d:
+    for j in i:
+        if j not in equip_desc:
+            equip_desc.append(j)
+euip_code=[]
+num=0
+for i in equip_desc :
+    s=''
+    if type(i)!=int:
+        for j in i:
+            if type(i)!=int:
+                if j== j.upper():
+                    if j not in (':','/',' ','-','(','&',','):
+                        s=s+j
+    s=s[:3]
+    num=num+1
+    s=s+str(num)
+    euip_code.append(s)
+    
+equip_id=[]
+length=len(euip_code)+1
+for i in range(1,length):
+    equip_id.append(i)
+  
+d = pd.DataFrame()
+d['Equipment_ID'] = equip_id
+d['Equipment_code']=euip_code
+d['Equipment_desc']=equip_desc
+
+d.to_csv('equipment list.csv',index=False)

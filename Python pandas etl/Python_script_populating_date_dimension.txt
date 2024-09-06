@@ -1,0 +1,72 @@
+import pandas as pd
+
+import warnings as w
+w.filterwarnings('filter')
+
+import calendar
+
+def populating_date(year):
+    
+    Date = pd.DataFrame()
+    
+    calendar_date = pd.Series(pd.date_range(start=f'01-01-{year}',end=f'31-12-{year}'))
+    
+    Date['Calendar_date']= calendar_date
+
+    Date['Day_number_of_week'] = calendar_date.dt.weekday+1
+
+    Date['Day_number_of_month'] = calendar_date.dt.day
+
+    Date['Day_number_of_year'] = day_no_year = [ i for i in range(1,len(calendar_date)+1)]
+
+    Date['Week_no_month'] = ((calendar_date.dt.day-1)//7+1)
+
+    Date['Week_no_year']= calendar_date.dt.week
+
+    Date['Month_no'] = calendar_date.dt.month
+
+    month_abbr = list(filter(lambda x: (x != ''),[i for i in calendar.month_abbr]))
+
+    Date['Month_short_name'] = calendar_date.dt.month.map({i:j for i,j in zip(range(1,13),month_abbr)})
+
+    month_name = list(filter(lambda x: (x!=''),[i for i in calendar.month_name]))
+
+    Date['Month_full_name'] = calendar_date.dt.month.map({i:j for i,j in zip(range(1,13),month_name)})
+
+    Date['Qtr_no'] = calendar_date.dt.quarter
+
+    Date['Calendar_year'] = calendar_date.dt.year
+
+    Calendar_date = pd.DataFrame(pd.date_range(start=f'01-01-{year}',end=f'31-12-{year}'))
+
+    first_fiscal_year = pd.DataFrame(pd.date_range(start=f'04-01-{year-1}',end=f'12-31-{year}'))
+
+    first_fiscal_year['days_no_year'] = list(map(lambda x:  x if x < 366 else int(x - 365) ,[ i for i in range(1,len(first_fiscal_year)+1)]))
+
+    first_fiscal_year['Fiscal_month'] = (first_fiscal_year['days_no_year']//(31)+1).astype(int)
+
+    first_fiscal_year['Fiscal_week'] = ((first_fiscal_year.days_no_year//7)+1)
+
+    result = pd.merge(Calendar_date,first_fiscal_year,right_on=first_fiscal_year[0],left_on=Calendar_date[0],how='left',copy=False).drop('key_0',axis=1)\
+    .rename({'0_x':'actual_year','0_y':'Fiscal_year'},axis=1)
+
+    Date['Fiscal_month'] = result['Fiscal_month']
+
+    Date['Fiscal_week'] = result['Fiscal_week']
+    
+    fiscal = calendar_date.dt.to_period('Q-Apr')
+
+    Date['Fiscal_Qtr'] = fiscal.dt.quarter
+
+    Date['Fiscal_year'] = calendar_date.dt.to_period('Q-Apr').dt.qyear
+
+    Date['Week_day_flag'] = Date['Day_number_of_week'].apply(lambda x: 1 if x not in [6,7] else 0)
+
+    Date['Holiday_flag'] = Date['Day_number_of_week'].apply(lambda x: 1 if x in [6,7] else 0)
+    
+    return Date
+
+date = populating_date(2021)
+
+
+date.to_csv('Populating_Date_Dimension.csv',index=False)

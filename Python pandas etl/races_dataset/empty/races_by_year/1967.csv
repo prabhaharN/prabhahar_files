@@ -1,0 +1,12 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+678,679,1967,1,30,South African Grand Prix,1967-01-02,\N,http://en.wikipedia.org/wiki/1967_South_African_Grand_Prix,testing,2024-07-19 09:54:18.999993
+679,680,1967,2,6,Monaco Grand Prix,1967-05-07,\N,http://en.wikipedia.org/wiki/1967_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+680,681,1967,3,39,Dutch Grand Prix,1967-06-04,\N,http://en.wikipedia.org/wiki/1967_Dutch_Grand_Prix,testing,2024-07-19 09:54:18.999993
+681,682,1967,4,13,Belgian Grand Prix,1967-06-18,\N,http://en.wikipedia.org/wiki/1967_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+682,683,1967,5,54,French Grand Prix,1967-07-02,\N,http://en.wikipedia.org/wiki/1967_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+683,684,1967,6,9,British Grand Prix,1967-07-15,\N,http://en.wikipedia.org/wiki/1967_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+684,685,1967,7,20,German Grand Prix,1967-08-06,\N,http://en.wikipedia.org/wiki/1967_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+685,686,1967,8,48,Canadian Grand Prix,1967-08-27,\N,http://en.wikipedia.org/wiki/1967_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+686,687,1967,9,14,Italian Grand Prix,1967-09-10,\N,http://en.wikipedia.org/wiki/1967_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+687,688,1967,10,46,United States Grand Prix,1967-10-01,\N,http://en.wikipedia.org/wiki/1967_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+688,689,1967,11,32,Mexican Grand Prix,1967-10-22,\N,http://en.wikipedia.org/wiki/1967_Mexican_Grand_Prix,testing,2024-07-19 09:54:18.999993

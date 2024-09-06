@@ -1,0 +1,17 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+320,321,1990,1,33,United States Grand Prix,1990-03-11,\N,http://en.wikipedia.org/wiki/1990_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+321,322,1990,2,18,Brazilian Grand Prix,1990-03-25,\N,http://en.wikipedia.org/wiki/1990_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+322,323,1990,3,21,San Marino Grand Prix,1990-05-13,\N,http://en.wikipedia.org/wiki/1990_San_Marino_Grand_Prix,testing,2024-07-19 09:54:18.999993
+323,324,1990,4,6,Monaco Grand Prix,1990-05-27,\N,http://en.wikipedia.org/wiki/1990_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+324,325,1990,5,7,Canadian Grand Prix,1990-06-10,\N,http://en.wikipedia.org/wiki/1990_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+325,326,1990,6,32,Mexican Grand Prix,1990-06-24,\N,http://en.wikipedia.org/wiki/1990_Mexican_Grand_Prix,testing,2024-07-19 09:54:18.999993
+326,327,1990,7,34,French Grand Prix,1990-07-08,\N,http://en.wikipedia.org/wiki/1990_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+327,328,1990,8,9,British Grand Prix,1990-07-15,\N,http://en.wikipedia.org/wiki/1990_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+328,329,1990,9,10,German Grand Prix,1990-07-29,\N,http://en.wikipedia.org/wiki/1990_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+329,330,1990,10,11,Hungarian Grand Prix,1990-08-12,\N,http://en.wikipedia.org/wiki/1990_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+330,331,1990,11,13,Belgian Grand Prix,1990-08-26,\N,http://en.wikipedia.org/wiki/1990_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+331,332,1990,12,14,Italian Grand Prix,1990-09-09,\N,http://en.wikipedia.org/wiki/1990_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+332,333,1990,13,27,Portuguese Grand Prix,1990-09-23,\N,http://en.wikipedia.org/wiki/1990_Portuguese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+333,334,1990,14,26,Spanish Grand Prix,1990-09-30,\N,http://en.wikipedia.org/wiki/1990_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+334,335,1990,15,22,Japanese Grand Prix,1990-10-21,\N,http://en.wikipedia.org/wiki/1990_Japanese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+335,336,1990,16,29,Australian Grand Prix,1990-11-04,\N,http://en.wikipedia.org/wiki/1990_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993

@@ -1,0 +1,299 @@
+
+
+
+
+1)write a query to obtain a histogram of tweets posted per user in 2022. Output the tweet count per user as the bucket and the number of 
+Twitter users who fall into that bucket.
+tweets Example Input:
+tweet_id	user_id	msg	                                                  tweet_date
+214252	111	Am considering taking Tesla private at $420. Funding secured.	  12/30/2021 00:00:00
+739252	111	Despite the constant negative press covfefe	                  01/01/2022 00:00:00
+846402	111	Following @NickSinghTech on Twitter changed my life!	          02/14/2022 00:00:00
+241425	254	If the salary is so competitive why won’t you tell me what it is? 03/01/2022 00:00:00
+231574	148	I no longer have a manager. I can't be managed	                  03/23/2022 00:00:00
+Example Output:
+tweet_bucket	users_num
+1	2
+2	1
+Explanation:
+Based on the example output, there are two users who posted only one tweet in 2022, and one user who posted two tweets in 2022. 
+The query groups the users by the number of tweets they posted and displays the number of users in each group.
+
+select tweet_bucket,count(user_count) as users_num 
+from (select row_number()over(partition by t.cnt order by t.cnt) as tweet_bucket,t.cnt as user_count 
+from (SELECT count(*) cnt FROM tweets
+where extract(year from tweet_date)=2022
+group by user_id)t)u
+group by tweet_bucket
+
+
+2)Write a query to list the candidates who possess all of the required skills for the job. Sort the output by candidate ID in ascending order.
+
+Assumption:
+
+There are no duplicates in the candidates table.
+
+candidates Example Input:
+candidate_id	skill
+123	Python
+123	Tableau
+123	PostgreSQL
+234	R
+234	PowerBI
+234	SQL Server
+345	Python
+345	Tableau
+Example Output:
+candidate_id
+123
+Explanation
+Candidate 123 is displayed because they have Python, Tableau, and PostgreSQL skills. 345 isn't included in the output because 
+they're missing one of the required skills: PostgreSQL.
+
+select candidate_id from (SELECT candidate_id,skill FROM candidates
+where skill in ('Python','Tableau','PostgreSQL'))t
+group by candidate_id
+having count(skill)=3
+ORDER BY candidate_id ;
+
+
+3)Write a query to return the IDs of the Facebook pages that have zero likes. The output should be sorted in ascending order based on the page IDs.
+
+pages Table:
+
+pages Example Input:
+page_id	page_name
+20001	SQL Solutions
+20045	Brain Exercises
+20701	Tips for Data Analysts
+
+page_likes Table:
+
+page_likes Example Input:
+user_id	page_id	liked_date
+111	20001	04/08/2022 00:00:00
+121	20045	03/12/2022 00:00:00
+156	20001	07/25/2022 00:00:00
+
+Example Output:
+page_id
+20701
+
+
+SELECT page_id FROM pages
+where page_id not in (select distinct page_id from page_likes);
+
+
+4)Write a query to determine which parts have begun the assembly process but are not yet finished.
+
+Assumptions:
+
+parts_assembly table contains all parts currently in production, each at varying stages of the assembly process.
+An unfinished part is one that lacks a finish_date.
+This question is straightforward, so let's approach it with simplicity in both thinking and solution.
+
+Effective April 11th 2023, the problem statement and assumptions were updated to enhance clarity.
+
+parts_assembly Table
+
+parts_assembly Example Input
+part	finish_date	assembly_step
+battery	01/22/2022 00:00:00	1
+battery	02/22/2022 00:00:00	2
+battery	03/22/2022 00:00:00	3
+bumper	01/22/2022 00:00:00	1
+bumper	02/22/2022 00:00:00	2
+bumper		                3
+bumper		                4
+
+Example Output
+part	assembly_step
+bumper	3
+bumper	4
+Explanation
+The bumpers in step 3 and 4 are the only item that remains unfinished as it lacks a recorded finish date.
+
+SELECT part,assembly_step FROM parts_assembly
+where finish_date is null;
+
+
+5)Write a query that calculates the total viewership for laptops and mobile devices where mobile is defined as the sum of tablet and phone viewership. Output the total viewership for laptops as laptop_reviews and the total viewership for mobile devices as mobile_views.
+
+Effective 15 April 2023, the solution has been updated with a more concise and easy-to-understand approach.
+
+viewership Table
+
+viewership Example Input
+user_id	device_type	view_time
+123	tablet	01/02/2022 00:00:00
+125	laptop	01/07/2022 00:00:00
+128	laptop	02/09/2022 00:00:00
+129	phone	02/09/2022 00:00:00
+145	tablet	02/24/2022 00:00:00
+
+Example Output
+laptop_views	mobile_views
+2	3
+Explanation
+Based on the example input, there are a total of 2 laptop views and 3 mobile views.
+
+SELECT 
+      sum(case when device_type='laptop' then 1 end ) as loptop_views,
+      sum(case when device_type in ('tablet','phone') then 1 end) as mobile_views
+FROM viewership;
+
+
+6)write a query to find the number of days between each user’s first post of the year and last post of the year in the year 2021. Output the user and number of the days between each user's first and last post.
+
+
+posts Table:
+
+posts Example Input:
+user_id	post_id	post_content	                                                                                                        post_date
+151652	599415	Need a hug	                                                                                                        07/10/2021 12:00:00
+661093	624356	Bed. Class 8-12. Work 12-3. Gym 3-5 or 6. Then class 6-10. Another day that's gonna fly by. I miss my girlfriend	07/29/2021 13:00:00
+004239	784254	Happy 4th of July!	                                                                                                07/04/2021 11:00:00
+661093	442560	Just going to cry myself to sleep after watching Marley and Me.	                                                        07/08/2021 14:00:00
+151652	111766	I'm so done with covid - need travelling ASAP!	                                                                        07/12/2021 19:00:00
+
+Example Output:
+user_id	days_between
+151652	2
+661093	21
+The dataset you are querying against may have different input & output - this is just an example!
+
+select user_id , ma_p-mi_p days from (SELECT user_id,min(post_date)mi_p,max(post_date)ma_p FROM posts 
+where extract (year from post_date)=2021 
+group by user_id
+having min(post_date)<>max(post_date))t;
+
+
+7)Write a query to retrieve the top three cities that have the highest number of completed trade orders listed in descending order. Output the city name and the corresponding number of completed trade orders.
+
+trades Table:
+
+trades Example Input:
+order_id	user_id	quantity   status	      date	                price
+100101	111	10	         Cancelled	     08/17/2022 12:00:00	9.80
+100102	111	10	         Completed	     08/17/2022 12:00:00	10.00
+100259	148	35	         Completed	     08/25/2022 12:00:00	5.10
+100264	148	40	         Completed	     08/26/2022 12:00:00	4.80
+100305	300	15	         Completed	     09/05/2022 12:00:00	10.00
+100400	178	32	         Completed	     09/17/2022 12:00:00	12.00
+100565	265	2	         Completed	     09/27/2022 12:00:00	8.70
+
+users Table:
+
+users Example Input:
+user_id	city	         email	                        signup_date
+111	San Francisco	rrok10@gmail.com	        08/03/2021 12:00:00
+148	Boston	        sailor9820@gmail.com	        08/20/2021 12:00:00
+178	San Francisco	harrypotterfan182@gmail.com	01/05/2022 12:00:00
+265	Denver	        shadower_@hotmail.com	        02/26/2022 12:00:00
+300	San Francisco	houstoncowboy1122@hotmail.com	06/30/2022 12:00:00
+Example Output:
+city	total_orders
+San Francisco	3
+Boston	2
+Denver	1
+In the given dataset, San Francisco has the highest number of completed trade orders with 3 orders. 
+Boston holds the second position with 2 orders, and Denver ranks third with 1 order.
+
+SELECT city,count(order_id) FROM trades t inner join users u
+on t.user_id = u.user_id
+where status='Completed'
+group by city
+order by count(order_id) desc 
+fetch first 3 rows only;
+
+
+8)Given the reviews table, write a query to retrieve the average star rating for each product, grouped by month. 
+The output should display the month as a numerical value, product ID, and average star rating rounded to two decimal places. 
+Sort the output first by month and then by product ID.
+
+
+reviews Table:
+
+reviews Example Input:
+review_id	user_id	         submit_date	        product_id	stars
+6171	        123	         06/08/2022 00:00:00	50001	        4
+7802	        265	         06/10/2022 00:00:00	69852	        4
+5293	        362	         06/18/2022 00:00:00	50001	        3
+6352	        192	         07/26/2022 00:00:00	69852	        3
+4517	        981	         07/05/2022 00:00:00	69852	        2
+Example Output:
+mth	product	avg_stars
+6	50001	3.50
+6	69852	4.00
+7	69852	2.50
+Explanation
+Product 50001 received two ratings of 4 and 3 in the month of June (6th month), resulting in an average star rating of 3.5.
+
+SELECT extract(month from submit_date) mth,product_id product ,round(avg(stars),2) avg_stars FROM reviews
+group by extract(month from submit_date),product_id
+order by mth,product;
+
+
+9) Write a query to calculate the click-through rate (CTR) for the app in 2022 and round the results to 2 decimal places.
+
+Definition and note:
+
+Percentage of click-through rate (CTR) = 100.0 * Number of clicks / Number of impressions
+To avoid integer division, multiply the CTR by 100.0, not 100.
+events Table:
+
+events Example Input:
+app_id	event_type	timestamp
+123	impression	07/18/2022 11:36:12
+123	impression	07/18/2022 11:37:12
+123	click	        07/18/2022 11:37:42
+234	impression	07/18/2022 14:15:12
+234	click	        07/18/2022 14:16:12
+Example Output:
+app_id	ctr
+123	50.00
+234	100.00
+Explanation
+Let's consider an example of App 123. This app has a click-through rate (CTR) of 50.00% because out of the 2 impressions it received, it got 1 click.
+
+To calculate the CTR, we divide the number of clicks by the number of impressions, and then multiply the result by 100.0 to express it as a percentage. 
+In this case, 1 divided by 2 equals 0.5, and when multiplied by 100.0, it becomes 50.00%. So, the CTR of App 123 is 50.00%.
+
+SELECT app_id ,round(100.0*cl/imp,2) as ctr 
+from (SELECT app_id ,sum(case when 	event_type='impression' then 1 end)as imp,
+sum(case when event_type='click' then 1 end) as cl
+FROM events
+group by app_id)g;
+
+
+10)Write a query to display the user IDs of those who did not confirm their sign-up on the first day, but confirmed on the second day.
+
+Definition:
+
+action_date refers to the date when users activated their accounts and confirmed their sign-up through text messages.
+emails Table:
+
+emails Example Input:
+email_id	user_id	signup_date
+125	        7771	06/14/2022 00:00:00
+433	        1052	07/09/2022 00:00:00
+
+texts Table:
+
+texts Example Input:
+text_id	email_id	signup_action	action_date
+6878	125	Confirmed	06/14/2022 00:00:00
+6997	433	Not Confirmed	07/09/2022 00:00:00
+7000	433	Confirmed	07/10/2022 00:00:00
+Example Output:
+user_id
+1052
+Explanation:
+Only User 1052 confirmed their sign-up on the second day.
+
+SELECT e.user_id  FROM emails e inner join texts t
+on e.email_id=t.email_id 
+where signup_action = 'Confirmed'and e.signup_date <>t.action_date 
+and (trunc(t.action_date)-1)=trunc(e.signup_date);
+
+

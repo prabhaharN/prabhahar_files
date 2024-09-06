@@ -1,0 +1,53 @@
+import pandas as pd
+
+sale=pd.read_csv('New Text Document (3).csv')
+
+
+cust  = [["Customer_1", 1061], ["Customer_2", 1013], ["Customer_3", 1005], 
+        ["Customer_4", 1000], ["Customer_5", 1008], ["Customer_6", 1079], 
+         ["Customer_7", 1079], ["Customer_8", 1053], ["Customer_9", 1011], 
+        ["Customer_10", 1004]]
+cust_df = pd.DataFrame(sales, columns=["CustomerName", "CustomerID"])
+cust_df
+
+sal=sale[['Product','Price']]
+
+sal= sale[sale['Quantity']>10]
+
+sale['total']=sale['Price']*sale['Quantity']
+sal=sale.groupby('Product')['total'].sum()
+
+merged_df = pd.merge(sale, cust_df, left_index=True, right_index=True)
+
+type(sale['Date'][0])
+sale['Date']=pd.to_datetime(sale['Date'])
+type(sale['Date'][0])
+
+sal=sale['Product'].unique()
+
+sale.pivot_table(values='Quantity',
+    index='Product',
+    columns='Date')
+
+sal=sale.groupby('Product')['Quantity'].sum()
+d=sal[sal>100]
+s=pd.DataFrame(d)
+f=list(s.index.values)
+f
+
+sale.loc[sale['Product'].isin(f), 'Price']=sale['Price']*1.1
+
+sale.describe()
+
+result = sale.groupby(sale['Date'].dt.month)['Quantity'].sum()
+
+sale['CumulativeSales'] = sale.groupby('Product')['Quantity'].cumsum()
+sale['CumulativeSales']
+
+res=sale[sale['Quantity']>50]
+res.groupby('Product')['Price'].mean()
+
+sale.to_csv('updated_sales_data.csv',index=False)
+
+
+

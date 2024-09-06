@@ -1,0 +1,35 @@
+Top queries in SQL
+
+1) Query to skip first five rows and then display remaining all rows from emp table?
+
+
+2) Query to display junior most employee details from emp table?
+
+
+3) Query to display employee details who are getting min salary in each department from emp table?
+
+
+4) Query to display last four rows from emp table?
+
+
+5) Query to display first row and last row from emp table?
+
+
+6) Query to display odd number of records from emp table?
+
+7) Query to display 5th highest salary employee from emp table?
+
+
+8) Query to display nth highest salary employee from emp table using corelated subquery?
+
+
+9) Query to display first ten rows from emp table?
+
+
+10) Query to display first five highest salary employees from from emp table?
+
+
+11) Query to display 2nd, 3rd, 4th, 5th, 7th, 9th row from emp table?
+
+
+12) Query to display second row from emp tablle?

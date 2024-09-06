@@ -1,0 +1,30 @@
+
+1.select e.emp_id, e.emp_name, count(p.emp_id) 
+from employee e left join project_employee p
+on e.emp_id = p.emp_id
+group by e.emp_id,e.emp_name;
+
+2.select proj_name,client_name
+from project p inner join client c
+on p.client_id = c.client_id 
+inner join project_employee pe 
+on p.proj_id=pe.proj_id 
+where pe.emp_id in (select emp_id 
+from project_employee 
+where months_between (end_date,start_date)>6);
+
+3.
+
+
+
+
+odi -In mapping how to get the output in the file.
+how to use agents for excuting the mappings and packages.
+error handling in odi
+check knowledge module
+ standard sequence , 
+dimensional and cubes in designer and also global user function have this
+
+
+plSQl - packages, triggers
+

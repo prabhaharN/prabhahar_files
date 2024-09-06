@@ -1,0 +1,157 @@
+1. Write a Python function that takes a list of integers as input and returns a new 
+list containing only the prime numbers.
+
+nums=[1,2,3,4,5,6,7,8,9]
+
+prime_nums=[]
+for i in nums:
+    if i>2:
+        for j in range(2,i):
+            if i%j==0:
+                break
+        else:
+            prime_nums.append(i)
+print(prime_nums) 
+
+
+2. Implement a function that accepts two lists of integers and returns a new list 
+containing elements that are common to both lists.
+
+def com_nums(list1,list2):
+    new_list=[]
+    for i in list1:
+        if i in list2:
+            new_list.append(i)
+    return new_list
+    
+c=com_nums([3,4,5,6,7],[4,7,8,9])   
+print(c)
+
+
+3. Write a Python code to reverse a tuple without using the [: : -1] slicing.
+
+tup=(4,5,6,7,8,9)
+tup1=[]
+for i in range(len(tup)):
+     tup1.insert(0,tup[i])
+tup1=tuple(tup1) 
+print(tup1)
+
+
+4. Create a dictionary representing a student database with information such as 
+name, age, subjects, and grades. Implement a function that calculates and 
+returns the average grade of the student.
+
+student={'name':'ram','age':18,'subjects':['english','maths','science','social'],'grades':[88,94,99,99] }
+
+def grade(name):
+    if student['name']==name:
+        t=0
+        n=0
+        for i in student['grades']:
+            t=t+i
+            n=n+1
+        avg=t/n
+    return avg  
+    
+d=grade('ram')  
+print(d)
+
+
+5. Write a Python code to merge two dictionaries. If there are common keys, sum 
+the values.
+
+dict1={'a':45,'b':43,'c':98,'d':78}
+dict2={'e':59,'b':36,'a':25,'f':84}
+
+for i in dict2:
+    if i in dict1:
+        dict1[i]=dict1[i]+dict2[i]
+    else:
+        dict1.update({i:dict2[i]})
+print(dict1)  
+
+
+
+6. Consider a list of integers named data. Write a Python program that 
+accomplishes the following tasks:
+
+a) Initialize the data list with a minimum of 10 integer values.
+
+data=[]    
+
+for i in range(10):
+    num=int(input('enter number : '))
+    data.append(num)
+print(data) 
+
+data=[20, 45, 64, 98, 78, 33, 56, 38, 90, 89]
+
+
+b) Implement a loop to calculate the square of each element in the data list.
+
+data= [20, 45, 64, 98, 78, 33, 56, 38, 90, 89]
+
+for i in data:
+    i=i*i
+    print(i)
+
+c) Use list comprehension to create a new list named squared_data containing 
+the squared values of the original list.
+
+data= [20, 45, 64, 98, 78, 33, 56, 38, 90, 89]
+
+squared_list=[i*i  for i in data]
+print(squared_list)
+
+
+d) Write a function named filter_data that takes a list as input and returns a 
+new list containing only the elements greater than 50.
+
+def filter_data(list1):
+    fil_data=[]
+    for i in list1:
+        if i >50:
+            fil_data.append(i)
+    return fil_data
+    
+    
+d=filter_data(data)   
+print(d)
+
+
+e) Use the filter_data function to create a new list named filtered_data from 
+the squared_data list.
+
+squared_data=[i*i  for i in data]
+
+def filter_data(list1):
+    fil_data=[]
+    for i in list1:
+        if i >50:
+            fil_data.append(i)
+    return fil_data
+    
+    
+d=filter_data(squared_data)   
+print(d)
+
+
+f) Implement a loop to iterate through the filtered_data list and print each 
+element along with its index in the list.
+
+for i in d:
+    ind=d.index(i)
+    print('num : ',i,', index : ',ind)
+
+
+g) Finally, sort the filtered_data list in descending order and print the sorted 
+list.
+
+sorted_data= [64, 98, 78, 56, 90, 89] 
+
+for i in range(len(sorted_data)):
+    for j in range(len(sorted_data)):
+        if sorted_data[i]>sorted_data[j]:
+           sorted_data[i],sorted_data[j]=sorted_data[j],sorted_data[i] 
+print(sorted_data)    

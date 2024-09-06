@@ -1,0 +1,167 @@
+Miscellaneous Comprehension:
+31. Write a list comprehension to filter out duplicate elements from a list.
+
+my_list = [1, 2, 2, 3, 4, 4, 5]  # Example list with duplicates
+filtered_list = [t for i, t in enumerate(my_list) if t not in my_list[:i]]
+print(filtered_list)
+
+32Generate a list of random numbers using list comprehension and the random module.
+
+import random
+random_numbers = [random.randint(1, 100) for i in range(10)]
+print(random_numbers)
+
+33Create a dictionary from two lists, one for keys and another for values, using dictionary comprehension.
+
+keys = ['a', 'b', 'c'] 
+values = [1, 2, 3] 
+my_dict = {k: v for k, v in zip(keys, values)}
+print(my_dict)
+
+34Build a set of lowercase characters from a given string using set comprehension.
+
+given_string = "PYtHoN"  
+lowercase_chars = {char.lower() for char in given_string }
+print(lowercase_chars)
+
+35Write a list comprehension to find common elements in two lists.
+
+list1 = [1, 2, 3, 4, 5]
+list2 = [4, 5, 6, 7, 8] 
+common_elements = [element for element in list1 if element in list2]
+print(common_elements)
+
+
+Comprehension with Functions:
+36. Generate a list of the lengths of words in a given sentence using list comprehension.
+
+sentence =  "word lengths using list comprehension" 
+word_lengths = [len(word) for word in sentence.split()]
+print(word_lengths)
+
+37Create a list of squares for even numbers and cubes for odd numbers from 1 to 10 using a lambda function and list comprehension.
+
+square = lambda x: x**2
+cube = lambda x: x**3
+number_list = [square(x) if x % 2 == 0 else cube(x) for x in range(1, 11)]
+print(number_list)
+
+38Write a set comprehension to get unique words from a sentence, ignoring case.
+
+sentence = "a set of unique words ignoring case using set comprehension"
+unique_words = {word.lower() for word in sentence.split()}
+print(unique_words)
+
+39Generate a list of numbers from 1 to 20, replacing prime numbers with 'Prime' using a function and list comprehension.
+
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num)):
+        if num % i == 0:
+            return False
+    return True
+numbers_list = ['Prime' if is_prime(x) else x for x in range(1, 21)]
+print(numbers_list)
+
+40Create a dictionary where keys are words from a sentence, and values are their lengths using a function and dictionary comprehension.
+
+def word_length(word):
+    return len(word)
+sentence = "Create a dictionary from this sentence" 
+word_lengths = {word: word_length(word) for word in sentence.split()}
+print(word_lengths)
+
+
+Comprehension with File Handling:
+41. Read a file containing numbers and create a list of integers using list comprehension.
+
+with open('numbers.txt', 'r') as file:
+    numbers_list = [int(line.strip()) for line in file if line.strip().isdigit()]
+print(numbers_list)
+
+42Generate a dictionary where keys are words from a text file, and values are the number of occurrences using dictionary comprehension.
+
+with open('textfile.txt', 'r') as file:
+    words = file.read().lower().split()
+word_count = {word: words.count(word) for word in set(words)}
+print(word_count)
+
+43Create a set of unique words from a text file using set comprehension.
+
+with open('textfile.txt', 'r') as file:
+    words = file.read().split()
+unique_words = {word for word in words}
+print(unique_words)
+
+44Write a list comprehension to filter out lines containing a specific word from a text file.
+
+specific_word = 'python' 
+file_name = 'textfile.txt'
+with open(file_name, 'r') as file:
+    filtered_lines = [line for line in file if specific_word in line.lower()]
+print(filtered_lines)
+
+45Generate a list of tuples, each containing a line number and the corresponding line from a text file using list comprehension.
+
+file_name = 'textfile.txt' 
+with open(file_name, 'r') as file:
+    lines_with_numbers = [(i, line.strip()) for i, line in enumerate(file, 1)]
+print(lines_with_numbers)
+
+Comprehension with Error Handling:
+46. Read a list of integers from user input, handling exceptions using list comprehension.
+
+def convert_to_int(value):
+    try:
+        return int(value)
+    except ValueError:
+        return None
+
+user_input = input("Enter a list of numbers separated by spaces: ").split()
+print(user_input)
+integers_list = [convert_to_int(val) for val in user_input]
+print(integers_list)
+integers_list = [val for val in integers_list if val is not None]
+print(integers_list)
+
+47Create a dictionary from user input, allowing the user to continue entering key-value pairs until they decide to stop, using dictionary comprehension.
+
+user_dict = {}
+while True:
+    key = input("Enter a key (or type 'exit' to finish): ")
+    if key == 'exit':
+        break 
+    value = input(f"Enter a value for '{key}': ")
+    user_dict[key] = value
+print(user_dict)
+
+48Write a list comprehension to filter out non-numeric elements from a list entered by the user.
+
+user_input = input("Enter a list of elements separated by spaces: ").split()
+numeric_elements = [element for element in user_input if element.isdigit()]
+
+print(numeric_elements)
+
+49Generate a set of valid email addresses from a list of strings using set comprehension and a regular expression for email validation.
+
+import re
+
+email_pattern = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+strings_list = ['example@example.com', 'invalid-email', 'test123@test.com', 'another@example.com','another@example.co.in']
+valid_emails = {email for email in strings_list if email_pattern.fullmatch(email)}
+
+print(valid_emails)
+
+50Create a list of integers from user input, handling invalid inputs using list comprehension and try-except blocks.
+
+def safe_convert_to_int(value):
+    try:
+        return int(value)
+    except ValueError:
+        return None
+user_input = input("Enter a list of numbers separated by spaces: ").split()
+integers_list = [safe_convert_to_int(val) for val in user_input]
+integers_list = [val for val in integers_list if val is not None]
+
+print(integers_list)

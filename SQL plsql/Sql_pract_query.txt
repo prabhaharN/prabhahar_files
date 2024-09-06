@@ -1,0 +1,173 @@
+Market penetration is an important metric for understanding Spotify's performance and growth potential in different regions.
+You are part of the analytics team at Spotify and are tasked with calculating the active user penetration rate in specific countries.
+
+
+For this task, 'active_users' are defined based on the  following criterias:
+
+
+last_active_date: The user must have interacted with Spotify within the last 30 days.
+•    sessions: The user must have engaged with Spotify for at least 5 sessions.
+•    listening_hours: The user must have spent at least 10 hours listening on Spotify.
+
+
+Based on the condition above, calculate the active 'user_penetration_rate' by using the following formula.
+
+
+•    Active User Penetration Rate = (Number of Active Spotify Users in the Country / Total users in the Country)
+
+
+Total Population of the country is based on both active and non-active users.
+​
+The output should contain 'country' and 'active_user_penetration_rate' rounded to 2 decimals.
+
+
+Let's assume the current_day is 2024-01-31.
+
+Table: penetration_analysis
+
+penetration_analysis
+
+user_id: int
+country: varchar
+last_active_date: datetime
+listening_hours: int
+sessions: int
+
+query :  
+select c.country , round(active_user/total_user,2) as Active_User_Penetration_Rate 
+from (select country,count(user_id) as active_user from penetration_analysis
+where last_active_date between to_date('2024-01-31','yyyy-mm-dd')-30 and 
+to_date('2024-01-31','yyyy-mm-dd') and SESSIONS>5 and LISTENING_HOURS>=10
+group by country) c inner join (select country,count(user_id) as total_user from penetration_analysis
+group by country) c1 on c.country=c1.country
+
+-----------------------
+2)Find the top 5 businesses with most reviews. Assume that each row has a unique business_id such that the total reviews for each business is listed on each row. Output the business name along with the total number of reviews and order your results by the total reviews in descending order.
+
+Table: yelp_business
+
+Preview
+business_id:varchar
+name:varchar
+neighborhood:varchar
+address:varchar
+city:varchar
+state:varchar
+postal_code:varchar
+latitude:float
+longitude:float
+stars:float
+review_count:int
+is_open:int
+categories:varchar
+
+select name,sum(review_count) from yelp_business
+group by name
+order by sum(review_count) desc
+fetch first 5 rows only
+
+--------------------------------------
+3)Find the top 5 states with the most 5 star businesses. Output the state name along with the number of 5-star businesses and order records by the number of 5-star businesses in descending order. In case there are ties in the number of businesses, return all the unique states. If two states have the same result, sort them in alphabetical order.
+
+select state,count(business_id) from yelp_business
+where stars=5 
+group by state
+order by count(business_id) desc
+fetch first 5 rows only
+
+-------------------------------------------
+4)Find the review_text that received the highest number of  'cool' votes.
+Output the business name along with the review text with the highest numbef of 'cool' votes.
+
+SELECT business_name, review_text
+FROM yelp_reviews
+WHERE cool = (SELECT max(cool) FROM yelp_reviews)
+
+------------------------------------
+5)Find the 3 most profitable companies in the entire world.
+Output the result along with the corresponding company name.
+Sort the result based on profits in descending order.
+
+select company,sum(profits) from forbes_global_2010_2014
+group by company
+order by sum(profits) desc
+fetch first 3 row only
+
+--------------------------------------
+6) You have been asked to find the job titles of the highest-paid employees.
+Your output should include the highest-paid title or multiple titles with the same salary.
+Tables: worker, title
+
+select worker_title from  title 
+where worker_ref_id in( select worker_id from worker 
+where salary= ( select max(salary) from worker))
+-------------------------------------------
+7)You are given a table of product launches by company by year. Write a query to count the net difference between the number of products companies launched in 2020 with the number of products companies launched in the previous year. Output the name of the companies and a net difference of net products released for 2020 compared to the previous year.
+
+
+with c as (select company_name, count(product_name) as cnt_pr from car_launches
+where year=2020
+group by company_name), 
+d as (select company_name, count(product_name) as cnt_pr from car_launches
+where year=2019
+group by company_name)
+select c.company_name ,c.cnt_pr-d.cnt_pr from c inner join d
+on c.company_name=d.company_name
+
+
+------------------------------------
+8)Write a query that calculates the difference between the highest salaries found in the marketing and engineering departments. Output just the absolute difference in salaries.
+
+Tables: db_employee, db_dept
+
+select highest_marketing-highest_engineering as difference_in_sal from ( (SELECT MAX(salary) AS highest_marketing
+FROM db_employee
+WHERE department_id = (SELECT id FROM db_dept WHERE department = 'marketing'))
+CROSS JOIN
+(SELECT MAX(salary) AS highest_engineering FROM db_employee WHERE department_id = (SELECT id FROM db_dept WHERE department = 'engineering')));
+
+----------------------------------------
+9)Find the total number of downloads for paying and non-paying users by date. Include only records where non-paying customers have more downloads than paying customers. The output should be sorted by earliest date first and contain 3 columns date, non-paying downloads, paying downloads.
+
+Tables: ms_user_dimension, ms_acc_dimension, ms_download_facts
+
+SELECT "date", non_paying, paying
+FROM (
+    SELECT "date", sum(CASE
+                           WHEN paying_customer = 'yes' THEN downloads
+                       END) AS paying,
+                   sum(CASE
+                           WHEN paying_customer = 'no' THEN downloads
+                       END) AS non_paying
+    FROM ms_user_dimension a
+    INNER JOIN ms_acc_dimension b ON a.acc_id = b.acc_id
+    INNER JOIN ms_download_facts c ON a.user_id=c.user_id
+    GROUP BY "date"
+    ORDER BY "date"
+) t
+WHERE (non_paying - paying) > 0
+ORDER BY t."date" ASC
+
+----------------------------------------
+10)Find the popularity percentage for each user on Meta/Facebook. The popularity percentage is defined as the total number of friends the user has divided by the total number of users on the platform, then converted into a percentage by multiplying by 100.
+Output each user along with their popularity percentage. Order records in ascending order by user id.
+The 'user1' and 'user2' column are pairs of friends.
+
+Table: facebook_friends
+
+
+with c as  (
+  SELECT user1, user2
+  FROM facebook_friends
+  UNION
+  SELECT user2 AS user1, user1 AS user2
+  FROM facebook_friends
+)
+
+SELECT user1, count(*) / CAST((SELECT count(DISTINCT user1) FROM c) AS FLOAT) * 100 AS popularity_percent
+FROM c
+GROUP BY user1
+ORDER BY user1
+
+
+

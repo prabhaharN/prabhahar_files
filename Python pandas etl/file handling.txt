@@ -1,0 +1,92 @@
+import pandas as pd
+import numpy as np
+
+import os
+
+folder_path = "C:/Users/HP/Downloads/races_dataset/raw"  
+
+file=[]
+
+
+for root, dirs, files in os.walk(folder_path):
+    # print(f"Directory: {root}")
+    # print(f"Subdirectories: {dirs}")
+    # print(f"Files: {files}\n")
+    root_path=root.split('\\')
+    root_path='/'.join(root_path)
+    for i in files:
+        if not i.endswith('.ipynb') and not i.endswith('.DS_Store'):
+            path=f'{root_path}/{i}'
+            file.append(path)
+today_date = pd.to_datetime('today')  
+
+df_dict={}
+
+data_source=str(input('enter enviroment : '))
+for i in file :
+    if i.endswith('.csv'):
+        name=i.split('/')[-1].split('.')[0]
+        if name.startswith('lap_times_split'):
+            column_for_lap_file=['race_id','driver_id','lap','position','time','milliseconds']
+            if f'{name[0:-8]}_df' not in df_dict:
+                df_dict[f'{name[0:-8]}_df']=pd.read_csv(i,header=None)
+                df_dict[f'{name[0:-8]}_df'].columns=column_for_lap_file
+                df_dict[f'{name[0:-8]}_df']['data_source']=data_source
+                df_dict[f'{name[0:-8]}_df']['ingestion_date']=today_date
+            else:  
+                df=pd.read_csv(i,header=None)
+                df.columns=column_for_lap_file
+                df['data_source']=data_source
+                df_dict[f'{name[0:-8]}_df']=pd.concat([df_dict[f'{name[0:-8]}_df'],df])
+                df_dict[f'{name[0:-8]}_df'].reset_index(drop=True,inplace=True) 
+                df_dict[f'{name[0:-8]}_df']['ingestion_date']=today_date
+        else:
+            df_dict[f'{name}_df']=pd.read_csv(i)
+            df_dict[f'{name}_df']['data_source']=data_source
+            df_dict[f'{name}_df']['ingestion_date']=today_date
+    elif i.endswith('.json'):
+        try:
+            name=i.split('/')[-1].split('.')[0]
+            df_dict[f'{name}_df']=pd.read_json(i, lines=True)
+            df_dict[f'{name}_df']['data_source']=data_source
+            df_dict[f'{name}_df']['ingestion_date']=today_date
+        except ValueError:
+            name=i.split('/')[-1].split('.')[0]
+            if name.startswith('qualifying_split'):
+                if f'{name[0:-8]}_df' not in df_dict:
+                    df_dict[f'{name[0:-8]}_df']=pd.read_json(i)
+                    df_dict[f'{name[0:-8]}_df']['data_source']=data_source
+                    df_dict[f'{name[0:-8]}_df']['ingestion_date']=today_date
+                else:  
+                    df=pd.read_json(i)
+                    df['data_source']=data_source
+                    df_dict[f'{name[0:-8]}_df']=pd.concat([df_dict[f'{name[0:-8]}_df'],df])
+                    df_dict[f'{name[0:-8]}_df'].reset_index(drop=True,inplace=True)
+                    df_dict[f'{name[0:-8]}_df']['ingestion_date']=today_date
+                    
+            else:        
+                df_dict[f'{name}_df']=pd.read_json(i)
+                df_dict[f'{name}_df']['data_source']=data_source
+                df_dict[f'{name}_df']['ingestion_date']=today_date
+    else:
+        print('no')
+
+
+from unidecode import unidecode
+for i in df_dict:
+    if i=='drivers_df':
+        df=df_dict[i]
+        names=df['name']
+        full_name=[]
+        for name in names:
+            full_name.append(unidecode(name['forename'])+' '+unidecode(name['surname']))
+        df.insert(4,'full_name',value=full_name)
+        df.drop(columns=['name'],inplace =True)
+
+print(df)
+
+df = df_dict['circuits_df']
+df.to_parquet('circuits____________________df',index=False)
+
+df = df_dict['constructors_df']
+df.to_parquet('constructors____________________df',index=False)

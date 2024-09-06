@@ -1,0 +1,13 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+666,667,1968,1,30,South African Grand Prix,1968-01-01,\N,http://en.wikipedia.org/wiki/1968_South_African_Grand_Prix,testing,2024-07-19 09:54:18.999993
+667,668,1968,2,45,Spanish Grand Prix,1968-05-12,\N,http://en.wikipedia.org/wiki/1968_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+668,669,1968,3,6,Monaco Grand Prix,1968-05-26,\N,http://en.wikipedia.org/wiki/1968_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+669,670,1968,4,13,Belgian Grand Prix,1968-06-09,\N,http://en.wikipedia.org/wiki/1968_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+670,671,1968,5,39,Dutch Grand Prix,1968-06-23,\N,http://en.wikipedia.org/wiki/1968_Dutch_Grand_Prix,testing,2024-07-19 09:54:18.999993
+671,672,1968,6,53,French Grand Prix,1968-07-07,\N,http://en.wikipedia.org/wiki/1968_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+672,673,1968,7,38,British Grand Prix,1968-07-20,\N,http://en.wikipedia.org/wiki/1968_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+673,674,1968,8,20,German Grand Prix,1968-08-04,\N,http://en.wikipedia.org/wiki/1968_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+674,675,1968,9,14,Italian Grand Prix,1968-09-08,\N,http://en.wikipedia.org/wiki/1968_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+675,676,1968,10,52,Canadian Grand Prix,1968-09-22,\N,http://en.wikipedia.org/wiki/1968_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+676,677,1968,11,46,United States Grand Prix,1968-10-06,\N,http://en.wikipedia.org/wiki/1968_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+677,678,1968,12,32,Mexican Grand Prix,1968-11-03,\N,http://en.wikipedia.org/wiki/1968_Mexican_Grand_Prix,testing,2024-07-19 09:54:18.999993

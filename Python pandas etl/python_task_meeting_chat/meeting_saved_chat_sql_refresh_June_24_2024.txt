@@ -1,0 +1,326 @@
+14:19:34 From Ibridge 360 to Everyone:
+	find 5th highest salary in different way? (2 ways)
+14:20:50 From akshay to Ibridge 360(direct message):
+	SELECT * FROM EMP E1 WHERE 5 =(	SELECT COUNT(*) FROM EMP E2 WHERE E2.EMP_SAL > E1. EMP_SAL)
+14:21:30 From SRIREVATHI to Ibridge 360(direct message):
+	select sal	from (select sal,dense_rank over (order by sal desc )r_k from employee)	where r_k=5	------------	select * from employee e1 where 5=(select count(*) from emp2 where e2.sal>e1.sal)
+14:21:33 From AMAR to Ibridge 360(direct message):
+	select sal from (select sal,row_number( ) over(order by sal desc )rwnum from emp )where rwnum=5;
+14:21:52 From akshay to Ibridge 360(direct message):
+	SELECT * FROM(	SELECT E.*, DENSE_RANK()	OVER(ORDER BY E.EMP_SAL DESC) AS RK)	FROM EMP E)	WHERE RK = 5
+14:22:03 From Prabhahar N to Ibridge 360(direct message):
+	select salary (select salary, dense_rank() over(order by salary desc) as rk  from table ) where rk=5
+	
+	select max(salary) from table where salary<(select max(salary)fromtable  where salary<(select max(salary)fromtable where salary<(select max(salary)fromtable where salary<(select max(salary)fromtable
+14:22:43 From Nitish S to Ibridge 360(direct message):
+	select salary	from (	    select salary, dense_rank() OVER (ORDER BY salary desc) as rn	    from employees	)	where rn = 5;
+14:23:02 From Cibi Chellasamy to Ibridge 360(direct message):
+	select salary	from(select salary, row_number() over (order by salary desc) AS rn from  employees) ranked_salary	where rn = 5		select distinct salary	from(select salary, dense_rank() over (order by salary desc) as rnk	from  employee)	where rnk = 5
+14:23:11 From Vimalan to Ibridge 360(direct message):
+	1) select salary from (
+	    select salary, row_number() over (order by salary desc) as rnk from employees
+	) 
+	where rnk =5;
+14:23:39 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	select salary,rank	from 	(select salary,dense_rank() over(order by salary desc) as rank	from employee)	where rank=5;
+14:23:47 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	select serial_num,salary	from 	(select salary,row_number() over(order by salary desc) as serial_num	from employee)	where serial_num=5;
+14:24:06 From Ibridge 360 to Everyone:
+	Why View performance is slow? What we should do to increase the performance of the view.
+14:24:15 From Karthik to Ibridge 360(direct message):
+	select distinct sal from emp e1 where 5=(select count(distinct sal) from emp e2 where e1.sal<=e2.sal;		select * from (select sal,dense_rank() over( order by sal desc) drank from emp) where drank=5;
+14:24:24 From AMAR to Ibridge 360(direct message):
+	select sal from (select sal from(select distinct sal from employee order by sal desc )where rownum<=5 order by sal asc ) where rownum=5;
+14:25:42 From SRIREVATHI to Ibridge 360(direct message):
+	when we query using the view it will go to the base table and fetch the data as it doent jhold any data by itself.so,it will increase the time to fetch
+14:25:48 From Prabhahar N to Ibridge 360(direct message):
+	because the query execute every time for increase performance we use materalized view
+14:26:30 From Ibridge 360 to Prabhahar N(direct message):
+	your answer is not clear for me Prabhahar.
+14:26:35 From Cibi Chellasamy to Ibridge 360(direct message):
+	Views are slow because of complex logics and joins .We can make faster by using indexing and partitioning
+14:26:50 From shanta to Ibridge 360(direct message):
+	select * from (select sal,dense_rank() over( order by sal desc) hei_rank from emp ) as result where hei=5;
+14:27:17 From akshay to Ibridge 360(direct message):
+	View slow is due when we run a view statement it needs to go for a table to fetch the records if we have index on that table query will work faster
+14:27:43 From Nitish S to Ibridge 360(direct message):
+	because of complex query that includes more joins and also if the data is large then we need to use indexes.
+14:27:44 From Ibridge 360 to Everyone:
+	List the Query execution order.
+14:28:11 From SRIREVATHI to Ibridge 360(direct message):
+	from	select	where	groupby	having	order
+14:28:26 From AMAR to Ibridge 360(direct message):
+	Because the view may not have proper index there might be a large amount of data involved, so view take longer time to give the result
+14:28:31 From Prabhahar N to Ibridge 360(direct message):
+	from where group by having select order by
+14:29:08 From Ibridge 360 to Everyone:
+	What 4 steps every query goes through before it shows the results to us?
+14:29:14 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	from,where,groupby,having,orderby
+14:29:14 From Cibi Chellasamy to Ibridge 360(direct message):
+	1)from	2)where	3)group by	4)having	5)select 	6)order by
+14:29:16 From Nitish S to Ibridge 360(direct message):
+	1).from	2).where	3).group	4).having	5).select	6).order by
+14:29:30 From Karthik to Ibridge 360(direct message):
+	Query execution order	1.From	2.Where	3.Group by	4.Having	5.Order by	6.Select
+14:29:37 From akshay to Ibridge 360(direct message):
+	from clause	select statement	where	group by 	order by
+14:30:08 From AMAR to Ibridge 360(direct message):
+	from clause , select clause , where clause , group by clause ,order by clause, having clause
+14:30:23 From shanta to Ibridge 360(direct message):
+	1.from 2.where clause 3.group by 4. having clause 5.select
+14:30:44 From Karthik to Ibridge 360(direct message):
+	4 steps every query goes through before it shows the results is	1.Check the syntax	2.Parsing	3.Execution Plan	4.Excecutes query
+14:31:02 From akshay to Ibridge 360(direct message):
+	syntax	parsing	execution
+14:31:16 From SRIREVATHI to Ibridge 360(direct message):
+	checks the syntax	parsing	execute plan
+14:31:17 From Ibridge 360 to Everyone:
+	how to find if a column has an index or not ?
+14:31:20 From shanta to Everyone:
+	Replying to "What 4 steps every q..."
+	
+	1.check the syntax 2.parsing 3.execution plan 4.execute query
+14:32:19 From AMAR to Ibridge 360(direct message):
+	parsing syntax optimization execution
+14:33:00 From SRIREVATHI to Ibridge 360(direct message):
+	select *	from user_ind_columns	where table_name='EMP'
+14:33:02 From akshay to Ibridge 360(direct message):
+	select * from user_constraints where table_name = ''
+14:33:19 From Karthik to Ibridge 360(direct message):
+	select index_name from user_ind_colums where table_name='table' and column_name='column';
+14:33:53 From Vimalan to Ibridge 360(direct message):
+	Using user_ind_columns and user_indexes.
+14:33:56 From Prabhahar N to Ibridge 360(direct message):
+	select index_name from user_index where table_name='table1' and column_name='column'
+14:34:09 From Ibridge 360 to Everyone:
+	Write a query where you use case statement
+14:34:11 From Nitish S to Ibridge 360(direct message):
+	select * 	from all_ind_columns 	where table_name = 'employee' 	  and column_name = 'dept_id';
+14:34:54 From Prabhahar N to Ibridge 360(direct message):
+	select case when mark >90 then 'A'
+14:34:58 From Cibi Chellasamy to Ibridge 360(direct message):
+	select sal_index from user_ind_columns	where table_name = 'employees'	and column_name = 'salary'
+14:36:05 From Nitish S to Ibridge 360(direct message):
+	select sum(case when gender='M' then 1 else 0 end) as male_count,	sum(case when gender='F' then 1 else 0 end) as female_count	from employee;
+14:36:07 From Ibridge 360 to Everyone:
+	webvisit	visit_id site	100      www.google.com	101      www.facebook.com	100      www.google.com		Delete the duplicate records in webvisit table
+14:36:09 From SRIREVATHI to Ibridge 360(direct message):
+	select prod_name,(case when price>500 then 'high cost',	else  'normal cost' end)as prod_price from products
+14:36:10 From Prabhahar N to Ibridge 360(direct message):
+	select case when mark >90 then 'A' 
+	                   when mark >70 then 'b'
+	                   when mark >5 then 'c'
+	                   else e;
+14:36:18 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	select emp_name,	(case when gender==”M” then “Male” else “Female” end) as gender	from employee
+14:36:28 From Cibi Chellasamy to Ibridge 360(direct message):
+	select emp_name,	case 		when gender = 'F' then 'Femalle' 		when gender = 'M' then 'Male'		when gender = 'U' then 'Unknown'	end as gender 	from employees
+14:36:40 From akshay to Ibridge 360(direct message):
+	select e.*, case	when emp_sal > 2000  and emp_sal < 5000 then 'mid range'	when emp_sal > 5000 then 'High range'	else 'low range'	end as sal_grade	from emp e
+14:36:55 From AMAR to Ibridge 360(direct message):
+	select emp_id,sal case when sal<3000 then 'Low' when sal >=3000 and sal <6000 then 'medium' when sal >=6000 then 'High' else 'unknown' end as sal_category from emp;
+14:37:03 From SRIREVATHI to Ibridge 360(direct message):
+	ddelete from 	webvisit where rowid not in (select max(rowid) from webvisit	group by visit_id);
+14:37:05 From Vimalan to Ibridge 360(direct message):
+	select employee_id, salary,
+	    case
+	           when salary < 3000 then 'low'
+	           when salary between 3000 and 7000 then 'medium'
+	           else 'high'
+	       end as salary_category
+	from employees;
+14:37:12 From Nidhi Arya to Ibridge 360(direct message):
+	select count(case (when gender='F' then 1 end) as female_count
+14:37:42 From Ibridge 360 to Everyone:
+	Why union query runs slower (usually) compared to union all queries
+14:37:53 From Karthik to Ibridge 360(direct message):
+	when we want to add any string in result we use case statement. Ex	select age, (case when age<18 then 'minor' else 'major' end) from emp;
+14:37:55 From akshay to Ibridge 360(direct message):
+	delete from webvist where rowid not in(select 	max(rowid) from webvisit group by visit_id,site)
+14:37:58 From Prabhahar N to Ibridge 360(direct message):
+	delete from webvisit where rowid not  in ( select max(rowid) from webvisist group by visist_id)
+14:38:12 From Nidhi Arya to Ibridge 360(direct message):
+	select count(case (when gender='F' then 1 end) as female_count, count(case when gender = 'M' then 1 end) as male_count      from employee;
+14:38:29 From akshay to Ibridge 360(direct message):
+	first it needs order the records in a sorted order and it needs to remove the duplicates records
+14:38:45 From Ibridge 360 to Prabhahar N(direct message):
+	think about group by clauses
+14:38:47 From SRIREVATHI to Ibridge 360(direct message):
+	union will remove duplicates and give only unique records and it also sorts the result set so union is slower than union all
+14:39:01 From AMAR to Ibridge 360(direct message):
+	delete from webvisit where rowed not in (select max(rowid) from webvisit group by visit_id,site);
+14:39:02 From Cibi Chellasamy to Ibridge 360(direct message):
+	delete from webvisit	where rowed not in(select max(rowid) from webvitis	group by visit_id)
+14:39:05 From Prabhahar N to Ibridge 360(direct message):
+	union delete the duplicate and gives unioque records where union all combines the result of two query
+14:39:10 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	it takes time to check duplicate and remove so runs slower
+14:39:10 From Nitish S to Ibridge 360(direct message):
+	delete from webvisit where rowid not in (select max(rowid) from webvisit group by visit_id,site);
+14:39:23 From Ibridge 360 to Everyone:
+	What does implicit cursor mean in the database world?
+14:39:23 From Karthik to Ibridge 360(direct message):
+	delete from webvist	where rowed not in (select max(rowid) from wbvisit group by visit_id)
+14:39:35 From shanta to Ibridge 360(direct message):
+	delete from webvisit where rowed not in (select max(rowed) from webvisit group by visit_id,site);
+14:40:28 From Vimalan to Ibridge 360(direct message):
+	Union will check duplicates and remove the duplicates so it takes time compared to union all.
+14:40:38 From akshay to Ibridge 360(direct message):
+	when we write an select statement oracle itself open the cursor and give the record and closes the cursor it is internally handled by oracle itself
+14:40:39 From Ibridge 360 to Everyone:
+	What is the difference between synonyms and views?
+14:40:39 From Cibi Chellasamy to Ibridge 360(direct message):
+	because of duplicate elimination union is slower
+14:41:03 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	don't know sir
+14:41:07 From Karthik to Ibridge 360(direct message):
+	union all combines all the records of two results but	union combines records and eliminate common records because of two process it is slower
+14:41:09 From SRIREVATHI to Ibridge 360(direct message):
+	whenever we write select statement oracle by default opens a cursor and fetch the data ,so the user don't need to explicitly open and close the cursor all the things will be taken care by oracle
+14:41:22 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	What is the difference between synonyms and views? this question
+14:41:23 From Ibridge 360 to Everyone:
+	Select substr(‘dhivakar’,-1,-1) from dual -- What is the output
+14:42:02 From shanta to Everyone:
+	Replying to "Why union query runs..."
+	
+	union ->its performance is slow bez it takes time to find and then remove duplicate records
+14:42:07 From Nidhi Arya to Ibridge 360(direct message):
+	synonyms is an alter name for table while view is logical table which is extracted from one or more table
+14:42:11 From SRIREVATHI to Ibridge 360(direct message):
+	What is the difference between synonyms and views?	synonyms can be created on all db objects	where as views can be created ony on tables
+14:42:13 From Nitish S to Ibridge 360(direct message):
+	implicit cursor - cursor is automatically created when we use sql statements
+14:42:22 From Karthik to Ibridge 360(direct message):
+	implicit cursor mean in the database world is whenever you write a select statement internally it creates a implicit cursor and executes
+14:42:22 From AMAR to Ibridge 360(direct message):
+	because the union all return the duplicate rows union give remove the duplicate rows so union is run slower
+14:42:23 From akshay to Ibridge 360(direct message):
+	by using synonym we can give alternate name for everydatabase objects 	views are used for security purpose and for used to tables
+14:42:28 From Ibridge 360 to Everyone:
+	I have 2 emp tables with 5 records each. Name like emp1 and emp2. Now i delete the emp1 records and truncate the emp2 records after that I rollback this transaction. How many rows you will have in emp1 and emp2
+14:42:46 From SRIREVATHI to Everyone:
+	Replying to "Select substr(‘dhiva..."
+	
+	r
+14:42:50 From Prabhahar N to Ibridge 360(direct message):
+	r
+14:43:06 From Cibi Chellasamy to Ibridge 360(direct message):
+	Cursor which are created by oracle itself while executing certain statement inside function or procedure is called implicit cursor
+14:43:10 From Vimalan to Ibridge 360(direct message):
+	Implicit cursor is to retrieve multiple rows and without using the cursor keyword.its pointer to the other table.
+14:43:33 From Nidhi Arya to Ibridge 360(direct message):
+	union query run slowly bcz it check the data and remove duplicates while union all does not have to do this
+14:43:41 From Karthik to Ibridge 360(direct message):
+	Views is a virtual table which is created using one or more tables 	synonymns is a name given for database objects
+14:43:45 From SRIREVATHI to Ibridge 360(direct message):
+	both the tables don't have any records
+14:43:50 From Prabhahar N to Ibridge 360(direct message):
+	in emp 1 have 5 and emp2 have 0
+14:43:59 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	if it its 1 means it will take 'r', I don't know what it will take for -1
+14:44:13 From shanta to Everyone:
+	Replying to "Select substr(‘dhiva..."
+	
+	error
+14:44:22 From AMAR to Ibridge 360(direct message):
+	In the implicit cursor in the select statement if we have any error by its self only correct it
+14:44:30 From Ibridge 360 to Everyone:
+	1.       I have an emp table with 5 records. I write a following query what will be the output.	Select ename from emp where rownum = 3?
+14:44:40 From Nitish S to Ibridge 360(direct message):
+	synonym is an alternative name of db objects and it doesn't contain any data.	views are virtual table that contains a structure of a query.
+14:44:51 From Prabhahar N to Ibridge 360(direct message):
+	show in error
+14:44:58 From Vimalan to Ibridge 360(direct message):
+	Select substr(‘dhivakar’,-1,-1) from dual -- "r"
+14:45:01 From Nidhi Arya to Ibridge 360(direct message):
+	for remove duplicates     delete * from emp                      where rowed in (select min(rowid) from emp);
+14:45:03 From Ibridge 360 to Prabhahar N(direct message):
+	which one
+14:45:04 From Cibi Chellasamy to Ibridge 360(direct message):
+	a view is a logical table where synonym is is a alternative name
+14:45:17 From akshay to Ibridge 360(direct message):
+	we will not get any records
+14:45:22 From Prabhahar N to Ibridge 360(direct message):
+	row num
+14:45:24 From SRIREVATHI to Ibridge 360(direct message):
+	we will get the structure but we don't get any records
+14:45:43 From AMAR to Ibridge 360(direct message):
+	synonyms is nothing but the alternate name of the table , View is the copy of the original table
+14:45:52 From Nitish S to Ibridge 360(direct message):
+	Select substr(‘dhivakar’,-1,-1) from dual -- What is the output 	output - null
+14:46:03 From shanta to Everyone:
+	Replying to "I have 2 emp tables ..."
+	
+	5 records in emp1 and 0 records in emp2
+14:46:05 From Ibridge 360 to Everyone:
+	I have an dept table .In that dept table I have columns like deptno with primary key and dname with unique key. After that I insert vaue like this (insert into dept values(10,’’); insert into dept values(20,’’);), Does it allows null values second time ?
+14:46:11 From Nidhi Arya to Ibridge 360(direct message):
+	Q 1. It will return a singl record which has rownnum = 3
+14:46:38 From SRIREVATHI to Ibridge 360(direct message):
+	yes sir
+14:46:44 From Karthik to Ibridge 360(direct message):
+	Select substr(‘dhivakar’,-1,-1) from dual -- Error. Because third argument is length, it should not be in negative
+14:46:56 From Prabhahar N to Ibridge 360(direct message):
+	no in unique it will one null value
+14:47:05 From akshay to Ibridge 360(direct message):
+	it will allow
+14:47:14 From Nidhi Arya to Ibridge 360(direct message):
+	yes ... unique key can accept null values
+14:47:39 From Ibridge 360 to SRIREVATHI(direct message):
+	what are the types of statements in TCL you know
+14:47:45 From Karthik to Ibridge 360(direct message):
+	5 records in emp1 and 0 records in emp2
+14:47:48 From AMAR to Ibridge 360(direct message):
+	its allow
+14:47:55 From Ibridge 360 to Everyone:
+	what are the types of statements in TCL you know
+14:48:02 From Cibi Chellasamy to Ibridge 360(direct message):
+	Emplty string
+14:48:18 From Nidhi Arya to Ibridge 360(direct message):
+	ollback , commit, savepoint
+14:48:18 From SRIREVATHI to Ibridge 360(direct message):
+	commit,savepoint,rollback
+14:48:18 From akshay to Ibridge 360(direct message):
+	savepoint , commit, rollback
+14:48:23 From Nidhi Arya to Ibridge 360(direct message):
+	rollback*
+14:48:40 From Anugraha Sakthimohan to Everyone:
+	Replying to "I have an dept table..."
+	
+	I have an dept table .In that dept table I have columns like deptno with primary key and dname with unique key. After that I insert vaue like this (insert into dept values(10,’’); insert into dept values(20,’’);), Does it allows null values second time ?	it will not accept the empty values in the second time  for dname as it is unique.
+14:48:41 From AMAR to Ibridge 360(direct message):
+	commit ,rollback, savepoint
+14:48:47 From Karthik to Ibridge 360(direct message):
+	I have an emp table with 5 records. I write a following query what will be the output.	Select ename from emp where rownum = 3?	it will give only 3rd record ename
+14:48:53 From Prabhahar N to Ibridge 360(direct message):
+	commit savepoint rollback
+14:48:56 From Vimalan to Ibridge 360(direct message):
+	select ename
+	from (
+	    select ename, rownum as rnum
+	    from emp
+	    order by ename 
+	)
+	where rnum = 3;
+14:49:21 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	commit, rollback
+14:49:44 From Nitish S to Ibridge 360(direct message):
+	1.       I have an emp table with 5 records. I write a following query what will be the output.	Select ename from emp where rownum = 3?	no output will get
+14:50:00 From Karthik to Ibridge 360(direct message):
+	I have an dept table .In that dept table I have columns like deptno with primary key and dname with unique key. After that I insert vaue like this (insert into dept values(10,’’); insert into dept values(20,’’);), Does it allows null values second time ?	No sir, unique key will not allows null values second time
+14:50:30 From Karthik to Ibridge 360(direct message):
+	types of statements in TCL is grant and revoke
+14:51:06 From Nitish S to Ibridge 360(direct message):
+	I have 2 emp tables with 5 records each. Name like emp1 and emp2. Now i delete the emp1 records and truncate the emp2 records after that I rollback this transaction. How many rows you will have in emp1 and emp2		emp1 - 5	emp2 - 0
+14:51:07 From shanta to Everyone:
+	Replying to "what are the types o..."
+	
+	commit,rollback,save point
+14:51:56 From Cibi Chellasamy to Ibridge 360(direct message):
+	what are the types of statements in TCL you know		Commit	rollback	save poin
+14:52:43 From Nitish S to Ibridge 360(direct message):
+	what are the types of statements in TCL you know	rollback,commit,savepoint,flashback,purge
+14:55:42 From Nitish S to Ibridge 360(direct message):
+	I have an dept table .In that dept table I have columns like deptno with primary key and dname with unique key. After that I insert vaue like this (insert into dept values(10,’’); insert into dept values(20,’’);), Does it allows null values second time ? 	 	no we can't insert same but it allows null value.

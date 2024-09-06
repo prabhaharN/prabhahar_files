@@ -1,0 +1,17 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+403,404,1986,1,36,Brazilian Grand Prix,1986-03-23,\N,http://en.wikipedia.org/wiki/1986_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+404,405,1986,2,26,Spanish Grand Prix,1986-04-13,\N,http://en.wikipedia.org/wiki/1986_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+405,406,1986,3,21,San Marino Grand Prix,1986-04-27,\N,http://en.wikipedia.org/wiki/1986_San_Marino_Grand_Prix,testing,2024-07-19 09:54:18.999993
+406,407,1986,4,6,Monaco Grand Prix,1986-05-11,\N,http://en.wikipedia.org/wiki/1986_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+407,408,1986,5,13,Belgian Grand Prix,1986-05-25,\N,http://en.wikipedia.org/wiki/1986_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+408,409,1986,6,7,Canadian Grand Prix,1986-06-15,\N,http://en.wikipedia.org/wiki/1986_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+409,410,1986,7,37,Detroit Grand Prix,1986-06-22,\N,http://en.wikipedia.org/wiki/1986_Detroit_Grand_Prix,testing,2024-07-19 09:54:18.999993
+410,411,1986,8,34,French Grand Prix,1986-07-06,\N,http://en.wikipedia.org/wiki/1986_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+411,412,1986,9,38,British Grand Prix,1986-07-13,\N,http://en.wikipedia.org/wiki/1986_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+412,413,1986,10,10,German Grand Prix,1986-07-27,\N,http://en.wikipedia.org/wiki/1986_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+413,414,1986,11,11,Hungarian Grand Prix,1986-08-10,\N,http://en.wikipedia.org/wiki/1986_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+414,415,1986,12,23,Austrian Grand Prix,1986-08-17,\N,http://en.wikipedia.org/wiki/1986_Austrian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+415,416,1986,13,14,Italian Grand Prix,1986-09-07,\N,http://en.wikipedia.org/wiki/1986_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+416,417,1986,14,27,Portuguese Grand Prix,1986-09-21,\N,http://en.wikipedia.org/wiki/1986_Portuguese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+417,418,1986,15,32,Mexican Grand Prix,1986-10-12,\N,http://en.wikipedia.org/wiki/1986_Mexican_Grand_Prix,testing,2024-07-19 09:54:18.999993
+418,419,1986,16,29,Australian Grand Prix,1986-10-26,\N,http://en.wikipedia.org/wiki/1986_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993

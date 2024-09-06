@@ -1,0 +1,153 @@
+List Comprehension:
+1Generate a list of even numbers from 1 to 20 using list comprehension.
+
+even_numbers = [x for x in range(1, 21) if x % 2 == 0]
+
+2Create a list of cubes for the numbers 1 to 10 using list comprehension.
+
+cubes = [x**3 for x in range(1, 11)]
+
+3Write a list comprehension to get the square roots of numbers from 1 to 10.
+
+import math
+square_roots = [math.sqrt(x) for x in range(1, 11)]
+
+4Generate a list of strings by concatenating each number from 1 to 5 with the letter 'A'.
+
+concatenated_list = [str(x) + 'A' for x in range(1, 6)]
+
+5Create a list of tuples where each tuple contains a number and its square.
+
+tuples_list = [(x, x**2) for x in range(1, 11)]
+
+Dictionary Comprehension:
+6. Build a dictionary where keys are numbers from 1 to 5, and values are their cubes.
+
+cubes_dict = {x: x**3 for x in range(1, 6)}
+
+7Create a dictionary with keys as vowels and values as their ASCII values.
+
+vowels_ascii = {char: ord(char) for char in 'aeiou'}
+
+8Write a dictionary comprehension to count the frequency of each character in a given string.
+
+string = "Pythonprogramming"
+frequency = {char: string.count(char) for char in set(string)}
+
+9Generate a dictionary where keys are even numbers from 1 to 10, and values are their squares.
+
+even_squares_dict = {x: x**2 for x in range(1, 11) if x % 2 == 0}
+
+10Build a dictionary mapping words to their lengths in a given sentence.
+
+sentence = "dictionary comprehension in Python"
+word_lengths = {word: len(word) for word in sentence.split(' ')}
+
+
+Set Comprehension:
+11. Generate a set of odd numbers from 1 to 15 using set comprehension.
+
+odd_numbers_set = {x for x in range(1, 16) if x % 2 != 0}
+
+12Create a set of the first letter of each word in a sentence.
+
+sentence = "sentence using set comprehension in Python"
+first_letters_set = {word[0] for word in sentence.split()}
+
+13Write a set comprehension to get unique vowels from a sentence.
+
+sentence = "Pythonprogramming"
+vowels = {'a', 'e', 'i', 'o', 'u'}
+unique_vowels = {char for char in sentence.lower() if char in vowels}
+
+14Build a set of square numbers from 1 to 10 using set comprehension.
+
+squares_set = {x**2 for x in range(1, 11)}
+
+15Generate a set of prime numbers less than 20 using set comprehension.
+
+primes_set = {x for x in range(2, 20) if all(x % y != 0 for y in range(2, int(x**0.5) + 1))}
+
+Nested Comprehension:
+16. Create a list of lists where each inner list contains the first three multiples of the corresponding number in the outer list.
+
+multiples_list = [[i * j for j in range(1, 4)] for i in range(1, 11)]
+
+17Generate a nested dictionary where keys are numbers from 1 to 3, and values are dictionaries with keys as numbers from 1 to 5 and values as their squares.
+
+nested_dict = {i: {j: j**2 for j in range(1, 6)} for i in range(1, 4)}
+
+18Build a list of tuples where each tuple contains a letter and its corresponding ASCII value for all letters in the word "PYTHON".
+
+ascii_tuples = [(char, ord(char)) for char in "PYTHON"]
+
+19Create a list of lists where each inner list contains numbers from 1 to the outer list's index.
+
+nested_list = [[j for j in range(1, i+1)] for i in range(1, 11)]
+
+20Generate a nested set where each inner set contains vowels from a word and its reverse.
+
+word = "Pythonprogramming"
+vowels = {'a', 'e', 'i', 'o', 'u'}
+nested_vowels_set = {frozenset({char for char in word if char in vowels}), 
+                     frozenset({char for char in word[::-1] if char in vowels})}
+
+Conditional Comprehension:
+21. Write a list comprehension to get only even squares from the numbers 1 to 10.
+
+even_squares = [x**2 for x in range(1, 11) if x % 2 == 0]
+
+22Create a dictionary comprehension to exclude items with values less than 5 from a given dictionary.
+
+given_dict = {"a": 1, "b": 5, "c": 10, "d": 2}
+filtered_dict = {k: v for k, v in given_dict.items() if v >= 5}
+
+23Generate a list of numbers from 1 to 50 that are divisible by either 3 or 5 using conditional list comprehension.
+
+divisible_by_3_or_5 = [x for x in range(1, 51) if x % 3 == 0 or x % 5 == 0]
+
+24Build a list of strings from a given list, excluding those with a length less than 4.
+
+given_list = ["apple", "bat", "cat", "dog", "elephant"]
+filtered_list = [word for word in given_list if len(word) >= 4]
+
+25Write a set comprehension to get the squares of even numbers and cubes of odd numbers from 1 to 10.
+
+squares_cubes_set = {x**2 if x % 2 == 0 else x**3 for x in range(1, 11)}
+
+Advanced Comprehension:
+26. Use the zip function with list comprehension to create a list of pairs from two lists.
+
+list1 = [1, 2, 3]
+list2 = ['a', 'b', 'c']
+paired_list = [(x, y) for x, y in zip(list1, list2)]
+
+27Create a generator expression to yield Fibonacci numbers up to 100.
+
+def fib_gen(max_value):
+    a, b = 0, 1
+    while a < max_value:
+        yield a
+        a, b = b, a + b
+fibonacci = fib_gen(100)
+print(list(fibonacci))
+
+28Implement a nested list comprehension to flatten a 2D list.
+
+two_d_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+flattened_list = [item for sublist in two_d_list for item in sublist]
+
+print(flattened_list)
+
+29Write a dictionary comprehension using enumerate to map a list of words to their length and index.
+
+words = ["hello", "world", "python", "programming"]
+word_info = {index: (word, len(word)) for index, word in enumerate(words)}
+print(word_info)
+
+30Generate a list of tuples where each tuple contains two numbers from the range 1 to 5, but only if they are different.
+
+number_range = range(1, 6)
+tuples_list = [(a, b) for a in number_range for b in number_range if a != b]
+print(tuples_list)

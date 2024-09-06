@@ -1,0 +1,217 @@
+Feb 1st assignment using list, tuple, set, dict
+==================================================
+1) enter any 10 numbers in a list
+   convert list to tuple
+   iterate the tuple and display all the elements
+   sort the tuple in DESC order, display the highest and sec highest 
+   element using the INDEX position
+   (no max() to be used)
+---------------------code------------------------------
+l1=[45,92,30,59,5,11,23,45,67,89]
+t1=tuple(l1)
+for i in t1:
+    print(i)
+l=len(l1)    
+for i in range(l):
+    for j in range (i+1,l):
+        if l1[i]>=l1[j]:
+            l1[i],l1[j]=l1[j],l1[i]
+t2=tuple(l1[::-1])
+print('numbers are sorted descending ',t2)
+print('highest number is ',t2[0]) 
+print('second highest number is ',t2[1])
+--------------------output-----------------------------
+45
+92
+30
+59
+5
+11
+23
+45
+67
+89
+numbers are sorted descending  (92, 89, 67, 59, 45, 45, 30, 23, 11, 5)
+highest number is  92
+second highest number is  89
+==========================================================
+
+2) enter any 10 numbers (use while) in a set
+   if the inputted number is already there in set
+   then ignore counting that number and re-enter NEW number
+   after 10 numbers are entered, find the following
+   total of all elements
+   highest element, lowest element
+   avg value
+   (use max(),min(),sum() - ONLY for verification, write your onw logic)
+---------------------code------------------------------
+s=set()
+l=len(s)
+total=0
+maxi=0
+mini=0
+while l<10:
+    num=int(input('enter number : '))
+    s.add(num)
+    l=len(s)
+for i in s:
+    if total==0:
+        maxi,mini=i,i
+    if maxi<=i:
+        maxi=i
+    if mini>=i:
+        mini=i    
+    total=total+i
+print('total='total)  
+print('maxi=',maxi)
+print('mini=',mini)
+--------------------output-----------------------------
+enter number : 23
+enter number : 43
+enter number : 65
+enter number : 78
+enter number : 97
+enter number : 90
+enter number : 72
+enter number : 42
+enter number : 54
+enter number : 87
+total=651
+maxi=97
+mini=23
+==========================================================
+3) data1 = [56,12,89,10,12,5,99,19,89,56,11,11,5,20,25,56,17,29,4,5,10]
+   how many unique elements are there
+   find which numbers are duplicate
+   replace all 12 with 13 and all 25 with 35 - when data1 is converted to set
+---------------------code------------------------------
+data1 = [56,12,89,10,12,5,99,19,89,56,11,11,5,20,25,56,17,29,4,5,10] 
+d=[]
+count=0
+for i in data1:
+    c=0
+    for j in data1:
+       if i ==j:
+           c=c+1
+    if c>1:
+        if i not in d:
+            d.append(i)
+    if c==1:
+        count=count+1
+        
+print('count of unique numbers is ',count) 
+print('duplicate number are ',d)
+
+for i in data1:
+    if i ==12 :
+        s=13
+        data1.append(s)
+        data1.remove(i)
+    if i ==25 :
+        s=35
+        data1.append(s)
+        data1.remove(i)    
+set1=set(data1)
+print(set1)
+--------------------output-----------------------------
+count of unique numbers is  7
+duplicate number are  [56, 12, 89, 10, 5, 11]
+{99, 4, 5, 35, 10, 11, 13, 17, 19, 20, 56, 89, 29}
+==========================================================
+4) { 'blore' : [12,4,5,19], 'Mysore' : (2,19,135,3,49) , 'hubli' : { 22,31,4,21,31}, d1 , d2 }
+   where d1 =  {'mlore' : [29,32,77,2,10,4]}
+         d2 =  {'belgaum': (2,5,50,9,18,29,1)
+   process the value part - sum all the number
+   ----output----
+   find the avg,highest, lowest 
+   the highest and lowest are for which key?
+---------------------code------------------------------
+d3={ 'blore' : [12,4,5,19], 'Mysore' : (2,19,135,3,49) , 'hubli' : { 22,31,4,21,31},'mlore' : [29,32,77,2,10,4] , 'belgaum': (2,5,50,9,18,29,1) }  
+total=0
+maxi=0
+mini=0
+place_maxi=''
+place_min=''
+for x,y in d3.items():
+    for i in y:
+        if total==0:
+            maxi,mini=i,i
+        if maxi<=i:
+            maxi=i
+            place_maxi=x
+        if mini>=i:
+            mini=i 
+            place_mini=x
+        total=total+i
+print('total = ',total)  
+print('maxi = ',maxi)
+print('mini = ',mini)
+print ('key for maxi is ',place_maxi)        
+print ('key for maxi is ',place_mini)
+--------------------output-----------------------------
+total =  594
+maxi =  135
+mini =  1
+key for maxi is  Mysore
+key for maxi is  belgaum
+==========================================================
+   remove 'mysore'
+   reprocess the logic - written above - what is the output?
+---------------------code------------------------------
+d3={ 'blore' : [12,4,5,19] , 'hubli' : { 22,31,4,21,31},'mlore' : [29,32,77,2,10,4] , 'belgaum': (2,5,50,9,18,29,1) }  
+total=0
+maxi=0
+mini=0
+place_maxi=''
+place_min=''
+for x,y in d3.items():
+    for i in y:
+        if total==0:
+            maxi,mini=i,i
+        if maxi<=i:
+            maxi=i
+            place_maxi=x
+        if mini>=i:
+            mini=i 
+            place_mini=x
+        total=total+i
+print('total = ',total)  
+print('maxi = ',maxi)
+print('mini = ',mini)
+print ('key for maxi is ',place_maxi)        
+print ('key for maxi is ',place_mini)
+--------------------output-----------------------------
+total =  386
+maxi =  77
+mini =  1
+key for maxi is  mlore
+key for maxi is  belgaum
+==========================================================
+   remove d2
+   reprocess the logic - written above - what is the output?
+---------------------code------------------------------
+d3={ 'blore' : [12,4,5,19], 'Mysore' : (2,19,135,3,49) , 'hubli' : { 22,31,4,21,31},'mlore' : [29,32,77,2,10,4] }  
+total=0
+maxi=0
+mini=0
+place_maxi=''
+place_min=''
+for x,y in d3.items():
+    for i in y:
+        if total==0:
+            maxi,mini=i,i
+        if maxi<=i:
+            maxi=i
+            place_maxi=x
+        if mini>=i:
+            mini=i 
+            place_mini=x
+        total=total+i
+print('total = ',total)  
+print('maxi = ',maxi)
+print('mini = ',mini)
+print ('key for maxi is ',place_maxi)        
+print ('key for maxi is ',place_mini)
+--------------------output-----------------------------
+==========================================================
+***********

@@ -1,0 +1,42 @@
+
+
+import pandas as pd
+
+
+prod_yearly_sales_df=pd.DataFrame(columns=['prod_id','year','sales'])
+prod_yearly_sales_df
+
+prod_id=[10002,10002,10002,10003,10003,10002,10003,10002,10003]
+year=[2010,2011,2012,2013,2014,2013,2015,2017,2017]
+sales=[4500090,5500070,5700080,3000000,3250000,5000000,3100000,5000000,4100000]
+prod_yearly_sales_df['prod_id']=prod_id
+prod_yearly_sales_df['year']=year
+prod_yearly_sales_df['sales']=sales
+prod_yearly_sales_df
+
+prod_id=prod_yearly_sales_df['prod_id'].unique()
+prod_id
+
+prod_max_year=prod_yearly_sales_df['year'].max()
+prod_max_year
+
+year_prod_sales=pd.DataFrame()
+year_prod_sales['year']=range(prod_min_year,prod_max_year+1)
+year_prod_sales
+
+
+for i in prod_id:
+    df=pd.DataFrame()
+    column=f'prod_{i}'
+    df['year']=prod_yearly_sales_df[prod_yearly_sales_df['prod_id']==i]['year']
+    df[column]='sales yes'
+    year_prod_sales=pd.merge(year_prod_sales,df,how='left',left_on='year', right_on='year')
+    year_prod_sales
+
+year_prod_sales.fillna('sales no')
+
+print(year_prod_sales)
+
+
+
+

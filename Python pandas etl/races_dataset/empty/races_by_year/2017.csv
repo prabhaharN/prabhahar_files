@@ -1,0 +1,21 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+956,969,2017,1,1,Australian Grand Prix,2017-03-26,05:00:00,https://en.wikipedia.org/wiki/2017_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+957,970,2017,2,17,Chinese Grand Prix,2017-04-09,06:00:00,https://en.wikipedia.org/wiki/2017_Chinese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+958,971,2017,3,3,Bahrain Grand Prix,2017-04-16,15:00:00,https://en.wikipedia.org/wiki/2017_Bahrain_Grand_Prix,testing,2024-07-19 09:54:18.999993
+959,972,2017,4,71,Russian Grand Prix,2017-04-30,12:00:00,https://en.wikipedia.org/wiki/2017_Russian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+960,973,2017,5,4,Spanish Grand Prix,2017-05-14,12:00:00,https://en.wikipedia.org/wiki/2017_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+961,974,2017,6,6,Monaco Grand Prix,2017-05-28,12:00:00,https://en.wikipedia.org/wiki/2017_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+962,975,2017,7,7,Canadian Grand Prix,2017-06-11,18:00:00,https://en.wikipedia.org/wiki/2017_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+963,976,2017,8,73,Azerbaijan Grand Prix,2017-06-25,13:00:00,https://en.wikipedia.org/wiki/2017_Azerbaijan_Grand_Prix,testing,2024-07-19 09:54:18.999993
+964,977,2017,9,70,Austrian Grand Prix,2017-07-09,12:00:00,https://en.wikipedia.org/wiki/2017_Austrian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+965,978,2017,10,9,British Grand Prix,2017-07-16,12:00:00,https://en.wikipedia.org/wiki/2017_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+966,979,2017,11,11,Hungarian Grand Prix,2017-07-30,12:00:00,https://en.wikipedia.org/wiki/2017_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+967,980,2017,12,13,Belgian Grand Prix,2017-08-27,12:00:00,https://en.wikipedia.org/wiki/2017_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+968,981,2017,13,14,Italian Grand Prix,2017-09-03,12:00:00,https://en.wikipedia.org/wiki/2017_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+969,982,2017,14,15,Singapore Grand Prix,2017-09-17,12:00:00,https://en.wikipedia.org/wiki/2017_Singapore_Grand_Prix,testing,2024-07-19 09:54:18.999993
+970,983,2017,15,2,Malaysian Grand Prix,2017-10-01,07:00:00,https://en.wikipedia.org/wiki/2017_Malaysian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+971,984,2017,16,22,Japanese Grand Prix,2017-10-08,05:00:00,https://en.wikipedia.org/wiki/2017_Japanese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+972,985,2017,17,69,United States Grand Prix,2017-10-22,19:00:00,https://en.wikipedia.org/wiki/2017_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+973,986,2017,18,32,Mexican Grand Prix,2017-10-29,19:00:00,https://en.wikipedia.org/wiki/2017_Mexican_Grand_Prix,testing,2024-07-19 09:54:18.999993
+974,987,2017,19,18,Brazilian Grand Prix,2017-11-12,16:00:00,https://en.wikipedia.org/wiki/2017_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+975,988,2017,20,24,Abu Dhabi Grand Prix,2017-11-26,13:00:00,https://en.wikipedia.org/wiki/2017_Abu_Dhabi_Grand_Prix,testing,2024-07-19 09:54:18.999993

@@ -1,0 +1,41 @@
+What does this star schemas are used for?
+
+	What kind of data we are dealing here?
+
+	How many star schemas you see in this model?
+
+	Which fact table will have more records and why?
+
+	If I have one policy where customer pays 20 premiums over 20 months, policy started on 1-JAN-2024
+
+	How many records you will have in policy premium expected fact ? How many records you will have in policty premium paid fact?
+
+	Write a query to show the expected premium amount for an agent 'UMA' this month
+
+	Write a query to know agentwise, customerwise, policy count. Consider only records which has more than 5 policies
+
+	What is the premium we received in the last month
+
+	Want to see month_name, excepted policy amount, actual received amount for each month in the current year
+
+	Want to see the policies from where we missed the payment for last month? What is your logic. Write the query for the same
+
+	what is the purpose of period table you see in the system?
+
+
+
+we connect dimensional table and fact table based on this star schema
+
+	polices data
+
+	2 star schema
+
+	20  records in expected fact and 6 records in paid fact
+
+	select amount from expect_fact where agent='UMA' and  extract( month  from date)=6 and extract( year  from date)=2024
+
+	select agent_name, customer_name,count(policy) from expected_fact group by agent_name, customer_name having count(policy)>5
+
+	select sum(amount) from paid_fact where to_char( date, 'mm-yyyy')like '05-2024'
+
+	select to_char(e.date, 'mmmm') , sum(e.amount) , sum( p.amount) from expected_fact e left join paid_fact p on e.date=p.date and e.customer_name= p.customer_name and e.agent_name= p.agent_name where extract(year from date)= 2024 group by to_char(e.date, 'mmmm')

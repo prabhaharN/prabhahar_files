@@ -1,0 +1,87 @@
+elect * from customer1;
+select * from accounts1;
+select * from transaction1;
+commit;
+
+select * from customer1;
+
+--1)Display the male customer who are male and their name starts with S
+select cust_name,gender from customer1
+where gender like 'M' and cust_name like 'S%';
+
+--2)Display the customer who have the highest balance across all account types
+select cust_name  from
+customer1 c join accounts1 a
+on c.cust_bkey = a.cust_bkey
+where a.balance = (select max(balance) from accounts1);
+
+
+
+--3) Display all customer with their no accounts they hold
+
+select cust_name,count(a.cust_bkey) as no_of_accounts
+from
+customer1 c join accounts1 a
+on c.cust_bkey = a.cust_bkey
+group by cust_name;
+
+
+--4)Display customer name and transaction type wise transaction amounts
+selectcust_name,txn_type,txn_amt
+from customer1 c join accounts1 a
+on c.cust_bkey = a.cust_bkey
+join transaction1 t on 
+a.a_no = t.a_no;
+
+
+--5)Display city id wise no of male and female customers
+
+
+select city_id,
+count(case when gender =  'M' then 1 end) as Male,
+count (case when gender  = 'F' then 1 end)as Female
+from customer1
+group by city_id;
+
+
+--6)Display the city id that have more number of customers than city id 2
+select city_id from (select city_id,count(*)no_cust from customer1
+group by city_id) 
+where no_cust > (select count(*) from customer1
+where city_id = 2);
+
+--7)Display the customer name who have the highest balance 
+select cust_name  from
+customer1 c join accounts1 a
+on c.cust_bkey = a.cust_bkey
+where a.balance = (select max(balance) from accounts1);
+
+--8)Display the which is the common act_type hold by 'DIVYA' and 'ARUN'
+
+select act_type
+from customer1 c join accounts1 a
+on c.cust_bkey = a.cust_bkey
+where c.cust_name = 'DIVYA' or cust_name = 'ARUN'
+group by act_type;
+
+
+
+--9)Extract Customer email id user name without domain (example from arun@gmail.com 
+--I have see only arun)
+
+select substr(email,1,instr(email,'@')-1)as name from customer1;
+
+--10)Display customer who had 2nd highest transaction amount
+
+select cust_name,max(txn_amt)as second_highest
+from (select cust_name,txn_amt,dense_rank() over(order by txn_amt desc) rnk
+from customer1 c join accounts1 a
+on c.cust_bkey = a.cust_bkey
+join transaction1 t on 
+a.a_no = t.a_no)
+where rnk = 2
+group by cust_name;
+
+
+movie
+movie is not word it a emotion .Because if we saw a movie it makes as happy, sad , cry,enjoy. and we saw that who are acting ina movie they are rich but everyone has feeling so don't hur the felling of others and always happy. movie can tells some nice morals and we can use them in our life and avoid bad things that we saw in a movie.so everyone watch movie and enjoy.  

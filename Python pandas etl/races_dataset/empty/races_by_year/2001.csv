@@ -1,0 +1,18 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+140,141,2001,1,1,Australian Grand Prix,2001-03-04,\N,http://en.wikipedia.org/wiki/2001_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+141,142,2001,2,2,Malaysian Grand Prix,2001-03-18,\N,http://en.wikipedia.org/wiki/2001_Malaysian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+142,143,2001,3,18,Brazilian Grand Prix,2001-04-01,\N,http://en.wikipedia.org/wiki/2001_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+143,144,2001,4,21,San Marino Grand Prix,2001-04-15,\N,http://en.wikipedia.org/wiki/2001_San_Marino_Grand_Prix,testing,2024-07-19 09:54:18.999993
+144,145,2001,5,4,Spanish Grand Prix,2001-04-29,\N,http://en.wikipedia.org/wiki/2001_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+145,146,2001,6,23,Austrian Grand Prix,2001-05-13,\N,http://en.wikipedia.org/wiki/2001_Austrian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+146,147,2001,7,6,Monaco Grand Prix,2001-05-27,\N,http://en.wikipedia.org/wiki/2001_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+147,148,2001,8,7,Canadian Grand Prix,2001-06-10,\N,http://en.wikipedia.org/wiki/2001_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+148,149,2001,9,20,European Grand Prix,2001-06-24,\N,http://en.wikipedia.org/wiki/2001_European_Grand_Prix,testing,2024-07-19 09:54:18.999993
+149,150,2001,10,8,French Grand Prix,2001-07-01,\N,http://en.wikipedia.org/wiki/2001_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+150,151,2001,11,9,British Grand Prix,2001-07-15,\N,http://en.wikipedia.org/wiki/2001_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+151,152,2001,12,10,German Grand Prix,2001-07-29,\N,http://en.wikipedia.org/wiki/2001_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+152,153,2001,13,11,Hungarian Grand Prix,2001-08-19,\N,http://en.wikipedia.org/wiki/2001_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+153,154,2001,14,13,Belgian Grand Prix,2001-09-02,\N,http://en.wikipedia.org/wiki/2001_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+154,155,2001,15,14,Italian Grand Prix,2001-09-16,\N,http://en.wikipedia.org/wiki/2001_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+155,156,2001,16,19,United States Grand Prix,2001-09-30,\N,http://en.wikipedia.org/wiki/2001_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+156,157,2001,17,22,Japanese Grand Prix,2001-10-14,\N,http://en.wikipedia.org/wiki/2001_Japanese_Grand_Prix,testing,2024-07-19 09:54:18.999993

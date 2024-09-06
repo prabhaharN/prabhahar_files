@@ -1,0 +1,73 @@
+Consider School student mangement system using python programm to manage student records and perform various tasks efficiently.
+
+list of requirement
+1 Storing student information like roll_no,name,age,grade
+2 Display student information on need basis(complete or perticular student)
+3 promote the student into next grade and print message
+4 Display student information by accepting grade from end user
+
+
+student_records={}
+
+process = int(input('''Enter number:
+1 - Store student details
+2 - Display student details
+3 - Promote student
+4 - Search students by grade
+: '''))
+if process==1:
+    student_name=(input('enter name : '))
+    roll_no = int(input('enter roll_no : '))
+    age=int(input('enter age : '))
+    grade=int(input('enter grade : '))
+
+    if (len(str(roll_no))>3) and (age>4) and (student_name.isalpha()) and (grade in range(1,13) :
+        student_detail={roll_no:[student_name,age,grade]}
+        student_records.update(student_detail)
+        print('student detail stored')
+    else:
+        print('input is worng')
+    
+if process==2:
+    option=int(input('''enter option 
+    1-all_stud_details",
+    2 - particular
+    : '''))
+    if option==1:
+        print(student_records)
+    elif option ==2:
+        rl_no=int(input('enter roll_no : '))
+        if rl_no in student_records:
+            print(student_records[rl_no])
+        else:
+            print('no roll_no ')
+    else:
+        print('invalid option')
+elif process==3:
+    rl_no=int(input('enter roll_no : '))
+    if rl_no in student_records:
+        dlts=student_records[rl_no]
+        cur_grd=dlts[2]
+        if cur_grd<12:
+            nxt_grd=cur_grd+1
+            dlts[2]=nxt_grd
+            print(f'Student promoted from grade {cur_grd} to {nxt_grd}.')
+        else:
+            print('Student has completed school')
+    else:
+        print('No student with that roll number.')
+
+elif process==4:
+    stud_info=int(input('enter grade : '))
+    c=0
+    for i in student_records:
+        if stud_info==student_records[i][2]:
+            print(student_records[i])
+        else:
+            c=c+1
+    if len(student_records)==c:
+        print('No students in that grade.')
+    
+
+else:
+    print('invalid process')

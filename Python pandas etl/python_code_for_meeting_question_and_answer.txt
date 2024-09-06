@@ -1,0 +1,60 @@
+name_to_search_answer=str(input('enter name : '))
+file_name=str(input('enter file name : '))
+#'meeting_saved_chat_understanding_star_schema_writing_queries.txt'
+
+with open(file_name, 'r', encoding='utf-8') as file:
+    data1 = file.read()
+    file.close() 
+  
+   
+if name_to_search_answer in data1:
+    with open(file_name, 'r', encoding='utf-8') as file:
+        data = file.readlines()
+        file.close()
+    question=[]
+    for i in data:
+        if  ('From Ibridge 360 to Everyone' in i)  or (f'From Ibridge 360 to {name_to_search_answer}' in i) :
+            indx=data.index(i)
+            dat=data[indx+1:]
+            for j in dat:
+                if ('to Ibridge 360' in j) or( 'to Everyone' in j) or ('From Ibridge 360 to' in j) :
+                    nxt_indx=data.index(j)
+                    ques=data[indx+1:nxt_indx]
+                    if len(ques) >1:
+                        ques='-'.join(ques)
+                        ques=ques.split('`')
+                        question.append(ques)
+                        break
+                    else:
+                        question.append(ques)
+                        break
+
+    answer=[]
+    for i in data:
+        if  (f'From {name_to_search_answer} to Everyone' in i) or (f'From {name_to_search_answer} to Ibridge 360' in i):
+            indx=data.index(i)
+            dat=data[indx+1:]
+            for j in dat:
+                if ('to Ibridge 360' in j) or( 'to Everyone' in j) or ('From Ibridge 360 to' in j) :
+                    nxt_indx=data.index(j)
+                    ans=data[indx+1:nxt_indx]
+                    if len(ans) >1:
+                        ans='-'.join(ans)
+                        ans=ans.split('`')
+                        answer.append(ans)
+                        break
+                    else:
+                        answer.append(ans)
+                        break
+       
+    print('----------------Question--------------------------')
+    for i in question :
+         for j in i:
+             print(j)    
+    print('----------------Answer--------------------------')
+    for i in answer:
+        for j in i:
+            print(j)     
+
+else:
+    print('enter the user name that you use in zoom chat')

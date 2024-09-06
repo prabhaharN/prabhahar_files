@@ -1,0 +1,18 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+123,124,2002,1,1,Australian Grand Prix,2002-03-03,\N,http://en.wikipedia.org/wiki/2002_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+124,125,2002,2,2,Malaysian Grand Prix,2002-03-17,\N,http://en.wikipedia.org/wiki/2002_Malaysian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+125,126,2002,3,18,Brazilian Grand Prix,2002-03-31,\N,http://en.wikipedia.org/wiki/2002_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+126,127,2002,4,21,San Marino Grand Prix,2002-04-14,\N,http://en.wikipedia.org/wiki/2002_San_Marino_Grand_Prix,testing,2024-07-19 09:54:18.999993
+127,128,2002,5,4,Spanish Grand Prix,2002-04-28,\N,http://en.wikipedia.org/wiki/2002_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+128,129,2002,6,23,Austrian Grand Prix,2002-05-12,\N,http://en.wikipedia.org/wiki/2002_Austrian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+129,130,2002,7,6,Monaco Grand Prix,2002-05-26,\N,http://en.wikipedia.org/wiki/2002_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+130,131,2002,8,7,Canadian Grand Prix,2002-06-09,\N,http://en.wikipedia.org/wiki/2002_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+131,132,2002,9,20,European Grand Prix,2002-06-23,\N,http://en.wikipedia.org/wiki/2002_European_Grand_Prix,testing,2024-07-19 09:54:18.999993
+132,133,2002,10,9,British Grand Prix,2002-07-07,\N,http://en.wikipedia.org/wiki/2002_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+133,134,2002,11,8,French Grand Prix,2002-07-21,\N,http://en.wikipedia.org/wiki/2002_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+134,135,2002,12,10,German Grand Prix,2002-07-28,\N,http://en.wikipedia.org/wiki/2002_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+135,136,2002,13,11,Hungarian Grand Prix,2002-08-18,\N,http://en.wikipedia.org/wiki/2002_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+136,137,2002,14,13,Belgian Grand Prix,2002-09-01,\N,http://en.wikipedia.org/wiki/2002_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+137,138,2002,15,14,Italian Grand Prix,2002-09-15,\N,http://en.wikipedia.org/wiki/2002_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+138,139,2002,16,19,United States Grand Prix,2002-09-29,\N,http://en.wikipedia.org/wiki/2002_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+139,140,2002,17,22,Japanese Grand Prix,2002-10-13,\N,http://en.wikipedia.org/wiki/2002_Japanese_Grand_Prix,testing,2024-07-19 09:54:18.999993

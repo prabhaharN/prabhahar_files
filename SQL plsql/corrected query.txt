@@ -1,0 +1,45 @@
+1) Find the top 2 months of sales in the year 2023
+
+SELECT * FROM
+(dense_rnk() over(partition by total_cost order by yyyy) d_rnk
+FROM sales_fact sf
+INNER JOIN date_id d
+ON sf.date_id = d.date_id)
+WHERE d_rnk >= 2 and yyyy = 2023;
+
+corrected query
+
+select month from (select to_char(date,'mmmm') as month ,dense_rank()over( order by total_sales desc) as rnk 
+from sales_fact sf
+INNER JOIN date_id d
+ON sf.date_id = d.date_id
+where year =2023
+group by to_char(date,'mmmm'))where rnk<=2
+
+
+2)List the product name, year, total qty sold. I should see only one record per product in each year.
+
+SELECT DISTINCT(prod_name,yyyy), (tot_qty * total_cost) as total_qty_sold
+FROM sales_fact sf
+INNER JOIN date_id d
+ON sf.date_id = d.date_id
+INNER JOIN prod_sur_id ps
+ON sf.prod_sur_id = ps.prod_sur_id
+
+
+corrected query:
+
+select prod_name ,year,sum(tot_qty * total_cost) as total_qty_sold
+from FROM sales_fact sf
+INNER JOIN date_id d
+ON sf.date_id = d.date_id
+INNER JOIN prod_sur_id ps
+ON sf.prod_sur_id = ps.prod_sur_id
+group by product_name,year
+order by year
+
+
+
+
+
+

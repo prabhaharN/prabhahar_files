@@ -1,0 +1,22 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+935,948,2016,1,1,Australian Grand Prix,2016-03-20,05:00:00,https://en.wikipedia.org/wiki/2016_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+936,949,2016,2,3,Bahrain Grand Prix,2016-04-03,15:00:00,https://en.wikipedia.org/wiki/2016_Bahrain_Grand_Prix,testing,2024-07-19 09:54:18.999993
+937,950,2016,3,17,Chinese Grand Prix,2016-04-17,06:00:00,https://en.wikipedia.org/wiki/2016_Chinese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+938,951,2016,4,71,Russian Grand Prix,2016-05-01,12:00:00,https://en.wikipedia.org/wiki/2016_Russian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+939,952,2016,5,4,Spanish Grand Prix,2016-05-15,12:00:00,https://en.wikipedia.org/wiki/2016_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+940,953,2016,6,6,Monaco Grand Prix,2016-05-29,12:00:00,https://en.wikipedia.org/wiki/2016_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+941,954,2016,7,7,Canadian Grand Prix,2016-06-12,18:00:00,https://en.wikipedia.org/wiki/2016_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+942,955,2016,8,73,European Grand Prix,2016-06-19,13:00:00,https://en.wikipedia.org/wiki/2016_European_Grand_Prix,testing,2024-07-19 09:54:18.999993
+943,956,2016,9,70,Austrian Grand Prix,2016-07-03,12:00:00,https://en.wikipedia.org/wiki/2016_Austrian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+944,957,2016,10,9,British Grand Prix,2016-07-10,12:00:00,https://en.wikipedia.org/wiki/2016_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+945,958,2016,11,11,Hungarian Grand Prix,2016-07-24,12:00:00,https://en.wikipedia.org/wiki/2016_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+946,959,2016,12,10,German Grand Prix,2016-07-31,12:00:00,https://en.wikipedia.org/wiki/2016_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+947,960,2016,13,13,Belgian Grand Prix,2016-08-28,12:00:00,https://en.wikipedia.org/wiki/2016_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+948,961,2016,14,14,Italian Grand Prix,2016-09-04,12:00:00,https://en.wikipedia.org/wiki/2016_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+949,962,2016,15,15,Singapore Grand Prix,2016-09-18,12:00:00,https://en.wikipedia.org/wiki/2016_Singapore_Grand_Prix,testing,2024-07-19 09:54:18.999993
+950,963,2016,16,2,Malaysian Grand Prix,2016-10-02,07:00:00,https://en.wikipedia.org/wiki/2016_Malaysian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+951,964,2016,17,22,Japanese Grand Prix,2016-10-09,05:00:00,https://en.wikipedia.org/wiki/2016_Japanese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+952,965,2016,18,69,United States Grand Prix,2016-10-23,19:00:00,https://en.wikipedia.org/wiki/2016_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+953,966,2016,19,32,Mexican Grand Prix,2016-10-30,19:00:00,https://en.wikipedia.org/wiki/2016_Mexican_Grand_Prix,testing,2024-07-19 09:54:18.999993
+954,967,2016,20,18,Brazilian Grand Prix,2016-11-13,16:00:00,https://en.wikipedia.org/wiki/2016_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+955,968,2016,21,24,Abu Dhabi Grand Prix,2016-11-27,13:00:00,https://en.wikipedia.org/wiki/2016_Abu_Dhabi_Grand_Prix,testing,2024-07-19 09:54:18.999993

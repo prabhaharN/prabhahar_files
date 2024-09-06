@@ -1,0 +1,17 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+107,108,2003,1,1,Australian Grand Prix,2003-03-09,\N,http://en.wikipedia.org/wiki/2003_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+108,109,2003,2,2,Malaysian Grand Prix,2003-03-23,\N,http://en.wikipedia.org/wiki/2003_Malaysian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+109,110,2003,3,18,Brazilian Grand Prix,2003-04-06,\N,http://en.wikipedia.org/wiki/2003_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+110,111,2003,4,21,San Marino Grand Prix,2003-04-20,\N,http://en.wikipedia.org/wiki/2003_San_Marino_Grand_Prix,testing,2024-07-19 09:54:18.999993
+111,112,2003,5,4,Spanish Grand Prix,2003-05-04,\N,http://en.wikipedia.org/wiki/2003_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+112,113,2003,6,23,Austrian Grand Prix,2003-05-18,\N,http://en.wikipedia.org/wiki/2003_Austrian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+113,114,2003,7,6,Monaco Grand Prix,2003-06-01,\N,http://en.wikipedia.org/wiki/2003_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+114,115,2003,8,7,Canadian Grand Prix,2003-06-15,\N,http://en.wikipedia.org/wiki/2003_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+115,116,2003,9,20,European Grand Prix,2003-06-29,\N,http://en.wikipedia.org/wiki/2003_European_Grand_Prix,testing,2024-07-19 09:54:18.999993
+116,117,2003,10,8,French Grand Prix,2003-07-06,\N,http://en.wikipedia.org/wiki/2003_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+117,118,2003,11,9,British Grand Prix,2003-07-20,\N,http://en.wikipedia.org/wiki/2003_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+118,119,2003,12,10,German Grand Prix,2003-08-03,\N,http://en.wikipedia.org/wiki/2003_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+119,120,2003,13,11,Hungarian Grand Prix,2003-08-24,\N,http://en.wikipedia.org/wiki/2003_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+120,121,2003,14,14,Italian Grand Prix,2003-09-14,\N,http://en.wikipedia.org/wiki/2003_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+121,122,2003,15,19,United States Grand Prix,2003-09-28,\N,http://en.wikipedia.org/wiki/2003_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+122,123,2003,16,22,Japanese Grand Prix,2003-10-12,\N,http://en.wikipedia.org/wiki/2003_Japanese_Grand_Prix,testing,2024-07-19 09:54:18.999993

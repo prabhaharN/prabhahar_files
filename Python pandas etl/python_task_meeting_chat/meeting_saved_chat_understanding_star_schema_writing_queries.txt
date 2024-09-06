@@ -1,0 +1,184 @@
+16:50:08 From mohammed saif to Ibridge 360(direct message):
+	voice is breaking(not audible)
+16:52:03 From Ibridge 360 to Everyone:
+	What does this star schemas are used for?
+16:53:11 From Nitish S to Everyone:
+	WE WILL USED THIS FOR ANALYSIS PURPOSE.
+16:53:28 From AMAR to Everyone:
+	Used to Analysis Purpose
+16:53:43 From Ibridge 360 to Everyone:
+	What kind of data we are dealing here?
+16:53:49 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	modelling and based on that we analyse
+16:53:50 From Karthik to Ibridge 360(direct message):
+	This Star schemas is used for insurance company
+16:53:52 From SRIREVATHI to Ibridge 360(direct message):
+	to analyze the data
+16:53:57 From SRIREVATHI to Ibridge 360(direct message):
+	structured
+16:54:05 From Karthik to Ibridge 360(direct message):
+	Structured data
+16:54:11 From Nitish S to Ibridge 360(direct message):
+	structured data
+16:54:17 From shanta to Everyone:
+	Replying to "What kind of data we..."
+	
+	structured data
+16:54:24 From Prabhahar N to Ibridge 360(direct message):
+	we connect dimensional table and fact table based on this star schema
+16:54:29 From Ibridge 360 to Everyone:
+	How many star schemas you see in this model?
+16:54:44 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	2
+16:54:51 From Karthik to Ibridge 360(direct message):
+	2 star schemas you see in this model
+16:54:53 From shanta to Everyone:
+	two star schema
+16:54:53 From SRIREVATHI to Ibridge 360(direct message):
+	one star schema with two facts
+16:54:57 From AMAR to Everyone:
+	Two star schema
+16:54:58 From Cibi Chellasamy to Everyone:
+	This is used for analysis purpose of policies
+16:55:12 From Ibridge 360 to Everyone:
+	Which fact table will have more records and why?
+16:55:12 From Nidhi Arya to Everyone:
+	analysis purpose between customer, agent and employee and policy
+16:55:21 From Vinutha K S to Ibridge 360(direct message):
+	1 star schema
+16:55:23 From Nidhi Arya to Everyone:
+	2 star schema is there
+16:55:28 From Nitish S to Ibridge 360(direct message):
+	2 star schema
+16:56:07 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	policy premium expected fact
+16:56:23 From Cibi Chellasamy to Everyone:
+	We are  dealing  with data quantitative data's
+16:56:42 From Ibridge 360 to Everyone:
+	If I have one policy where customer pays 20 premiums over 20 months, policy started on 1-JAN-2024
+16:57:01 From SRIREVATHI to Ibridge 360(direct message):
+	policy premium expected will have more because some customers may delay the payment so they get  another expected date
+16:57:14 From Nitish S to Ibridge 360(direct message):
+	policy premium expected fact has more data
+16:57:19 From Prabhahar N to Ibridge 360(direct message):
+	polices data
+16:57:21 From Ibridge 360 to Everyone:
+	How many records you will have in policy premium expected fact ? How many records you will have in policty premium paid fact?
+16:58:08 From Prabhahar N to Ibridge 360(direct message):
+	2 star schema
+16:58:11 From Cibi Chellasamy to Everyone:
+	2 star schema
+16:58:27 From Vinutha K S to Ibridge 360(direct message):
+	Policy premium paid and policy premium expected fact has more records
+16:58:40 From AMAR to Everyone:
+	According To me Policy Premium expected fact Have more Records
+16:59:15 From Ibridge 360 to Everyone:
+	Write a query to show the expected premium amount for an agent 'UMA' this month
+16:59:29 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	until this month --> expected (20 which is already decided one) --> premium--paid is 6
+16:59:34 From Cibi Chellasamy to Everyone:
+	Policy premium paid fact will have more
+16:59:43 From Nidhi Arya to Everyone:
+	policy premium paid fact have more records
+17:00:12 From Karthik to Ibridge 360(direct message):
+	expected fact have 20 records and paid fact have 20 records
+17:01:13 From Prabhahar N to Ibridge 360(direct message):
+	20  records in expected fact and 6 records in paid fact
+17:01:17 From Ibridge 360 to Karthik(direct message):
+	Write a query to know agentwise, customerwise, policy count. Consider only records which has more than 5 policies
+17:01:25 From Ibridge 360 to Everyone:
+	Write a query to know agentwise, customerwise, policy count. Consider only records which has more than 5 policies
+17:01:27 From SRIREVATHI to Ibridge 360(direct message):
+	select sum(amount)	from expected	where agent_name='UMA'
+17:01:33 From Cibi Chellasamy to Everyone:
+	expected 20 records paid 6 records
+17:01:55 From AMAR to Ibridge 360(direct message):
+	Select amount from policy Premium expected fact where agent_name="Uma";
+17:02:10 From Karthik to Ibridge 360(direct message):
+	Write a query to show the expected premium amount for an agent 'UMA' this month		Select expected_premium_amt from Expected_fact where agent='UMA' and to_char(date,'mm')=to_char(sysdate,'mm');
+17:02:49 From Ibridge 360 to Everyone:
+	What is the premium we received in the last month
+17:03:02 From Nitish S to Ibridge 360(direct message):
+	select sum(amount) from policy_premium_expected where cust_name='uma';
+17:03:28 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	select agent_id,cust_id,count(policy_id)	from policy_premium_expected_fact	group by agent_id,cust_id	having count(policy_id)>5
+17:03:41 From Nitish S to Ibridge 360(direct message):
+	policy premium paid fact have more records as compared to policy premium expected fact
+17:03:57 From Prabhahar N to Ibridge 360(direct message):
+	select amount from expect_fact where agent='UMA' and  extract( month  from date)=6 and extract( year  from date)=2024
+17:04:16 From Vinutha K S to Ibridge 360(direct message):
+	select agent,sum(premium_amout) from policy_premium where agent='uma';
+17:04:28 From mohammed saif to Ibridge 360(direct message):
+	select a.agent, c.customer, count(policy)	from table_name	group by a.agent, c.customer;
+17:05:08 From Karthik to Ibridge 360(direct message):
+	Write a query to know agentwise, customerwise, policy count. Consider only records which has more than 5 policies		select agent_name,customer_name,count(policy_id) from policy group by agent_name,customer_name having count(policy_id)>5;
+17:05:12 From Nidhi Arya to Everyone:
+	select premium_amt from policy_premium_expected_fact                                                               where agent_name = 'UMA' and                                             extract(month from period) = extract(month from sysdate);
+17:05:20 From shanta to Everyone:
+	Write a query to show the expected premium amount for an agent 'UMA' this month.                                                               ->select preminm_amt from pliicy_premium_excpected_fact where agent='uma' and to_char(date,'mm')=to_char(sysdate,'mm');
+17:05:42 From Prabhahar N to Ibridge 360(direct message):
+	select agent_name, customer_name,count(policy) from expected_fact group by agent_name, customer_name having count(policy)>5
+17:05:46 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	select premium_amount	 from premium_paid 	where to_char(period,’mon’) =to_char(sysdate,’mon’(;
+17:06:04 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	select premium_amount	 from premium_paid 	where to_char(period,’mon’) =to_char(sysdate,’mon’);
+17:06:16 From AMAR to Ibridge 360(direct message):
+	select count(Policy_id),agent_name,customer_id from Policy Premium expected fact group by agent_name,customer_id;
+17:06:32 From AMAR to Ibridge 360(direct message):
+	Select amount from policy Premium expected fact where agent_name="Uma";
+17:07:11 From SRIREVATHI to Ibridge 360(direct message):
+	select sum(amount) from paid_fact 	where to_char(pay_received,'mm')=to_char(sysdate,'mm')-1
+17:07:26 From AMAR to Ibridge 360(direct message):
+	Select amount from policy Premium expected fact where agent_name="Uma" and extract(month from period)=extract(month from sysdate);
+17:08:07 From Prabhahar N to Ibridge 360(direct message):
+	select sum(amount) from paid_fact where to_char( date, 'mm-yyyy')like '05-2024'
+17:08:16 From Karthik to Ibridge 360(direct message):
+	What is the premium we received in the last month		select premium_amt from paid_fact where to_char(paydate,'mm')=to_char(sysdate,'mm')-1;
+17:08:23 From Ibridge 360 to Everyone:
+	Want to see month_name, excepted policy amount, actual received amount for each month in the current year
+17:08:45 From Cibi Chellasamy to Everyone:
+	select sum(ppef.expected_premium_amount)	from policy_premium_expected_fact ppef join agent a on ppef.agent_id = a.agent_id join period pd on ppef.period_id = pd.period_id where a.agent = 'UMA' and pd.months_start_date <= sysdate and pd.months_end_date >= sysdate
+17:09:27 From Anugraha Sakthimohan to Ibridge 360(direct message):
+	select premium_amount	 from premium_paid 	to_char(premium_date, 'YYYY-MM') = to_char(add_months(sysdate, -1), 'YYYY-MM');
+17:09:39 From Ibridge 360 to Everyone:
+	Want to see the policies from where we missed the payment for last month? What is your logic. Write the query for the same
+17:09:54 From Vinutha K S to Ibridge 360(direct message):
+	select a.agent_nm,c.customer_nm,count(p.policy) from agent a,policy p,customer c where p.policyid=c.policyid and a.custid=c.custid group by a.agent_nm,customer_nm having count(p.policy)>5
+17:10:36 From mohammed saif to Ibridge 360(direct message):
+	select preminium_amount 	from ppef 	where agent_name = 'UMA' and 	to_char(date,'mon') = to_char(sysdate,'mon');
+17:11:49 From Nidhi Arya to Everyone:
+	select a.agent_id, c.cust_id, p.policy_id, count(*)                           from agent a, customer c, policy p, policy_premium_expected_fact pp                                              where a.policy_premium_id = pp.policy_premium_id and                         p.policy_id = pp.policy_id   and                                                      c.cust_id = pp.cust_id                                                                 group by    a.agent_id, c.cust_id, p.policy_id                                having count(*)>5;
+17:12:00 From shanta to Everyone:
+	Write a query to know agentwise, customerwise, policy count. Consider only records which has more than 5 policies.                                                                ->select count(plicy_id),customer_name,agent_name from plicy p join fact f on p.policy_id=f.plicy join customer c on f.cust_id=c.cust_id join agent a on f.agent_id=a.agent_id group by customer_name,agent_name having count(policy_id)>5;
+17:12:20 From Cibi Chellasamy to Everyone:
+	select sum(actual_amount) from policy_premium_padi_fact where trunc(actual_month,'MM') = trunc(last_day(sysdate - interval '1' month);
+17:14:22 From AMAR to Ibridge 360(direct message):
+	select Policy_id from Policy Premium expected fact where To_char(period,'mm')=to_char('sysdate')-1;
+17:14:41 From shanta to Everyone:
+	What is the premium we received in the last month.  ->select amount from paid_fact where to_char(date,'mm')=to_char(sysdate,'mm')-1;
+17:15:29 From AMAR to Ibridge 360(direct message):
+	select count(Policy_id),agent_name,customer_id from Policy Premium expected fact group by agent_name,customer_id having count(*)>5;
+17:16:11 From Prabhahar N to Ibridge 360(direct message):
+	select to_char(e.date, 'mmmm') , sum(e.amount) , sum( p.amount) from expected_fact e left join paid_fact p on e.date=p.date and e.customer_name= p.customer_name and e.agent_name= p.agent_name where extract(year from date)= 2024 group by to_char(e.date, 'mmmm')
+17:16:35 From SRIREVATHI to Everyone:
+	Replying to "Want to see the poli..."
+	
+	select policy_id	from policy_expected	where policy_id not in(select policy_id	from policy_paid	where to_char(paid_date,'mm)=to_char(sysdate,'mm')-1) and to_chat(expected_date,'mm')=to_char(sysdate,'mm)-1
+17:17:10 From Nitish S to Ibridge 360(direct message):
+	select to_char(p_date,'mm'),sum(policy_amount),sum(paid_amount) from policy_premium_expected_fact pe join policy_premium_paid_fact pp	on pe.cust_id=pp.cust_id	where to_char(p_date,'yyyy')=to_char(sysdate,'yyyy')	group by to_char(p_date,'mm');
+17:17:20 From Cibi Chellasamy to Everyone:
+	agent_wise 	select a.agent_id,a.agent_name,count(distinct p.policy_id) as policy_count	from policy p join agent a on p.agent_id = a.agent_id join customer c on p.cust_id = c.cust_id group by a.agent_id,a.agnet_name having count(distinct p.policy_id) > 5
+17:17:22 From Vinutha K S to Ibridge 360(direct message):
+	select sum(amount) from policy_premium_expected p join period pr on pr.periodid=p.period id where p_date  between add_months(trunc(sysdate,'mon')-1) and last(add_months(trunc(sysdate,'mon')-1));
+17:17:30 From Nidhi Arya to Everyone:
+	select pppf.premium_amt                                                                from policy_premium_paid_fact pppf, period p                    where p.period_id = pppf.period_id and                                         extract(month from expected_date) = extract(month from sysdate)-1;
+17:19:20 From Ibridge 360 to Everyone:
+	what is the purpose of period table you see in the system?
+17:19:21 From Karthik to Ibridge 360(direct message):
+	Want to see month_name, excepted policy amount, actual received amount for each month in the current year		select to_char(date,'month'), expect_policy_amt, received_amt from policy_premium_expected_fact where to_char(date,'yyyy') =to_char(sysdate,'yyyy') group by to_char(date,'month')
+17:19:49 From AMAR to Ibridge 360(direct message):
+	For Date demision
+17:21:06 From SRIREVATHI to Ibridge 360(direct message):
+	--agent wise ,customer wise count	select agent_id,cust_id,count(distinct(policy_id))	from premium_expected	group by agent_id,cust_id	having count(distinct(cust_id)>5
+17:22:23 From shanta to Everyone:
+	Want to see month_name, excepted policy amount, actual received amount for each month in the current year.                                  ->select to_char(date,'month') as month , except_policy_amt,rece_amt from policy group by to_char(date,'month');

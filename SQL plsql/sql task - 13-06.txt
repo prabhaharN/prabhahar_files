@@ -1,0 +1,69 @@
+Top queries in SQL
+
+1) Query to skip first five rows and then display remaining all rows from emp table?
+
+select * from employee 
+offset 5 rows
+
+
+2) Query to display junior most employee details from emp table?
+
+select emp_name from employee where hiredate=(select max(hiredate) from employee)
+
+
+3) Query to display employee details who are getting min salary in each department from emp table?
+
+select * from employee where (dept_id,emp_sal) in ( select  dept_id, min(emp_sal)  from employee group by dept_id)
+
+
+4) Query to display last four rows from emp table?
+
+select * from employee  offset (select count(*)-4 from employee) rows;
+
+
+5) Query to display first row and last row from emp table?
+
+(select * from employee  fetch first 1 row only)
+union
+(select * from employee  
+offset (select count(*)-1 from employee) rows 
+fetch first 1 rows only);
+
+
+6) Query to display odd number of records from emp table?
+
+select * from ( select e.*,rownum rn from employee e) where mod(rn,2)=1;
+
+7) Query to display 5th highest salary employee from emp table?
+
+select * from (select e.*,dense_rank() over(order by emp_sal desc) rn from employee e) where rn = 5;
+
+
+8) Query to display nth highest salary employee from emp table using corelated subquery?
+
+select * from Employee e1 where 5-1 = (select count (distinct emp_sal) from Employee e2 where e2.emp_sal > e1.emp_sal);
+
+
+9) Query to display first ten rows from emp table?
+
+select * from employee
+where rownum<11
+
+select * from employee
+fetch first 10 rows only;
+
+
+10) Query to display first five highest salary employees from from emp table?
+
+select emp_sal from employee order by emp_sal desc 
+fetch first 5 rows only
+
+
+11) Query to display 2nd, 3rd, 4th, 5th, 7th, 9th row from emp table?
+
+select * from ( select e.*,rownum rn from employee e) where rn in (2,3,4,5,7,9);
+
+
+12) Query to display second row from emp tablle?
+
+select * from ( select e.*,rownum rn from employee e) where rn =2;

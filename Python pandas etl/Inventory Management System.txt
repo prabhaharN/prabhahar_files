@@ -1,0 +1,84 @@
+Inventory Management System:
+Scenario:
+You are responsible for creating an inventory management system for a small retail store. The store sells various products, and you need to implement functionalities for adding new products, updating stock levels, processing sales, and generating reports.
+
+
+
+inventory={}
+
+
+action=int(input( '''enter number 
+1-adding new products
+2-updating stock levels
+3-processing sales
+4-generating reports
+: '''))
+if action ==1:
+    product_name=str(input('enter product name : '))
+    if product_name.isalpha():
+        product_price=int(input('enter_price : '))
+        if product_price>0:
+            quantity=int(input('enter quantity : '))
+            if quantity>0 :
+                product=[product_name,product_price,quantity]
+                product_code=product_name[0:3]+"1"
+                if product_code in inventory:
+                    product_code=product_code[0:3]+str(int(product_code[3]+1))
+                    inventory[product_code]=product
+                else:
+                    inventory[product_code]=product
+                    
+            else:
+                print('quantity inavalid')
+        else:
+            print('price inalid')
+    else:
+        print('invalid name')
+elif action ==2:
+    prod_code=str(input('enter product code : ') )
+    if prod_code in inventory:
+        product_detail=inventory[prod_code]
+        quantity=int(input('enter quantity : '))
+        if quantity>0 :
+            qty= product_detail[2] + quantity
+            inventory[prod_code][2]=qty
+        else:
+            print('invalid quantity')
+    else: 
+        print('no product code in inventory')
+elif action == 3:
+     num=int(input('''enter number
+     1-enter,
+     0-close 
+     : '''))
+     while num==1:
+         prod_code=str(input('enter product_code : '))
+         if prod_code in inventory:
+             qty=int(input('enter quantity : '))
+             if qty>0 and inventory[prod_code][2]>qty:
+                 quantity= product_detail[2] - qty
+                 inventory[prod_code][2]=quantity
+                 price= inventory[prod_code][1]
+                 total_price=price * qty
+                 print(f'product_code:{prod_code},product_name:{inventory[prod_code][0]},price:{price},quantity:{qty},amount:{total_price}')
+             else:
+                 print('invalid quantity')
+         else:
+             print('invalid product code')
+         num=int(input('''enter number
+         1-enter,
+         0-close 
+         : '''))  
+
+elif action == 4:
+    if len(inventory)>0:
+        for k,v in inventory.items():
+             print(f'product_code:{k},product_name:{v[0]},price:{v[1]},quantity:{v[2]}')
+    else:
+        print('No products in inventory')
+    
+else:
+    print('no action')
+
+
+print(inventory)

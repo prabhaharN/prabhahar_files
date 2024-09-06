@@ -1,0 +1,62 @@
+import pandas as pd
+pf=pd.read_excel('Ilearnonlinelogs_ETL1.xlsx')
+  
+
+crt_log=[]
+rej_log=[]
+for i in pf['path']:
+    if len(i)>1:
+        crt_log.append(i)
+    if len(i)==1:
+        rej_log.append(i)
+crt_log= pf[pf['path'].isin (crt_log)].reset_index(drop=True)
+
+---------------------------- employee---------------------------------
+
+employee = pf[['first_name','last_name']]
+
+employee=employee[~employee.duplicated()]
+
+employee['emp_id']=range(100,100+len(employee['first_name']))
+
+employee.to_csv('employee.csv', index = False)
+
+
+-------------------------- access log--------------------------------------
+
+
+split=pd.DataFrame(crt_log.path.str.split('/').tolist(),columns = ['o','f','course','path','p'])[['course','path']]
+
+crt_log['cousre'],crt_log['chapter']=split['course'],split['path']
+
+crt_log.drop(['path','last_login'], axis=1,inplace = True)
+
+accessed_log=crt_log[crt_log['chapter']!=''].reset_index(drop= True )
+
+ilearn_access=pd.merge(crt_log, employee, on = "first_name", how = "inner")
+
+ilearn_access=ilearn_access.drop(['last_name_y','first_name','last_name_x'],axis=1)
+
+ilearn_access.rename(columns = {'id':'access_id','timestamp':'access_date'}, inplace = True)
+
+first_column = ilearn_access.pop('emp_id') 
+
+ilearn_access.insert(2, 'emp_id', first_column) 
+
+ilearn_access
+
+ilearn_access.to_csv('access.csv', index = False)
+
+
+--------------- rejected log--------------------------------
+
+rej_log= pf[pf['path'].isin (rej_log)].reset_index(drop=True)
+rej_log.to_csv('log_rejected.txt',header=None,index=None,sep=' ')
+
+---------------------------unwanted log------------------------------------
+unwanted_log=crt_log[crt_log['chapter']==''].reset_index(drop= True )
+unwanted_log
+
+unwanted_log.to_csv('unwanted_log.txt',header=None,index=None,sep=' ')
+
+==================================================================================================

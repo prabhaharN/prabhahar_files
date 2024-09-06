@@ -1,0 +1,11 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+718,719,1963,1,6,Monaco Grand Prix,1963-05-26,\N,http://en.wikipedia.org/wiki/1963_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+719,720,1963,2,13,Belgian Grand Prix,1963-06-09,\N,http://en.wikipedia.org/wiki/1963_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+720,721,1963,3,39,Dutch Grand Prix,1963-06-23,\N,http://en.wikipedia.org/wiki/1963_Dutch_Grand_Prix,testing,2024-07-19 09:54:18.999993
+721,722,1963,4,55,French Grand Prix,1963-06-30,\N,http://en.wikipedia.org/wiki/1963_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+722,723,1963,5,9,British Grand Prix,1963-07-20,\N,http://en.wikipedia.org/wiki/1963_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+723,724,1963,6,20,German Grand Prix,1963-08-04,\N,http://en.wikipedia.org/wiki/1963_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+724,725,1963,7,14,Italian Grand Prix,1963-09-08,\N,http://en.wikipedia.org/wiki/1963_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+725,726,1963,8,46,United States Grand Prix,1963-10-06,\N,http://en.wikipedia.org/wiki/1963_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+726,727,1963,9,32,Mexican Grand Prix,1963-10-27,\N,http://en.wikipedia.org/wiki/1963_Mexican_Grand_Prix,testing,2024-07-19 09:54:18.999993
+727,728,1963,10,56,South African Grand Prix,1963-12-28,\N,http://en.wikipedia.org/wiki/1963_South_African_Grand_Prix,testing,2024-07-19 09:54:18.999993

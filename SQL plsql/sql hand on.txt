@@ -1,0 +1,74 @@
+supplier ,orders,department ,product,order details,customer,sale,sale_details
+
+
+1>diaplay all the suppliers where we placed atleast 8 orders in the month of jan 2021
+
+select  supplier_name,count(supplies) from supplier where supply_date like 'jan-2021'
+group by supllier_name having count(supplies)>=8
+
+
+display the cities where we have suppliers but not customers
+
+select distinct cities from supplier 
+where cities not in (select distinct cities from customer )
+
+
+
+
+3)select customer_name revenue from customer c inner join sale s on c.cust_id =s.cust_id inner join sale_detail sd on s.sale_id = sd.sale_id
+where city='bangalore' and cust_name like '%NBC%' 
+group by customer_name
+having sum(amount) = (select max(amount) from ( select sum(amount) from sale_detail sd inner join sale s on sd.sale_id = s.sale_id group by cust_id)
+
+
+
+4)select cust_name ,product_name, sum(amount), extract(year from sale_date)
+
+from customer c, sale s ,sale_detail sd, product p
+where c.cust_id = s.cust_id , s.sale_id = sd.sale_id , sd.prod_id = p.prod_id
+
+group  by extract(year from sale_date),cust_name ,product_name
+
+order by extract(year from sale_date),cust_name
+
+
+5)select prod_name, sum(order_qty) , sum( sold_qty) from product p left join order o on p.prod_id = o.prod_id 
+inner join sale_details sd on p.prod_id = sd.prod_id inner join sale s on sd.sale_id = s.sale_id
+where sales_date like '%apr-2020%'
+group by prod_name;
+
+
+6)select prod_name, count(suup_id) from product p inner join order_detail ad on p.prod_id =od.prod_id inner join order o on od.order_id = o.order_id
+group by prod_name having count(suup_id)>1;
+
+7)select prod_name from product p inner join order_detail ad on p.prod_id =od.prod_id inner join order o on od.order_id = o.order_id
+inner join supplier s on o.supp_id = s.supp_id 
+where supp_name='ABC';
+
+8)selct cust_name from customer c inner join sale s on c.cust_id = s.cust_id inner sale_detail sd on s.sale_id = s.sale_id inner join product p
+on sd.prod_id=p.prod_id 
+where (product_family not like 'COMPUTER') and (extract(year from sale_date ) = extract(year from sysdate));
+
+9)select prod_family, prod_name from (select prod_family, prod_name ,sum(amount),dense_rank() over( partion by prod_family over by sum(amount) desc) rk
+from product p inner join sales_detail sd on p.prod_id = sd.prod_id inner join sale s on sd.sale_id = s.sale_id 
+where extract(year from sale_date ) = extract(year from sysdate)
+group by prod_family, prod_name) 
+where rk<4;
+
+
+
+10)select city from supplier s inner join customer c on s.city= c.city 
+group by city 
+having count( supp_id)>5 and count( cust_id)>200;
+
+
+
+
+
+
+
+
+
+
+
+

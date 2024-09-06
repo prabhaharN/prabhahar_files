@@ -1,0 +1,69 @@
+
+--Wite a query to give me the reason description and total length of scrap
+
+select reason_description ,sum(scrap_length)  from reason r inner join product_scrap p
+on r.reason_id=p.reason_id group by reason_description;
+
+--what are the common reasons of scrap  generation between Cat6 and Cat5e Core
+
+select reason_description from reason where reason_id in 
+( select reason_id from product_scrap where product_id in 
+(select product_id from product1 where product_name ='Cat6'))
+intersect
+select reason_description from reason where reason_id in 
+( select reason_id from product_scrap where product_id in 
+(select product_id from product1 where product_name ='Cat5e Core'));
+
+--Find the products which are being associated with Limmar Factory
+
+select product_name from product1 where product_id in 
+(select product_id from product_scrap where site_id =
+(select site_id from projectsite where projectsite_name='Linmar Factory'));
+
+
+
+--Write a query to get the product which gives the most scrap length in each project site
+
+select product_name from product1 where product_id in 
+(select product_id from product_scrap where scrap_length=(select max(scrap_length) from product_scrap));
+
+--Find th highest reason of rejection (in terms of transaction count)
+
+select reason_description from (select reason_description ,dense_rank() over( order by count(p.reason_id ) desc)as rk from reason r left join  product_scrap p
+on r.reason_id =p.reason_id
+group by reason_description) where rk=1;
+
+
+--What is the total length of scrap for Cat6 and Telephone put together
+
+select sum(scrap_length) from product_scrap where product_id in 
+( select product_id from product1 where product_name in ('Cat6','Telephone'));
+
+--Find the product name where we don’t have any scrap
+
+select product_name from product1 where product_id not in (select distinct product_id from product_scrap);
+
+--Display the site name, product name, reason of scrap, length and weight from Head Office
+
+select projectsite_name , product_name , reason_description, scrap_length,scrap_weight from product_scrap p
+inner join projectsite ps on p.site_id=ps.site_id 
+inner join product1 p1 on p.product_id=p1.product_id 
+inner join reason r on p.reason_id = r.reason_id
+where projectsite_name='Head Office';
+
+--Find the product name and site name for all the Power Failure reason associated with
+
+select projectsite_name , product_name  from product_scrap p
+inner join projectsite ps on p.site_id=ps.site_id 
+inner join product1 p1 on p.product_id=p1.product_id 
+inner join reason r on p.reason_id = r.reason_id
+where reason_description ='Power Failure';
+
+--Display the product we have zero scrap length
+
+select product_name from product1 where product_id in (select product_id from product_scrap where scrap_length=0);
+
+--display 2nd highest scrap weight product 
+
+select product_name from (select product_name, dense_rank() over(order by scrap_weight desc) as rn from product_scrap ps
+inner join product1 p on ps.product_id = p.product_id)  where rn=2;

@@ -1,0 +1,9 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+737,738,1961,1,6,Monaco Grand Prix,1961-05-14,\N,http://en.wikipedia.org/wiki/1961_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+738,739,1961,2,39,Dutch Grand Prix,1961-05-22,\N,http://en.wikipedia.org/wiki/1961_Dutch_Grand_Prix,testing,2024-07-19 09:54:18.999993
+739,740,1961,3,13,Belgian Grand Prix,1961-06-18,\N,http://en.wikipedia.org/wiki/1961_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+740,741,1961,4,55,French Grand Prix,1961-07-02,\N,http://en.wikipedia.org/wiki/1961_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+741,742,1961,5,58,British Grand Prix,1961-07-15,\N,http://en.wikipedia.org/wiki/1961_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+742,743,1961,6,20,German Grand Prix,1961-08-06,\N,http://en.wikipedia.org/wiki/1961_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+743,744,1961,7,14,Italian Grand Prix,1961-09-10,\N,http://en.wikipedia.org/wiki/1961_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+744,745,1961,8,46,United States Grand Prix,1961-10-08,\N,http://en.wikipedia.org/wiki/1961_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993

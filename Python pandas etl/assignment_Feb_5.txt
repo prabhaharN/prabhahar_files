@@ -1,0 +1,145 @@
+Assignment 5th Feb
+====================
+try these 2 examples and then work...
+
+1)
+function taking parameters and returing a value
+
+def calc_net_sal(gross,deduct):
+    net = gross - deduct
+    return net
+
+print('---in start of MAIN block ----')
+grs = 35000
+deductions = 2500
+net_sal = calc_net_sal(grs,deductions)
+print('Net salary is ',net_sal)
+# also we can pass constant and parameter , for instance
+net_sal = calc_net_sal(grs,4000)
+print('now Net salary is ',net_sal)
+print('---in end of MAIN block ----')
+
+2) a function could return mutiple results
+
+def job(n1,n2):
+  total = n1 + n2
+  diff = n1 - n2
+  product = n1 * n2
+  quot = n1 / n2
+  return total,diff,product,quot
+
+print('---in start of MAIN block ----')
+numb1 = 25
+numb2 = 15
+# watch the below line, this function returns 4 results, so hence handled
+# make sure there is enough variable to hold it
+ttl,df,prd,quotient = job(numb1,numb2)
+print('output is ',ttl,df,prd,quotient)
+print('---in end of MAIN block ----')
+
+try the following:
+--------------------
+1) enter radius   
+   calc the area of circle             area is 3.14 x radius x radius
+   calc the perimeter of the circle    peri is 2 x 3.14 x radius
+   write two functions
+---------------------code-------------------------
+def area(radius):
+    result=3.14*radius*radius
+    print(result)
+def perimeter(radius):
+    result=2*3.14*radius
+    print(result)
+--------------------output------------------------
+ perimeter(7)
+43.96
+==================================================
+
+2) do the same 1) in one function returning TWO results 
+   call it as calc_area_peri
+---------------------code-------------------------
+def area(radius):
+    result=3.14*radius*radius
+    print("area ",result)
+def perimeter(radius):
+    result=2*3.14*radius
+    print("perimeter ",result)
+    
+rad=int(input("enter radius = ") )
+area(rad)
+perimeter(rad)
+--------------------output------------------------
+enter radius = 7
+area  153.86
+perimeter  43.96
+==================================================
+
+3) pass a list to the function having few names
+   return from the function how many names start with 'A' or 'B'
+---------------------code-------------------------
+l=['Arun','Baskar','Ashok','Balu','sanjeev','Balakumar','Babu','Anandh']
+
+def find(l):
+    for i in l:
+        if i.startswith('A') or i.startswith('B'):
+            print(i)
+find(l)   
+--------------------output------------------------
+Arun
+Baskar
+Ashok
+Balu
+Balakumar
+Babu
+Anandh
+==================================================
+
+4) pass a set to the function with numbers like 10,45,199,33,1,145,16,22,134...
+   the function should return a set with TWO digit numbers only
+---------------------code-------------------------
+list1=(10,45,199,33,1,145,16,22,134,89,100)  
+set1=set(list1)
+def find_two_dig_num(num):
+    set2=set()
+    for i in num:
+        if i in range(10,100):
+            set2.add(i)
+    print(set2)   
+   
+find_two_dig_num(set1)  
+--------------------output------------------------
+{33, 10, 45, 16, 22, 89}
+==================================================
+
+5) pass a list and a tuple to a function with numbers
+   the function should create a set and return the newly created set
+   total of all numbers and the avg
+---------------------code-------------------------
+list1=[10,45,199,33,1,145,16,22,134,89,100]
+tuple1=(23,58,90,46,79,140,189) 
+def avg_set(list1,tuple1):
+    set1=set()
+    for i in list1:
+        set1.add(i)
+    for i in tuple1:
+        set1.add(i)        
+    print(set1) 
+    total=0
+    c=len(set1)
+    for i in set1:
+        total=total+i
+    print('total = ',total)    
+    print('avg = ' ,total/c)   
+   
+avg_set(list1,tuple1)
+--------------------output------------------------
+{33, 1, 100, 90, 134, 199, 10, 140, 45, 46, 79, 16, 145, 22, 23, 89, 58, 189}
+total =  1419
+avg =  78.83333333333333
+==================================================
+
+*************************
+
+   
+   
+   

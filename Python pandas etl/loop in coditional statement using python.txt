@@ -1,0 +1,276 @@
+Conditional Statements:
+Check if a number is positive, negative, or zero.
+
+number=int(input('enter number : ')
+if number > 0 :
+	print('It is a positive number')
+elif number<0:
+	print('it is a negative number')
+else:
+	print('It is zero')
+
+
+Determine the largest of three numbers.
+
+
+Check if a given year is a leap year.
+
+year=int(input('enter year :')
+if year %100==0:
+     if year%400==0:
+	 print('it is aleap year')
+     else:
+	 print('it is not a leap year')
+elif year%4==0:
+     print('it is aleap year')
+else:
+     print('it is not a leap year')
+
+
+
+Check if a number is even or odd.
+
+number=int(input('enter number ')
+if number>0 and number< 0:
+     if number%2==0:
+  	  print('it is an even number')
+     else:
+	  print('it is an odd number')
+else:
+    print('enter valid number')
+
+Determine if a person is eligible to vote based on their age.
+
+
+Nested Loops and Patterns:
+31. Create a pattern of numbers using nested loops.
+
+n = 5  # Number of rows
+for i in range(1, n + 1):
+    for j in range(1, i + 1):
+        print(j, end=' ')
+    print()
+
+Print a pyramid pattern using nested loops.
+
+def full_pyramid(n):
+    for i in range(1, n + 1):
+        print(" " * (n - i), end="")
+        print("*" * (2 * i - 1))
+
+full_pyramid(5)
+
+Generate a Pascal's triangle using nested loops.
+
+def generate_pascals_triangle(num_rows):
+    triangle = []
+    for i in range(1, num_rows + 1):
+        row = []
+        for j in range(0, num_rows - i + 1):
+            row.append(" ")
+        C = 1
+        for j in range(1, i + 1):
+            row.append(C)
+            C = C * (i - j) // j
+        triangle.append(row)
+    return triangle
+
+def display_pascals_triangle(triangle):
+    for row in triangle:
+        print(" ".join(map(str, row)))
+
+num_rows = 5
+pascals_triangle = generate_pascals_triangle(num_rows)
+display_pascals_triangle(pascals_triangle)
+
+Implement a chessboard pattern using nested loops.
+
+hor=9
+ver=9
+for i in range(1,ver):
+    if i%2==1:
+        for j in range(1,hor):
+            if j%2==1:
+                print(' ',end=' ')
+            else:
+                print('#',end=' ')
+        print()       
+    else:
+        for j in range(1,hor):
+            if j%2==0:
+                print(' ',end=' ')
+            else:
+                print('#',end=' ')
+        print()
+
+Print a hollow square pattern using nested loops.
+
+hor=9
+ver=9
+for i in range(1,ver):
+    if i==1 or i==8:
+        for j in range(1,hor):
+            print('*',end=' ')
+        print()    
+    else:
+        for j in range(1,hor):
+            if j==1 or j==8:
+                print('*',end=' ')
+            else:
+                print(' ',end=' ')
+        print()    
+
+Generate the following pattern using nested loops:
+yaml
+1
+12
+123
+1234
+
+list1=[1,2,3,4]
+for i in range (len(list1)):
+    for j in range(i+1):
+        print(list1[j],end='')
+    print() 
+
+Print the following pattern using nested loops:
+yaml
+1
+22
+333
+4444
+
+list1=[1,2,3,4]
+for i in list1:
+    for j in range(list1.index(i)+1):
+        print(i,end='')
+    print()
+
+Create an inverted right-angled triangle pattern using nested loops.
+
+Print a pattern of alphabets using nested loops.
+
+n = 5  
+for i in range(1, n + 1):
+    for j in range(i, n + 1):
+        print(chr(ord('A') + j - 1), end=' ')
+    print()
+
+Generate a rhombus pattern using nested loops.
+
+hor = 21
+ver = 11
+
+for i in range(1, ver):
+    if i == 1:
+        for j in range(9):
+            print(' ', end=' ')
+        for j in range(10, hor):
+            print('*', end=' ')
+        print()
+    elif i == 10:
+        for j in range(1, hor - 9):
+            print('*', end=' ')
+        for j in range(hor - 10, hor):
+            print(' ', end=' ')
+        print()
+    else:
+        for j in range(1, 11 - i):
+            print(' ', end=' ')
+        for j in range(10 - i, hor - i):
+            if j == 10 - i or j == hor - i - 1:
+                print('*', end=' ')
+            else:
+                print(' ', end=' ')
+        print()
+
+age=int(input('enter age : ')
+if age>=18:
+      print('person is eligible to vote')
+else:
+      print('person is not eligible to vote')
+
+
+Check if a given character is a vowel or consonant.
+
+character= input('enter letter ')
+if character.isalpha():
+       if character in ('aeiou'):
+              print('given character is a vowel')
+       else:
+              print('given character is a consonant')
+else:
+       print('enter valid input')
+
+Determine the quadrant of a point on the Cartesian plane.
+
+x = int(input("Enter the x-coordinate: "))
+y = int(input("Enter the y-coordinate: "))
+
+if x < 0 and y < 0:
+    print(f"({x}, {y}) belongs to the 3rd Quadrant.")
+elif x < 0 and y > 0:
+    print(f"({x}, {y}) belongs to the 1st Quadrant.")
+elif x > 0 and y > 0:
+    print(f"({x}, {y}) belongs to the 2nd Quadrant.")
+else:
+    print(f"({x}, {y}) belongs to the 4th Quadrant.")
+
+
+Check if a number is prime or composite.
+
+number=int(input('enter number : '))
+if number >=2:
+    for i in range(2,number):
+        if number%i==0:
+            print('composite number')
+            break
+    else:
+        print('prime number')
+else:
+    print('enter valid number')
+
+Looping Statements:
+11. Print the numbers from 1 to 10 using a for loop.
+
+for i in range(11):
+    print(i)
+
+Calculate the factorial of a number using a while loop.
+
+number=int(input('enter number : '))
+factorial=1
+while number>0:
+    factorial=factorial*number
+    number=number-1
+print(f'factorial of number is {factorial}')
+
+Print the Fibonacci series up to a certain limit.
+
+limit=int(input('enter number : '))
+a=0
+b=1
+print(a)
+print(b)
+while limit>2:
+    c=a+b
+    print(c)
+    a=b
+    b=c
+    limit=limit-1
+
+Sum the elements of a list using a for loop.
+
+list1=[20,49,35,35]
+sum=0
+for i in list1:
+    sum=sum+i
+print(sum)
+
+Find the common elements in two lists using a for loop.
+
+list1=[20,49,35,45]
+list2=[45,67,89,20,35]
+for i in list1:
+     if i in list2:
+           print(i)

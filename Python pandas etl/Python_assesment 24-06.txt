@@ -1,0 +1,130 @@
+1. Write a program
+   Given an array, rearrange such that all odd numbers come at the start of array in ascending order followed by all even numbers in descending order.
+   
+   Example:
+   Input : arr[] = {12, 10, 5, 6, 52, 37, 23}
+   Output : arr[] = {5, 23, 37, 52, 12, 10, 6}
+
+def rearrange_odd_even(arr):
+    odd = [x for x in arr if x % 2 != 0]
+    even = [x for x in arr if x % 2 == 0]
+
+    odd.sort()
+    even.sort(reverse=True)
+
+    return odd + even
+   
+   
+2. Write a program which lists out all possible sequence of 5 digit binary numbers. Read from the the list and then check whether they are divisible by 4 or not. The numbers that are divisible by 4 are to be printed in a comma separated sequence.
+
+Example:
+Sequence of 3 digit numbers are 
+000, 001, 010, 011, 100, 101, 110, 111
+
+Numbers divisible by 4 are
+100
+
+binary_number_5_digit=[]
+for i in range (10000,11112):
+    binary_number=''
+    for j in str(i):
+        if j=='0' or j=='1':
+            binary_number=binary_number+j
+    if len(binary_number) == 5:     
+        binary_number_5_digit.append(binary_number) 
+length=len(binary_number_5_digit) 
+for i in range(length):
+    num=[]
+    for j in binary_number_5_digit[i]:
+        num.append(j)
+    num[0]='0'
+    num=''.join(num)
+    binary_number_5_digit.append(num)
+print(binary_number_5_digit)  
+
+binary_num_div_4=[]
+for i in binary_number_5_digit:
+    if int(i)>0:
+        if int(i)%4==0:
+             binary_num_div_4.append(i)
+        
+print(binary_num_div_4)
+
+
+3. Write a program Given the year, find number of 5th Saturday's in that year.
+
+import datetime
+
+year = int(input('Enter year: '))
+start_date = datetime.datetime(year, 1, 1)
+end_date = datetime.datetime(year, 12, 31)
+sat_in_year=[]
+while start_date <= end_date:
+    if start_date.weekday() == 5:
+        sat_in_year.append(start_date)
+    start_date += datetime.timedelta(days=1)
+fifth_sat_in_year=[] 
+for i in range(1,13):
+    count=0
+    for j  in  sat_in_year:
+        mon=j.month
+        if mon==i:
+             count=count+1
+    if count==5:
+        fifth_sat_in_year.append(j)
+            
+print(len(fifth_sat_in_year)) 
+   
+4. Given a list of numbers, write a  program to create a list of tuples having second element as the number and first element as the cube of the number.
+
+Input: list1 = [1, 2, 3]
+Output: [(1, 1), (8, 2), (27, 3)]
+
+
+result=[]
+for i in list1:
+	v=(i**3,i)
+	result.append(v)
+	
+
+   
+5. Write a program to interchange 1st and 3rd row of a 3x3 matrix.
+
+Input : 3x3 Matrix
+Output : 3x3 Matrix with 1st and 3rd row interchanged.
+
+def interchange(mat, n, m):
+    rows = n
+    for i in range(n):
+        t = mat[0][i]
+        mat[0][i] = mat[rows-1][i]
+        mat[rows-1][i] = t
+
+mat = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+n= 3
+m = 3
+interchange(mat, n, m)
+for i in range(n):
+    for j in range(m):
+        print(mat[i][j], end=" ")
+    print()	
+
+6. Write a program to read a text file of size not more than 1kb. Search for all the words in that file that contain letters 'i' and 'u' and replace those words with same word capitalized.
+
+import os
+
+file_path = "/path/to/your/file.txt"
+file_size_bytes = os.path.getsize(file_path)
+file_size_kb = file_size_bytes / 1024
+
+if file_size_kb <= 1:
+    with open(file_path, 'r') as file:
+        data = file.read()
+        words = data.split()
+	transformed_words = [word.replace('i', 'I').replace('u', 'U') for word in words]
+        sentence = ' '.join(transformed_words)
+
+    print(sentence)
+else:
+    print("File size exceeds 1 KB.")
+

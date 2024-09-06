@@ -1,0 +1,56 @@
+
+select * from employees;
+
+
+grant select on employees to user_id;
+
+revoke select on employees from  user_id;
+
+create view  emp_view as select employee_id,employee_name,department_id from employees;
+
+select * from emp_view
+
+
+create MATERIALIZED view mat_emps  refresh complete start with sysdate next sysdate+1
+ as(select employee_id,salary from employees);
+
+create SYNONYM syemp for employees ;
+
+create SEQUENCE seq_nam start with 1 increment by 1
+
+insert into employees values(seq_nam.nextval,'CK',3,1999);
+
+select employee_name,salary ,department_id
+from employees e1
+where salary > (select avg(salary) from employees e2
+where e1.department_id =  e2.department_id )
+
+
+
+with cte1 as(select employee_name,salary,department_id
+from employees ),
+cte2 as(select avg(salary)avg_sal,department_id from employees
+group by department_id)
+select employee_name,avg_sal,deparment_id
+from cte1 c join cte2 d
+on c.deparment_id = d.department_id
+
+
+
+create index emp_name_index on employees(employee_name);
+
+SELECT  * from ALL_INDEXES WHERE TABLE_NAME = 'employees'
+
+
+select row_number() over( order by salary desc),salary
+from employees
+
+select employee_name
+from employees
+where lower(employee_name) like 'j%n'
+
+
+select employee_name
+from employees
+where  regexp_like(lower(employee_name), '^j.*n$')
+

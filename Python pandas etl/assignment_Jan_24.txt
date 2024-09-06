@@ -1,0 +1,206 @@
+Solve the following assignment , for loop, while loop, str , upper(), lower(), title()
+len(), break , continue...
+======================================
+1) name = 'Harish Kumar'
+   using for loop print the char of name one by one
+------------code---------------
+name = 'Harish Kumar'
+for i in name:
+    print(i)
+-----------output--------------
+H
+a
+r
+i
+s
+h
+ 
+K
+u
+m
+a
+r
+============================
+
+   using for loop print the char of name one by one (using range)
+------------code---------------
+name = 'Harish Kumar'
+len=len(name)
+for i in range(len):
+    print(name[i])
+-----------output--------------
+H
+a
+r
+i
+s
+h
+ 
+K
+u
+m
+a
+r
+===============================
+
+2) do the same 1) using the while loop print all the char of name but in REVERSE 
+------------code---------------
+name = 'Harish Kumar'
+leng=len(name)-1
+while leng>=0:
+    print(name[leng])
+    leng=leng-1
+
+-----------output--------------
+r
+a
+m
+u
+K
+ 
+h
+s
+i
+r
+a
+H
+===============================
+
+3) data = 'all is well that begins and ends well'
+   process this and count how many vowels (a,e,i,o,u) are there 
+   use for loop to do
+------------code---------------
+data = 'all is well that begins and ends well'
+vowels =('a','e','i','o','u')
+count=0
+for i in data:
+    if i in vowels:
+       count=count+1
+print("number of vowels in data is ",count) 
+
+-----------output--------------
+number of vowels in data is  9
+
+=======================================
+
+4) data = "100010010001110011"
+   use while loop like this...
+   while True:
+     xxxx
+     xxx
+  keep processing the data - as soon as the count of 0's reach 7 then break from the loop
+------------code---------------
+data = "100010010001110011"
+leng=0
+count=0  
+while True:
+    p=(data[leng])
+    print(p)
+    leng=leng+1
+    if p=='0':
+        count=count+1
+    if count==7:
+        break
+-----------output--------------
+1
+0
+0
+0
+1
+0
+0
+1
+0
+0
+=========================
+
+5) try this...
+   s1 = 'vinay'
+   s2 = 'ganesh'
+   s3 = 'kiran'
+   s4 = 'harish'
+   for i in s1,s2,s3,s4:
+       print(i)
+------------code---------------
+for i in s1,s2,s3,s4:
+    print(i)
+-----------output--------------
+vinay
+ganesh
+kiran
+harish
+=============================
+
+using the same approach, find the len of each name
+------------code---------------
+for i in s1,s2,s3,s4:
+    print('length of ',i,' is ',len(i))
+-----------output--------------
+length of  vinay  is  5
+length of  ganesh  is  6
+length of  kiran  is  5
+length of  harish  is  6
+==================================
+
+
+6) keep inputting number , use while loop , the break condition is -1
+   ie. when user enters -1 then stop , till that time keep adding the inputted number
+   find the total of all numbers
+   find the avg
+   find the highest and lowest inputted number...
+   for example::::
+       25
+       10
+        9
+      123
+       99
+      100 
+        3
+      101
+      112
+       76
+       -1  <<<< stop
+
+ highest is 123
+ lowest is 3
+ similarly total and avg...
+
+------------code---------------
+num=0
+maxi_num=0
+mini_num=0
+count=0
+while True:
+    number=int(input("enter number = "))
+    if number>maxi_num:
+        maxi_num=number
+    if number<mini_num:
+        mini_num=number
+    count=count+1    
+    if number == -1:
+        break
+    num=num+number
+avg=num/ count
+print('higest number is ',maxi_num)
+print('lowest number is ',mini_num)
+print("total is ",num)
+print("avg is ",avg)
+-----------output--------------
+enter number = 67
+enter number = 98
+enter number = -45
+enter number = 34
+enter number = -54
+enter number = 87
+enter number = -1
+higest number is  98
+lowest number is  -54
+total is  187
+avg is  26.714285714285715
+******************************
+
+
+    
+
+
+ 

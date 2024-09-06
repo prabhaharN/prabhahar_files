@@ -1,0 +1,20 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+70,71,2005,1,1,Australian Grand Prix,2005-03-06,14:00:00,http://en.wikipedia.org/wiki/2005_Australian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+71,72,2005,2,2,Malaysian Grand Prix,2005-03-20,15:00:00,http://en.wikipedia.org/wiki/2005_Malaysian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+72,73,2005,3,3,Bahrain Grand Prix,2005-04-03,14:30:00,http://en.wikipedia.org/wiki/2005_Bahrain_Grand_Prix,testing,2024-07-19 09:54:18.999993
+73,74,2005,4,21,San Marino Grand Prix,2005-04-24,14:00:00,http://en.wikipedia.org/wiki/2005_San_Marino_Grand_Prix,testing,2024-07-19 09:54:18.999993
+74,75,2005,5,4,Spanish Grand Prix,2005-05-08,14:00:00,http://en.wikipedia.org/wiki/2005_Spanish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+75,76,2005,6,6,Monaco Grand Prix,2005-05-22,14:00:00,http://en.wikipedia.org/wiki/2005_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+76,77,2005,7,20,European Grand Prix,2005-05-29,14:00:00,http://en.wikipedia.org/wiki/2005_European_Grand_Prix,testing,2024-07-19 09:54:18.999993
+77,78,2005,8,7,Canadian Grand Prix,2005-06-12,13:00:00,http://en.wikipedia.org/wiki/2005_Canadian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+78,79,2005,9,19,United States Grand Prix,2005-06-19,14:00:00,http://en.wikipedia.org/wiki/2005_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993
+79,80,2005,10,8,French Grand Prix,2005-07-03,14:00:00,http://en.wikipedia.org/wiki/2005_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+80,81,2005,11,9,British Grand Prix,2005-07-10,14:00:00,http://en.wikipedia.org/wiki/2005_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+81,82,2005,12,10,German Grand Prix,2005-07-24,14:00:00,http://en.wikipedia.org/wiki/2005_German_Grand_Prix,testing,2024-07-19 09:54:18.999993
+82,83,2005,13,11,Hungarian Grand Prix,2005-07-31,14:00:00,http://en.wikipedia.org/wiki/2005_Hungarian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+83,84,2005,14,5,Turkish Grand Prix,2005-08-21,15:00:00,http://en.wikipedia.org/wiki/2005_Turkish_Grand_Prix,testing,2024-07-19 09:54:18.999993
+84,85,2005,15,14,Italian Grand Prix,2005-09-04,14:00:00,http://en.wikipedia.org/wiki/2005_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+85,86,2005,16,13,Belgian Grand Prix,2005-09-11,14:00:00,http://en.wikipedia.org/wiki/2005_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+86,87,2005,17,18,Brazilian Grand Prix,2005-09-25,14:00:00,http://en.wikipedia.org/wiki/2005_Brazilian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+87,88,2005,18,22,Japanese Grand Prix,2005-10-09,14:00:00,http://en.wikipedia.org/wiki/2005_Japanese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+88,89,2005,19,17,Chinese Grand Prix,2005-10-16,14:00:00,http://en.wikipedia.org/wiki/2005_Chinese_Grand_Prix,testing,2024-07-19 09:54:18.999993

@@ -1,0 +1,52 @@
+select pat_id from patients where (extract(yearfromsysdate)-extract(yearfromdob) )>89;
+
+
+
+delete from emp where rowid not in (select min(rowid) from emp group by empId)
+
+
+
+Display Common Patient treated by Dr. Rohit Gupta and Dr.Priya Desai
+
+select * from patients
+where pat_id in(select pat_id from pat_treatment
+where doc_id = (select doc_id from doctors
+where doc_nm ='Rohit Gupta'))
+intersect
+select * from patients
+where pat_id in(select pat_id from pat_treatment
+where doc_id = (select doc_id from doctors
+where doc_nm ='Priya Desai'))
+
+
+Question: Display all the doctors who have provided the treatments or not.
+Answer:
+select doc_nm,case 
+when co>0 then 'yes' else 'not' end as provided
+from( select doc_nm,count(pat_id) as co from doctors d left join
+pat_treatment pt on d.doc_id = pt.doc_id
+group by (doc_nm))
+
+
+Question: Display the number of patients in each country.
+Answer:
+select country_nm, count(pat_id) from locations l 
+left join patients p on l.loc_id = p.loc_id
+group by country_nm
+
+
+Question: Display the top3 years based on the number of patients treated.
+Answer:
+select * from (select extract( year from TREAT_DATE) as years , count(pat_id)
+from pat_treatment
+group by extract( year from TREAT_DATE)
+order by count(pat_id) desc)
+where rownum <4
+
+
+Question: Display the year, no of patients and no of doctors.
+Answer:
+select extract( year from TREAT_DATE) as years , count(pat_id) as patients ,
+count(doc_id) as doctors
+from pat_treatment
+group by extract( year from TREAT_DATE)

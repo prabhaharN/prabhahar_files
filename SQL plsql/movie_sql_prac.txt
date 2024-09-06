@@ -1,0 +1,62 @@
+--    Display which movie as greater than 150 mins	
+select movie_name from movie where duration_in_min >150;
+
+--2.)    Display the youngest and the oldest actor name	
+select 'youngest', actor_name from actor where dob=(select max(dob) from actor)
+union 
+select 'oldest',actor_name from actor where dob=(select min(dob) from actor);
+
+--3.)    Display the movies of type action released in the current year	
+select movie_name ,movie_type_desc from movie m inner join movie_type mt on m.movie_type_id =mt.movie_type_id
+where extract(year from release_date)=extract(year from sysdate);
+
+--4.)    Display all the actor names who are currently not associated with any movies
+select actor_name from actor where actor_id not in (select distinct actor_id from role );
+
+--5.)    Extract gmail from email column in actor table	
+select substr( email ,instr(email,'@',1)+1,5) from actor;
+
+--6.)    Display movie names that have more than 10 actors	
+select movie_name from movie where movie_id in (select movie_id from role group by movie_id having count(actor_id)>10);
+
+--7.)    Display movie type wise no of movies and no of roles	
+select movie_type_desc ,count( distinct m.movie_id),count(role_id)
+from movie m right join movie_type mt on m.movie_type_id = mt.movie_type_id
+left join role r on m.movie_id = r.movie_id
+group by movie_type_desc;
+
+--8.)    Display the movie names that have more no of roles than the movie ‘Top Gun’
+select movie_name from movie m left join role r on m.movie_id=r.movie_id 
+group by movie_name
+having count(role_id)>(select count(role_id) from role where movie_id = (select movie_id from movie where movie_name='Top Gun'));
+
+--9.)    Display the movie name wise no of male and female actors	
+select movie_name ,count(no_of_male_actor),count(no_of_female_actor) from (select movie_name ,case when gender='M' then count(r.actor_id)end as no_of_male_actor ,case when gender='F' then count(r.actor_id)end as no_of_female_actor from movie m left join role r on m.movie_id=r.movie_id left join actor a on r.actor_id = a.actor_id
+group by movie_name,gender) group by movie_name;
+
+--10.) Display movie_name,movie_type desc where we have movie_type desc second highest actors	
+select movie_name , movie_type_desc from movie m inner join movie_type mt on m.movie_type_id = mt.movie_type_id
+inner join role r on m.movie_id = r.movie_id 
+where r.actor_id =(select actor_id from (select actor_id ,dense_rank()over( order by count(actor_id) desc) rn from role group by actor_id) where rn=2);
+
+
+--11) Display Year wise month wise Movie released count	
+
+select extract(year from release_date) as year ,extract(month from release_date) as month ,count(movie_id) from movie
+group by extract(year from release_date) ,extract(month from release_date);
+
+--12	Uncommon actor from KGF-1 and KGF-2		
+select actor_name from (select distinct actor_name,a.actor_id as id from actor a inner join role r on a.actor_id = r.actor_id 
+where movie_id = ( select movie_id from movie where movie_name='KGF-1'))
+where id not in(
+select a.actor_id from actor a inner join role r on a.actor_id = r.actor_id 
+where movie_id = ( select movie_id from movie where movie_name='KGF-2'));
+
+--13	Display which movie we have second highest actor
+
+select movie_name from movie m inner join role r on m.movie_id = r.movie_id
+where r.actor_id =(select actor_id from (select actor_id ,dense_rank()over( order by count(actor_id)) rn from role group by actor_id) where rn=2)
+
+--14	Which Movie_type_desc we don’t have any movie
+
+select movie_type_desc from movie_type where movie_type_id not in (select distinct movie_type_id from movie);

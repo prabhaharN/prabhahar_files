@@ -1,0 +1,11 @@
+,raceId,year,round,circuitId,name,date,time,url,data_source,ingestion_date
+745,746,1960,1,25,Argentine Grand Prix,1960-02-07,\N,http://en.wikipedia.org/wiki/1960_Argentine_Grand_Prix,testing,2024-07-19 09:54:18.999993
+746,747,1960,2,6,Monaco Grand Prix,1960-05-29,\N,http://en.wikipedia.org/wiki/1960_Monaco_Grand_Prix,testing,2024-07-19 09:54:18.999993
+747,748,1960,3,19,Indianapolis 500,1960-05-30,\N,http://en.wikipedia.org/wiki/1960_Indianapolis_500,testing,2024-07-19 09:54:18.999993
+748,749,1960,4,39,Dutch Grand Prix,1960-06-06,\N,http://en.wikipedia.org/wiki/1960_Dutch_Grand_Prix,testing,2024-07-19 09:54:18.999993
+749,750,1960,5,13,Belgian Grand Prix,1960-06-19,\N,http://en.wikipedia.org/wiki/1960_Belgian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+750,751,1960,6,55,French Grand Prix,1960-07-03,\N,http://en.wikipedia.org/wiki/1960_French_Grand_Prix,testing,2024-07-19 09:54:18.999993
+751,752,1960,7,9,British Grand Prix,1960-07-16,\N,http://en.wikipedia.org/wiki/1960_British_Grand_Prix,testing,2024-07-19 09:54:18.999993
+752,753,1960,8,59,Portuguese Grand Prix,1960-08-14,\N,http://en.wikipedia.org/wiki/1960_Portuguese_Grand_Prix,testing,2024-07-19 09:54:18.999993
+753,754,1960,9,14,Italian Grand Prix,1960-09-04,\N,http://en.wikipedia.org/wiki/1960_Italian_Grand_Prix,testing,2024-07-19 09:54:18.999993
+754,755,1960,10,60,United States Grand Prix,1960-11-20,\N,http://en.wikipedia.org/wiki/1960_United_States_Grand_Prix,testing,2024-07-19 09:54:18.999993

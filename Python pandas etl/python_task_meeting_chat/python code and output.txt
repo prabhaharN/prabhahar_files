@@ -1,0 +1,90 @@
+with open('meeting_saved_chat_sql_refresh_June_24_2024.txt','r',encoding='utf-8') as file:
+    data= file.read()
+    file.close()
+lines=data.split('\n14:')
+
+question=[]
+for line in lines:
+    if 'From Ibridge 360 to Everyone' in  line:
+        ques=line.split('\n')[1:]
+        ques_=[]
+        for i in ques:
+             que=i.split('\t')[1]
+             if len(que)>0:
+                  ques_.append(que)
+        question.append(ques_)   
+        
+
+answer=[]
+for line in lines:
+    if 'From Prabhahar N to Ibridge 360(direct message):' in  line:
+        answer.append(line.split('Ibridge 360(direct message):')[1].strip())
+
+extra_answer=[]
+
+for i in range(1,len(answer)):
+    v=len(answer[i-1])
+    if answer[i-1][0:v]==answer[i][0:v]:
+        extra_answer.append(answer[i-1])
+ 
+        
+for i in extra_answer:
+    if i in answer:
+        answer.remove(i)     
+
+tem_ans=answer.copy()
+tem_ans.pop(10)
+tem_ans.insert(3,'not answer')
+tem_ans.insert(8,'not answer')
+tem_ans.insert(9,'not answer')
+
+with open('meeting_question_answer_june_24_2024.txt','a',encoding='utf-8') as file:
+    for i,j in zip(question,tem_ans):
+        v=f"-----question----- ,{i},:  -----answer-----  ,{j}"
+        file.write(v)
+file.close()
+
+for i,j in zip(question,tem_ans):
+    v=f"-----question----- ,{i},:  -----answer-----  ,{j}"
+    print(v)
+    print('--------------------------------------------------------')
+
+
+
+output:
+-----question----- ,['find 5th highest salary in different way? (2 ways)'],:  -----answer-----  ,select salary (select salary, dense_rank() over(order by salary desc) as rk  from table ) where rk=5
+	
+	select max(salary) from table where salary<(select max(salary)fromtable  where salary<(select max(salary)fromtable where salary<(select max(salary)fromtable where salary<(select max(salary)fromtable
+--------------------------------------------------------
+-----question----- ,['Why View performance is slow? What we should do to increase the performance of the view.'],:  -----answer-----  ,because the query execute every time for increase performance we use materalized view
+--------------------------------------------------------
+-----question----- ,['List the Query execution order.'],:  -----answer-----  ,from where group by having select order by
+--------------------------------------------------------
+-----question----- ,['What 4 steps every query goes through before it shows the results to us?'],:  -----answer-----  ,not answer
+--------------------------------------------------------
+-----question----- ,['how to find if a column has an index or not ?'],:  -----answer-----  ,select index_name from user_index where table_name='table1' and column_name='column'
+--------------------------------------------------------
+-----question----- ,['Write a query where you use case statement'],:  -----answer-----  ,select case when mark >90 then 'A' 
+	                   when mark >70 then 'b'
+	                   when mark >5 then 'c'
+	                   else e;
+--------------------------------------------------------
+-----question----- ,['webvisit', 'visit_id site', '100      www.google.com', '101      www.facebook.com', '100      www.google.com', 'Delete the duplicate records in webvisit table'],:  -----answer-----  ,delete from webvisit where rowid not  in ( select max(rowid) from webvisist group by visist_id)
+--------------------------------------------------------
+-----question----- ,['Why union query runs slower (usually) compared to union all queries'],:  -----answer-----  ,union delete the duplicate and gives unioque records where union all combines the result of two query
+--------------------------------------------------------
+-----question----- ,['What does implicit cursor mean in the database world?'],:  -----answer-----  ,not answer
+--------------------------------------------------------
+-----question----- ,['What is the difference between synonyms and views?'],:  -----answer-----  ,not answer
+--------------------------------------------------------
+-----question----- ,['Select substr(‘dhivakar’,-1,-1) from dual -- What is the output'],:  -----answer-----  ,r
+--------------------------------------------------------
+-----question----- ,['I have 2 emp tables with 5 records each. Name like emp1 and emp2. Now i delete the emp1 records and truncate the emp2 records after that I rollback this transaction. How many rows you will have in emp1 and emp2'],:  -----answer-----  ,in emp 1 have 5 and emp2 have 0
+--------------------------------------------------------
+-----question----- ,['1.       I have an emp table with 5 records. I write a following query what will be the output.', 'Select ename from emp where rownum = 3?'],:  -----answer-----  ,show in error
+--------------------------------------------------------
+-----question----- ,['I have an dept table .In that dept table I have columns like deptno with primary key and dname with unique key. After that I insert vaue like this (insert into dept values(10,’’); insert into dept values(20,’’);), Does it allows null values second time ?'],:  -----answer-----  ,no in unique it will one null value
+--------------------------------------------------------
+-----question----- ,['what are the types of statements in TCL you know'],:  -----answer-----  ,commit savepoint rollback
+--------------------------------------------------------
+

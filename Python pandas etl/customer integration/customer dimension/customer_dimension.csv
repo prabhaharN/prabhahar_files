@@ -1,0 +1,17 @@
+cust_id,src_cust_id,cust_name,city,source,rep_name,phone,email
+100,1000,GaneGanesh Vasav,bangalore,instore,,,
+101,1001,A PateA Patell,chennai,instore,,,
+102,1003,Gopal Devi,bangalore,instore,,,
+103,1004,Naresh Mandal,chennai,instore,,,
+104,1005,Dinesh Raut,mumbai,instore,,,
+105,1006,Umesh Singh,bangalore,instore,,,
+106,1009,Dipak Baish Vasav,mumbai,instore,,,
+107,5000, Riya,chennai,call_center, Vijay,9027896233.0,
+108,5002,Mira,mumbai,call_center, Rahul,8763739724.0,
+109,5004,Gita Singh,bangalore,call_center, Ira,9228372556.0,
+110,5006,Sri Kaur,chennai,call_center, Ibrahim,6228528492.0,
+111,5007, Dev,mumbai,call_center, Anjali,9820458623.0,
+112,5008,Vinod Sharma,chennai,call_center,Trisha,9228753297.0,
+113,3003,Shanti Chaudhari,bangalore,web,,,shantichaudhari01@gmail.com
+114,3008,Lakshmi Biswas,bangalore,web,,,lakshmiblr@gmail.com
+115,3009,Saroj Chandra,mumbai,web,,,sarojchandra@oulook.com

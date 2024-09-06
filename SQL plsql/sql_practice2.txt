@@ -1,0 +1,52 @@
+1.Write a query to list the cities which have more population than Bangalore.
+
+select city_name from city where city_population >( 
+select city_population from city where city_name='Bangalore')
+
+2.Display all the branch names from Chennai.
+
+select b_name from branch where city_id =( select city_id from city where city_name='Chennai')
+
+3.Display a city name which does not have any branches
+
+select city_name from city where city_id not in ( select distinct city_id from branch)
+
+4.Display branch name, address and phone number of all the branches where the name starts with either B or M and the city name starts with either B or C.
+
+select b_name, b_address and b_phone from branch b
+inner join city c on b.city_id = c.city_id
+where (b_name like 'B%'or b_name like 'M%') 
+and (city_name  like 'B%'or city_name like 'C%')
+
+5.How many branches we have in Bangalore?
+
+select count(branch_id) from branch where city_id = ( select city_id from city 
+where city_name='Bangalore')
+
+6.Display the branches which are in the Ring road of any city.
+
+select b_name from branch where b_address like '%Ring Road%'
+
+7.Display the city name, branch name. Order the data based on the city name.
+
+select city_name, b_name from city c inner join branch b on c.city_id =b.city_id
+order by city_name
+
+
+8.Display the city name and the number of branches in each city.
+
+select city_name ,count(branch_id) from city c left join branch b on c.city_id = b.city_id
+group by city_name
+
+9.Display the city name which has most number of branches.
+
+select city_name from city c inner join branch b on c.city_id = b.city_id
+group  by city_name having count(branch_id)=
+select max(cnt) from (select count(branch_id) as cnt from branch group by city_id)
+
+10.Display the city name, population, number of branches in each city.
+
+select city_name,population,count(branch_id) from city c left join branch b on c.city_id = b.city_id
+group  by city_name,population
+
+

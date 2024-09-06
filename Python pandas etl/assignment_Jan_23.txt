@@ -1,0 +1,345 @@
+assignment Jan 23rd - apply the learning of if else, and ,or, not, for loop
+============================================================================
+try this also (run the while loop programs as is)
+while loop...
+ syntax ...
+
+while condition:
+   --- do this ---
+   --- do this ---
+   --- we tend to make the condition false ----
+
+PROBLEM :  print : 1 to 10 using while loop
+n = 1
+while n < 11:
+    print(n)
+    n = n + 1
+print()
+print('--- Program Over -----')
+
+
+PROBLEM :  print multiplication table of 7 using while loop
+n = 7
+while n <= 70:
+     print(n)
+     n = n + 7
+print()
+print('----Program Over ----')
+
+PROBLEM :  print multiplication table of 7 using while loop (another way)
+n = 1
+m = 7
+while n <= 10:
+    result = m * n
+    print(result)
+    n = n + 1
+print()
+print('---- Program Over -----')
+
+
+=============ASSIGNMENT =======
+1) use for loop print all numbers from 50 to 65
+-----------------for loop  code---------------------
+for i in range( 50,65+1):
+    print(i)
+--------------output----------------------
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+
+------------while loop code----------
+n=50
+while n<=65:
+    print(n)
+    n=n+1
+--------------output----------------------
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+
+==================
+2) use for loop print all numbers from 125 to 178 skipping 3 numbers at a time
+-----------------for loop  code---------------------
+for i in range (125,178+1,3)  :
+    print(i)
+--------------output----------------------
+125
+128
+131
+134
+137
+140
+143
+146
+149
+152
+155
+158
+161
+164
+167
+170
+173
+176
+------------while loop code----------
+n=125
+while n<178:
+    print(n)
+    n=n+3
+--------------output----------------------
+125
+128
+131
+134
+137
+140
+143
+146
+149
+152
+155
+158
+161
+164
+167
+170
+173
+176
+===============
+
+3) use for loop print all numbers from -10 to -40 
+-----------------for loop  code---------------------
+for i in range (-10,-40,-1)  :
+    print(i)
+--------------output----------------------
+-10
+-11
+-12
+-13
+-14
+-15
+-16
+-17
+-18
+-19
+-20
+-21
+-22
+-23
+-24
+-25
+-26
+-27
+-28
+-29
+-30
+-31
+-32
+-33
+-34
+-35
+-36
+-37
+-38
+-39
+-40
+------------while loop code----------
+n=-10
+while n>=-40:
+    print(n)
+    n=n-1
+--------------output----------------------
+-10
+-11
+-12
+-13
+-14
+-15
+-16
+-17
+-18
+-19
+-20
+-21
+-22
+-23
+-24
+-25
+-26
+-27
+-28
+-29
+-30
+-31
+-32
+-33
+-34
+-35
+-36
+-37
+-38
+-39
+-40
+====================
+4) use for loop print all numbers from -12 to -55 skip 4 numbers at a time (move right to left)
+---------------------code------------------------
+for i in range (-55,-12-1,4)  :
+      print(i) 
+------------------output-------------------------
+-55
+-51
+-47
+-43
+-39
+-35
+-31
+-27
+-23
+-19
+-15
+====================
+
+5) use for loop - process all the numbers from 33 to 125
+   print number divisible by 5
+---------------------code------------------------
+for i in range (33,125+1)  :
+    if i%5==0:
+        print(i)
+------------------output-------------------------
+35
+40
+45
+50
+55
+60
+65
+70
+75
+80
+85
+90
+95
+100
+105
+110
+115
+120
+125
+========
+
+6) use for loop - process all the numbers from 233 to 429
+   print number divisible by 4 and 5
+---------------------code------------------------
+for i in range (233,429+1)  :
+    if i%4==0 and i%5==0:
+        print(i)
+------------------output-------------------------
+240
+260
+280
+300
+320
+340
+360
+380
+400
+420
+==========
+6) use for loop - process all the numbers from 199 to 599
+   print number divisible by 3 and 7, how many numbers are there in that category
+---------------------code------------------------
+c=0   
+for i in range (199,599+1)  :
+    if i%3==0 and i%7==0:
+        print(i)
+        c=c+1
+    
+print("there are ",c, "numbers")   
+------------------output-------------------------
+210
+231
+252
+273
+294
+315
+336
+357
+378
+399
+420
+441
+462
+483
+504
+525
+546
+567
+588
+there are  19 numbers
+
+=========
+7) use for loop process all the numbers from -23 to -43
+   print numbers except -29  ,  -31 ,  -37
+---------------------code------------------------
+for i in range (-23,-43-1,-1)  :
+    if i!=-29 and i!=-31 and i!=-37:
+        print(i)
+------------------output-------------------------
+-23
+-24
+-25
+-26
+-27
+-28
+-30
+-32
+-33
+-34
+-35
+-36
+-38
+-39
+-40
+-41
+-42
+-43
+=================
+8) use for loop process all the numbers from -64 to -82
+   sum all the numbers
+---------------------code------------------------
+c=0
+for i in range (-64,-82-1,-1)  :
+        c=c+i
+print("sum of all numbers is ",c)
+------------------output-------------------------
+sum of all numbers is ",-1387
+
+===========
+
+

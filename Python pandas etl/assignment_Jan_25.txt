@@ -1,0 +1,307 @@
+apply the learings of if else, and , or, not, for , range, str slicing, str methods
+while , break, continue...to solve the following
+=================================================
+1) input any five numbers  (in int variable, not str)
+   find out how many SINGLE digit number are there
+   find the highest and lowest
+-------------------code------------------------
+n=5
+count=0
+maxi=0
+mini=0
+while n>0:
+    num=int(input('enter number : '))   
+    if num in range (10):
+        count=count+1
+    if n==5:
+        maxi,mini=num,num
+    if num>maxi:
+        maxi=num
+    if num<mini:
+        mini=num
+    n=n-1
+print('there are ',count,' SINGLE digit number') 
+print('the highest number is ',maxi)
+print('the lowest number is ',mini)
+------------------output-----------------------
+enter number : 2
+enter number : 35
+enter number : 6
+enter number : 8
+enter number : 45
+there are  3  SINGLE digit number
+the highest number is 45
+the lowest number is 2
+=================================================
+
+2) use while loop for it
+   input any 4 numbers (in int variable, not str)
+   all the numbers must be unique
+   find the total, find the avg, find highest , lowest
+-------------------code------------------------
+n=4
+total=0
+maxi=0
+mini=0
+t=n
+s=''
+while n>0:
+    num=int(input('enter number : ')) 
+    spl=s.split('+')
+    if str(num) not in spl:
+        s=s+'+'+str(num)
+        if n==4:
+            maxi,mini=num,num
+        if num>maxi:
+            maxi=num
+        if num<mini:
+            mini=num
+    else :
+        print(num,"is already entered")
+        break
+    total=total+num    
+    n=n-1    
+print("the total is ",total) 
+print('average is ',total/t)
+print('the highest number is ',maxi)
+print('the lowest number is ',mini)
+------------------output-----------------------
+enter number : 6
+enter number : 4
+enter number : 5
+enter number : 9
+the total is  24
+average is  6.0
+the highest number is  9
+the lowest number is  4
+=================================================
+
+3) once 3) is working ...find out
+   sum of FIRST and LAST number inputted
+-------------------code------------------------
+n=4
+total=0
+maxi=0
+mini=0
+t=n
+s=''
+while n>0:
+    num=int(input('enter number : ')) 
+    spl=s.split('+')
+    if str(num) not in spl:
+        s=s+'+'+str(num)
+        if n==4:
+            maxi,mini=num,num
+            first=num
+        if n==1:
+            last=num    
+        if num>maxi:
+            maxi=num
+        if num<mini:
+            mini=num
+    else :
+        print(num,"is already entered")
+        break
+    total=total+num    
+    n=n-1
+print('sum of first and last number enter ',first+last)
+------------------output-----------------------
+enter number : 5
+enter number : 2
+enter number : 9
+enter number : 7
+sum of first and last number enter  12
+=================================================
+
+4) generate 10 negative numbers starting from -35
+   sum all the numbers
+   find the avg
+-------------------code------------------------
+num=-35
+how_many_num=10
+sum_all=0
+for i in range (how_many_num):
+    print(num)
+    sum_all= sum_all+num
+    num=num-1
+    
+print('sum of all numbers is ',sum_all) 
+print("average : ",(sum_all/how_many_num))
+------------------output-----------------------
+-35
+-36
+-37
+-38
+-39
+-40
+-41
+-42
+-43
+-44
+sum of all numbers is  -395
+average :  -39.5
+=================================================
+5) print this mul table via for loop and later using while loop
+   4 x 1 = 4
+   4 x 2 = 8
+   4 x 3 = 12
+   ..
+   ..
+   4 x 10 = 40
+-------------------code------------------------
+mul_num=int(input('enter number : '))
+how=int(input('How many times : '))
+for i in range(1,how+1):
+    print(mul_num,'*',i,'=',mul_num*i) 
+------------------output-----------------------
+enter number : 4
+How many times : 10
+4 * 1 = 4
+4 * 2 = 8
+4 * 3 = 12
+4 * 4 = 16
+4 * 5 = 20
+4 * 6 = 24
+4 * 7 = 28
+4 * 8 = 32
+4 * 9 = 36
+4 * 10 = 40
+=================================================
+6) input a sentence
+   input a word to find
+   input the word with which the found word to be replaced
+   find out HOW many replacement done...
+-------------------code------------------------
+sent='aaa bb ccc bb xx bb www yyy bb bb ii bb oppp bb'
+word='bb'
+new='BB'
+count=0
+new_sent=sent.replace('word','new')
+spl=new_sent.split(' ')
+for i in spl:
+    if new==i:
+        count=count+1
+        
+print(word,' is ',count,' times replaced by',new)  
+------------------output-----------------------
+bb  is  7  times replaced by BB
+=================================================
+
+7) try to replace from the RIGHT side of the sentence ONLY two found words
+-------------------code------------------------
+sent='aaa bb ccc bb xx bb www yyy bb bb ii bb oppp bb'
+word='bb'
+new='BB'
+n=2
+
+sent=sent[::-1]
+sent=sent.replace(word,new,n)
+sent=sent[::-1] 
+
+print(sent)
+------------------output-----------------------
+aaa bb ccc bb xx bb www yyy bb bb ii BB oppp BB
+=================================================
+
+8) enter any five names
+   find the name with max chars
+   find the name with min chars
+-------------------code------------------------
+h=int(input("how many names : "))  
+l=0
+k=200
+while h>0:
+    name_=str(input("enter full name : "))
+    leng=len(name_) 
+    if leng>l:
+        max_name=name_
+        l=leng
+    if leng<k:
+        mini_name=name_
+        k=leng    
+    h=h-1        
+print('the name with max chars : ',max_name) 
+print('the name with mini chars : ',mini_name)
+------------------output-----------------------
+how many names : 
+5
+enter full name :
+Ashok Kumar
+enter full name :
+Srikanth Murthy
+enter full name :
+Jolly Dolly Poll
+enter full name : 
+Issac Viv Alex Richards
+enter full name : 
+Vinod Rao
+the name with max chars :  Issac Viv Alex Richards
+the name with mini chars :  Vinod Rao
+=================================================
+9) enter any 10 names and it should print the last name
+                             output 
+   Ashok Kumar               Kumar
+   Vinod Rao                 Rao
+   Srikanth Murthy           Murthy
+   Jolly Dolly Poll          Poll
+   Issac Viv Alex Richards   Richards
+-------------------code------------------------
+h=int(input("how many names : "))  
+while h>0:
+    name=str(input("enter full name : "))
+    name=name[::-1]
+    last_name=''
+    for i in name:
+        if i==" ":
+            break
+        else:
+            last_name=last_name+i
+    last_name=last_name[::-1]   
+    name=name[::-1]    
+    h=h-1        
+    print('last name of ',  name,' is ' ,last_name) 
+
+------------------output-----------------------
+how many names : 
+5
+enter full name : 
+Ashok Kumar
+last name of  Ashok Kumar  is  Kumar
+enter full name : 
+Vinod Rao
+last name of  Vinod Rao  is  Rao
+enter full name : 
+Srikanth Murthy
+last name of  Srikanth Murthy  is  Murthy
+enter full name : 
+Jolly Dolly Poll
+last name of  Jolly Dolly Poll  is  Poll
+enter full name : 
+Issac Viv Alex Richards
+last name of  Issac Viv Alex Richards  is  Richards
+=================================================
+
+(the below one is bit diffficult)
+10) enter a sentence    aaa bb ccc bb xx bb www yyy bb bb ii bb oppp bb
+    enter the word to find bb
+    print the position of the word in the main sentence
+-------------------code------------------------
+sent="aaa bb ccc bb xx bb www yyy bb bb ii bb oppp bb"
+word="bb"
+leng=len(sent)
+print("the position of the ",word," in the main sentence are " )
+for i in range(1,leng):
+    let=sent[i-1]+sent[i]
+    if let==word:
+        print(i-1,end=",")
+------------------output-----------------------
+the position of the  bb  in the main sentence are 
+4,11,17,28,31,37,45,
+
+=================================================
+
+*********************
+
+    
+
+  

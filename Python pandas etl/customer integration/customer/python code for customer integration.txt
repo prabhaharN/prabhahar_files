@@ -1,0 +1,77 @@
+import pandas as pd 
+
+
+-------------- customer table---------------------
+
+call_center_cust=pd.read_csv('call_center_cust.csv')
+call_center_cust['source']='call_center'
+crt_call_store=call_center_cust.dropna()
+print(crt_call_store)
+
+instore_cust=pd.read_csv('instore_cust.csv')
+instore_cust['source']='instore'
+crt_instore=instore_cust.dropna() 
+print(crt_instore)
+
+web_cust=pd.read_excel('web_cust.xlsx')
+web_cust['source']='web'
+
+web_email=[]
+web_cus=web_cust['email']
+for i in web_cus:
+    if "@" in i:
+        web_email.append(i)
+
+res_web= web_cust[web_cust['email'].isin (web_email)] 
+print(res_web)
+
+cust_d=pd.concat([crt_instore,crt_call_store,res_web])
+cust=cust_d.drop(['status','store_name'], axis=1)
+
+customer_dimension = cust.drop_duplicates( 
+  subset = ['cust_name', 'city'], 
+  keep = 'first').reset_index(drop = True)
+customer_dimension.rename(columns = {'cust_id':'src_cust_id'}, inplace = True)
+customer_dimension['cust_id']=range(100,100+len(customer_dimension['src_cust_id']))
+first_column = customer_dimension.pop('cust_id') 
+customer_dimension.insert(0, 'cust_id', first_column) 
+print(customer_dimension)
+
+customer_dimension.to_csv('customer_dimension.csv', index = False)
+
+
+------------reject table-----------------
+
+rej_call_center =call_center_cust [call_center_cust.isna().any(axis=1)]
+rej_call_center.loc[rej_call_center['rep_name'].isnull(), 'reject_reason'] = 'rep_name is absent' 
+rej_call_center.loc[rej_call_center['phone'].isnull(), 'reject_reason'] = 'phone_number is absent'
+rej_call_center.loc[(rej_call_center['rep_name'].isnull()) & (rej_call_center['phone'].isnull()), 'reject_reason'] = 'rep_name and phone_number are absent'
+rej_call_center
+
+rej_instore =instore_cust [instore_cust.isna().any(axis=1)]
+rej_instore.loc[nan_values['store_name'].isnull(), 'reject_reason'] = 'store_name is absent'
+rej_instore
+
+all_rows = web_cust.merge(res_web.drop_duplicates(), on=['cust_id'], how='left', indicator=True)
+rows_not_in = all_rows[all_rows['_merge'] == 'left_only']
+rows_not_in = rows_not_in.drop(['_merge'], axis=1)
+rows_not_in
+rej_web=rows_not_in.drop(['source_y','cust_name_y','city_y','email_y','status_y'],axis=1)
+rej_web.rename(columns = {'cust_name_x':'cust_name','city_x':'city','email_x':'email','status_x':'status','source_x':'source'}, inplace = True)
+rej_web['reject_reason']='email mismatch'
+rej_web
+
+duplicate = duplicate =cust[cust[['cust_name', 'city']].duplicated()]
+duplicate['reject_reason']='duplicates'
+duplicate
+
+reject=pd.concat([rej_instore,rej_call_center,rej_web,duplicate])
+reject_table=reject.drop(['cust_name','city','cust_id','store_name','rep_name','phone','email','status'],axis=1)
+reject_table['rej_id']=range(200,200+len(reject_table['reject_reason']))
+first_column = reject_table.pop('rej_id') 
+reject_table.insert(0, 'rej_id', first_column) 
+reject_table
+
+reject_table.to_csv('reject_table.csv', index = False)
+
+------------------------------------------------------------------------------
